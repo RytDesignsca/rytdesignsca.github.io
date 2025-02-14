@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -68,17 +68,27 @@
             display: none;
             position: absolute;
             background-color: #B2EBF2;
-            min-width: 200px;
+            min-width: 250px;
             box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
             z-index: 1;
+            padding: 0.5rem 0;
         }
 
         .dropdown-content a {
             color: #000;
             padding: 12px 16px;
             text-decoration: none;
-            display: block;
+            display: flex;
+            align-items: center;
             font-weight: normal;
+        }
+
+        .dropdown-content a img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            object-fit: cover;
+            border-radius: 5px;
         }
 
         .dropdown-content a:hover {
@@ -236,6 +246,10 @@
             nav li {
                 margin: 0.5rem 0;
             }
+
+            .dropdown-content {
+                min-width: 200px;
+            }
         }
     </style>
 </head>
@@ -250,17 +264,50 @@
                     <li class="dropdown">
                         <a href="#portfolio">What You Can Get</a>
                         <div class="dropdown-content">
-                            <a href="#">Presentations</a>
-                            <a href="#">Posters/Flyers</a>
-                            <a href="#">Videos for Events</a>
-                            <a href="#">Business Cards</a>
-                            <a href="#">Invitations</a>
-                            <a href="#">Logos for Business and Non-Business Purposes</a>
-                            <a href="#">YouTube Thumbnails</a>
-                            <a href="#">Celebration Cards</a>
-                            <a href="#">Banners</a>
-                            <a href="#">Menus</a>
-                            <a href="#">Itineraries</a>
+                            <a href="#">
+                                <img src="url-to-your-image" alt="Presentations Image">
+                                Presentations
+                            </a>
+                            <a href="#">
+                                <img src="url-to-your-image" alt="Posters and Flyers Image">
+                                Posters/Flyers
+                            </a>
+                            <a href="#">
+                                <img src="url-to-your-image" alt="Videos for Events Image">
+                                Videos for Events
+                            </a>
+                            <a href="#">
+                                <img src="url-to-your-image" alt="Business Cards Image">
+                                Business Cards
+                            </a>
+                            <a href="#">
+                                <img src="url-to-your-image" alt="Invitations Image">
+                                Invitations
+                            </a>
+                            <a href="#">
+                                <img src="url-to-your-image" alt="Logos Image">
+                                Logos for Business and Non-Business Purposes
+                            </a>
+                            <a href="#">
+                                <img src="url-to-your-image" alt="YouTube Thumbnails Image">
+                                YouTube Thumbnails
+                            </a>
+                            <a href="#">
+                                <img src="url-to-your-image" alt="Celebration Cards Image">
+                                Celebration Cards
+                            </a>
+                            <a href="#">
+                                <img src="url-to-your-image" alt="Banners Image">
+                                Banners
+                            </a>
+                            <a href="#">
+                                <img src="url-to-your-image" alt="Menus Image">
+                                Menus
+                            </a>
+                            <a href="#">
+                                <img src="url-to-your-image" alt="Itineraries Image">
+                                Itineraries
+                            </a>
                         </div>
                     </li>
                     <li><a href="#contact">Contact</a></li>
