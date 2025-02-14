@@ -264,7 +264,7 @@
                         <a href="#portfolio">What You Can Get</a>
                         <div class="dropdown-content">
                             <a href="#">
-                                <img src="DESIGNS/product 4 website.jpg" alt="Presentations Image">
+                                <img src="images/product 4 website.jpg" alt="Presentations Image">
                                 Presentations
                             </a>
                             <a href="#">
