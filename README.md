@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -264,7 +265,7 @@
                         <a href="#portfolio">What You Can Get</a>
                         <div class="dropdown-content">
                             <a href="#">
-                                  <img src="product 4 website.jpg" alt="Presentations Image">
+                                <img src="product 4 website.jpg" alt="Presentations Image">
                                 Presentations
                             </a>
                             <a href="#">
@@ -298,14 +299,6 @@
                             <a href="#">
                                 <img src="Banner 4 website.png" alt="Banners Image">
                                 Banners
-                            </a>
-                            <a href="#">
-                                <img src="Menu 4 website.png" alt="Menus Image">
-                                Menus
-                            </a>
-                            <a href="#">
-                                <img src="A A itinerary.png" alt="Itineraries Image">
-                                Itineraries
                             </a>
                             <a href="#">
                                 <img src="Menu 4 website.png" alt="Menus Image">
