@@ -264,47 +264,47 @@
                         <a href="#portfolio">What You Can Get</a>
                         <div class="dropdown-content">
                             <a href="#">
-                                <img src="images/product-4-website.jpg" alt="Presentations Image">
+                                <img src="website prototype/product 4 website.jpg" alt="Presentations Image">
                                 Presentations
                             </a>
                             <a href="#">
-                                <img src="images/posters-flyers.jpg" alt="Posters and Flyers Image">
+                                <img src="website prototype/Ryt Designs Poster(3).png" alt="Posters and Flyers Image">
                                 Posters/Flyers
                             </a>
                             <a href="#">
-                                <img src="images/videos-events.jpg" alt="Videos for Events Image">
+                                <img src="website prototype/videos-events.jpg" alt="Videos for Events Image">
                                 Videos for Events
                             </a>
                             <a href="#">
-                                <img src="images/business-cards.jpg" alt="Business Cards Image">
+                                <img src="website prototype/business card proto.jpg" alt="Business Cards Image">
                                 Business Cards
                             </a>
                             <a href="#">
-                                <img src="images/invitations.jpg" alt="Invitations Image">
+                                <img src="website prototype/invitation 4 website.png" alt="Invitations Image">
                                 Invitations
                             </a>
                             <a href="#">
-                                <img src="images/logos.jpg" alt="Logos Image">
+                                <img src="website prototype/Logo 4 website.png" alt="Logos Image">
                                 Logos for Business and Non-Business Purposes
                             </a>
                             <a href="#">
-                                <img src="images/youtube-thumbnails.jpg" alt="YouTube Thumbnails Image">
+                                <img src="website prototype/youtube thumbnail 4 website.png" alt="YouTube Thumbnails Image">
                                 YouTube Thumbnails
                             </a>
                             <a href="#">
-                                <img src="images/celebration-cards.jpg" alt="Celebration Cards Image">
+                                <img src="website prototype/celeb 4 website.png" alt="Celebration Cards Image">
                                 Celebration Cards
                             </a>
                             <a href="#">
-                                <img src="images/banners.jpg" alt="Banners Image">
+                                <img src="website prototype/Banner 4 website.png" alt="Banners Image">
                                 Banners
                             </a>
                             <a href="#">
-                                <img src="images/menus.jpg" alt="Menus Image">
+                                <img src="website prototype/Menu 4 website.png" alt="Menus Image">
                                 Menus
                             </a>
                             <a href="#">
-                                <img src="images/itineraries.jpg" alt="Itineraries Image">
+                                <img src="website prototype/A A itinerary.png" alt="Itineraries Image">
                                 Itineraries
                             </a>
                         </div>
@@ -351,7 +351,7 @@
             <div class="contact-info">
                 <p><strong>Phone:</strong> +1 226-977-9311</p>
                 <p><strong>Phone:</strong> +1 226-977-9310</p>
-                <p><strong>Email:</strong> <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+                <p><strong>Email:</strong> <a href="mailto:rytdesignsca@gmail.com">rytdesignsca@gmail.com</a></p>
             </div>
             <div class="social-links">
                 <a href="https://www.instagram.com/rytdesigns_/" target="_blank">Instagram</a>
@@ -363,7 +363,7 @@
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 Ryt Designs. All Rights Reserved.</p>
-        <p>Designed by You</p>
+        <p>Designed by Ryt Designs</p>
     </footer>
 
 </body>
