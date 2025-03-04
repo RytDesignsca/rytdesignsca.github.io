@@ -264,47 +264,47 @@
                         <a href="#portfolio">What You Can Get</a>
                         <div class="dropdown-content">
                             <a href="#">
-                                <img src="product 4 website.jpg" alt="Presentations Image">
+                                <img src="website prototyp/product 4 website.jpg" alt="Presentations Image">
                                 Presentations
                             </a>
                             <a href="#">
-                                <img src="Ryt Designs Poster(3).png" alt="Posters and Flyers Image">
+                                <img src="website prototype/Ryt Designs Poster(3).png" alt="Posters and Flyers Image">
                                 Posters/Flyers
                             </a>
                             <a href="#">
-                                <img src="videos-events.jpg" alt="Videos for Events Image">
+                                <img src="website prototype/videos-events.jpg" alt="Videos for Events Image">
                                 Videos for Events
                             </a>
                             <a href="#">
-                                <img src="business card proto.jpg" alt="Business Cards Image">
+                                <img src="website prototype/business card proto.jpg" alt="Business Cards Image">
                                 Business Cards
                             </a>
                             <a href="#">
-                                <img src="invitation 4 website.png" alt="Invitations Image">
+                                <img src="website prototype/invitation 4 website.png" alt="Invitations Image">
                                 Invitations
                             </a>
                             <a href="#">
-                                <img src="Logo 4 website.png" alt="Logos Image">
+                                <img src="website prototype/Logo 4 website.png" alt="Logos Image">
                                 Logos for Business and Non-Business Purposes
                             </a>
                             <a href="#">
-                                <img src="youtube thumbnail 4 website.png" alt="YouTube Thumbnails Image">
+                                <img src="website prototype/youtube thumbnail 4 website.png" alt="YouTube Thumbnails Image">
                                 YouTube Thumbnails
                             </a>
                             <a href="#">
-                                <img src="celeb 4 website.png" alt="Celebration Cards Image">
+                                <img src="website prototype/celeb 4 website.png" alt="Celebration Cards Image">
                                 Celebration Cards
                             </a>
                             <a href="#">
-                                <img src="Banner 4 website.png" alt="Banners Image">
+                                <img src="website prototype/Banner 4 website.png" alt="Banners Image">
                                 Banners
                             </a>
                             <a href="#">
-                                <img src="Menu 4 website.png" alt="Menus Image">
+                                <img src="website prototype/Menu 4 website.png" alt="Menus Image">
                                 Menus
                             </a>
                             <a href="#">
-                                <img src="A A itinerary.png" alt="Itineraries Image">
+                                <img src="website prototype/A A itinerary.png" alt="Itineraries Image">
                                 Itineraries
                             </a>
                         </div>
