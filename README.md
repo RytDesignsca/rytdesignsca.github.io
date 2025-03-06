@@ -150,11 +150,18 @@
             overflow: hidden;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
+            text-align: center;
         }
 
         .portfolio-item img {
             width: 100%;
             display: block;
+        }
+
+        .portfolio-item iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
         }
 
         .portfolio-item:hover {
@@ -164,7 +171,6 @@
         .portfolio-item h3 {
             padding: 1rem;
             font-size: 1.5rem;
-            text-align: center;
         }
 
         /* Contact Section */
@@ -328,7 +334,7 @@
     <section id="portfolio">
         <h2>My Work</h2>
         <div class="portfolio-container">
-            <!-- Portfolio items will go here -->
+            <!-- Portfolio items with images -->
             <div class="portfolio-item">
                 <img src="design1.jpg" alt="Design 1">
                 <h3>Project Title One</h3>
@@ -341,7 +347,15 @@
                 <img src="design3.jpg" alt="Design 3">
                 <h3>Project Title Three</h3>
             </div>
-            <!-- Add more portfolio items as needed -->
+            <!-- Portfolio item with embedded video -->
+            <div class="portfolio-item">
+                <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
+                        title="YouTube video player" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+                <h3>Project Title Four - Video</h3>
+            </div>
         </div>
     </section>
 
