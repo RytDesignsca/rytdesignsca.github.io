@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -276,13 +275,13 @@
       </div>
       <div class="portfolio-item">
         <video controls>
-          <source src="website-prototype/ryt-designs-video.mp4" type="video/mp4">
+          <source src="website-prototype/ryt designs video.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
         <h3>Project Title Four - Video</h3>
       </div>
       <div class="portfolio-item">
-        <embed src="website-prototype/ryt-designs-presentation.pdf" type="application/pdf" width="100%" height="400px" />
+        <embed src="website-prototype/ryt designs presentation.pdf" type="application/pdf" width="100%" height="400px" />
         <h3>Project Title Five - PDF</h3>
       </div>
     </div>
