@@ -348,8 +348,8 @@
             </div>
             <!-- Portfolio item with embedded video -->
             <div class="portfolio-item">
-                <iframe src="ryt deigns video.mp4" 
-                        title="YouTube video player" 
+              <iframe src="ryt designs video.mp4" 
+                        title="Presentation" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen>
                 </iframe>
