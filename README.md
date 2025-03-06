@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -157,7 +158,7 @@
             display: block;
         }
 
-        .portfolio-item iframe {
+        .portfolio-item video {
             width: 100%;
             height: 200px;
             border: none;
@@ -348,11 +349,10 @@
             </div>
             <!-- Portfolio item with embedded video -->
             <div class="portfolio-item">
-              <iframe src="ryt designs video.mp4" 
-                        title="Presentation" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                </iframe>
+                <video controls>
+                    <source src="ryt designs video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
                 <h3>Project Title Four - Video</h3>
             </div>
         </div>
