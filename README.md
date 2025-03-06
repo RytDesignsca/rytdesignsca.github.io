@@ -350,7 +350,7 @@
             <!-- Portfolio item with embedded video -->
             <div class="portfolio-item">
                 <video controls>
-                    <source src="https://raw.githubusercontent.com/RytDesignsca/rytdesignsca.github.io/main/ryt%20designs%20video.mp4" type="video/mp4">
+                    <source src="https://raw.githubusercontent.com/RytDesignsca/rytdesignsca.github.io/main/ryt designs video.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <h3>Project Title Four - Video</h3>
