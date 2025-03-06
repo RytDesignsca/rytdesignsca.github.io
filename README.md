@@ -270,8 +270,7 @@
                     <li class="dropdown">
                         <a href="#portfolio">Our Services</a>
                       
-                            </a>
-                        </div>
+                        
                     </li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
