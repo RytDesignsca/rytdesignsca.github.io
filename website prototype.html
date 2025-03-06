@@ -158,9 +158,10 @@
             display: block;
         }
 
-        .portfolio-item video {
+        .portfolio-item video,
+        .portfolio-item embed {
             width: 100%;
-            height: 200px;
+            height: 400px;
             border: none;
         }
 
@@ -271,7 +272,7 @@
                         <a href="#portfolio">What You Can Get</a>
                         <div class="dropdown-content">
                             <a href="#">
-                                <img src="website prototyp/product 4 website.jpg" alt="Presentations Image">
+                                <img src="website prototype/product 4 website.jpg" alt="Presentations Image">
                                 Presentations
                             </a>
                             <a href="#">
@@ -350,14 +351,14 @@
             <!-- Portfolio item with embedded video -->
             <div class="portfolio-item">
                 <video controls>
-                    <source src="https://raw.githubusercontent.com/RytDesignsca/rytdesignsca.github.io/main/ryt%20designs%20video.mp4" type="video/mp4">
+                    <source src="website prototype/ryt designs video.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <h3>Project Title Four - Video</h3>
             </div>
             <!-- Portfolio item with embedded PDF -->
             <div class="portfolio-item">
-                <embed src="https://raw.githubusercontent.com/RytDesignsca/rytdesignsca.github.io/main/ryt designs presentation.pdf" type="application/pdf" width="100%" height="400px" />
+                <embed src="website prototype/ryt designs presentation.pdf" type="application/pdf" width="100%" height="400px" />
                 <h3>Project Title Five - PDF</h3>
             </div>
         </div>
