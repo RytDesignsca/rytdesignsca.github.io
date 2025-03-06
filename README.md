@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -125,6 +126,15 @@
     .portfolio-item h3 {
       padding: 1rem;
       font-size: 1.5rem;
+    }
+    
+    /* Override for the Products Section: Display items in a single horizontal line */
+    #products .portfolio-container {
+      flex-wrap: nowrap;
+      justify-content: center;
+      gap: 1rem;
+      overflow-x: auto;
+      padding: 0 1rem;
     }
     
     /* Services Dropdown Menu */
