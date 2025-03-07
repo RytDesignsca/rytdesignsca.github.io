@@ -306,7 +306,7 @@
   <section id="home" class="hero">
     <div class="hero-content">
       <!-- Full Logo Image displayed in the hero -->
-      <img src="Kt8o8usihonWLJtAAj5o6.png" alt="Full Logo" class="full-logo">
+      <img src="Ryt Designs( new logo) (1).png" alt="Full Logo" class="full-logo">
       <h2>Creativity in Every Pixel</h2>
       <p>Designs to make any event special to you.</p>
       <p>
