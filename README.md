@@ -127,15 +127,6 @@
       font-size: 1.5rem;
     }
     
-    /* Override for the Products Section: Display items in a single horizontal line */
-    #products .portfolio-container {
-      flex-wrap: nowrap;
-      justify-content: center;
-      gap: 1rem;
-      overflow-x: auto;
-      padding: 0 1rem;
-    }
-    
     /* Services Dropdown Menu */
     .dropdown {
       position: relative;
@@ -284,13 +275,13 @@
       </div>
       <div class="portfolio-item">
         <video controls>
-          <source src="website prototype/website prototype/ryt designs presentation.pdf" type="video/mp4">
+          <source src="website-prototype/ryt designs video.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
         <h3>Project Title Four - Video</h3>
       </div>
       <div class="portfolio-item">
-        <embed src="website prototype/ryt designs presentation.pdf" type="application/pdf" width="100%" height="400px" />
+        <embed src="website-prototype/ryt designs presentation.pdf" type="application/pdf" width="100%" height="400px" />
         <h3>Project Title Five - PDF</h3>
       </div>
     </div>
