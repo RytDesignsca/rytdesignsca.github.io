@@ -336,14 +336,14 @@
       <!-- Product 1: Video (now displays website prototype thumbnail) -->
       <div class="portfolio-item">
        <a href="website prototype/ryt designs video.mp4" target="_blank">
-          <img src="website.png" alt="Website Prototype">
+          <img src="website prototype/ryt designs video.mp4" alt="Website Prototype">
         </a>
         <h3>RYT DESIGNS VIDEO</h3>
       </div>
       <!-- Product 2: Presentation PDF (now displays website prototype thumbnail) -->
       <div class="portfolio-item">
         <a href="website prototype/ryt designs presentation.pdf" target="_blank">
-          <img src="website.png" alt="Website Prototype">
+          <img src="website prototype/ryt designs presentation.pdf" alt="Website Prototype">
         </a>
         <h3>RYT DESIGNS PRESENTATION</h3>
       </div>
@@ -354,7 +354,7 @@
       </div>
       <!-- Product 4: Banner (updated to use website.png) -->
       <div class="portfolio-item">
-        <img src="website prototype/website.png" alt="Website Prototype/Banner">
+        <img src="website prototype/Banner 4 website.png" alt="Website Prototype/Banner">
         <h3>Banner</h3>
       </div>
       <!-- Product 5: Bussiness Card -->
@@ -364,8 +364,8 @@
       </div>
       <!-- Product 6: Birtday Card -->
       <div class="portfolio-item">
-        <img src="website prototype/celeb 4 website.png" alt="Birtday Card">
-        <h3>Birtday Card</h3>
+        <img src="website prototype/celeb 4 website.png" alt="Birthday Card">
+        <h3>Birthday Card</h3>
       </div>
       <!-- Product 7: Invitation -->
       <div class="portfolio-item">
