@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -335,17 +334,17 @@
     <div class="portfolio-container">
       <!-- Product 1: Video (now displays website prototype thumbnail) -->
       <div class="portfolio-item">
-       <a href="website prototype/ryt designs video.mp4" target="_blank">
+       <a href="RYT DESIGNS VIDEO" target="_blank">
           <img src="website prototype/ryt designs video.mp4" alt="Website Prototype">
         </a>
-        <h3>RYT DESIGNS VIDEO</h3>
+        <h3>Event Video</h3>
       </div>
       <!-- Product 2: Presentation PDF (now displays website prototype thumbnail) -->
       <div class="portfolio-item">
-        <a href="website prototype/ryt designs presentation.pdf" target="_blank">
+        <a href="RYT DESIGNS PRESENTATION" target="_blank">
           <img src="website prototype/ryt designs presentation.pdf" alt="Website Prototype">
         </a>
-        <h3>RYT DESIGNS PRESENTATION</h3>
+        <h3>Presentation</h3>
       </div>
       <!-- Product 3: Itinerary -->
       <div class="portfolio-item">
