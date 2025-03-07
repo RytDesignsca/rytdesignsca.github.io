@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -26,11 +25,11 @@
       background-color: var(--primary-bg);
       color: var(--text-color);
       line-height: 1.6;
-      /* Add top padding to prevent content being hidden behind fixed header */
+      /* Add top padding to prevent content hiding behind fixed header */
       padding-top: 80px;
     }
     
-    /* Header / Navigation (Banner) */
+    /* Header / Navigation */
     header {
       background-color: var(--header-footer-bg);
       padding: 1rem 0;
@@ -40,7 +39,6 @@
       width: 100%;
       z-index: 10;
     }
-    
     header .container {
       display: flex;
       justify-content: space-between;
@@ -48,22 +46,8 @@
       width: 90%;
       margin: 0 auto;
     }
-    
-    /* Logo Container: Combines the top-left image and title */
-    .logo-container {
-      display: flex;
-      align-items: center;
-    }
-    
-    .top-left-image {
-      margin-top: 10px;      /* Brings the image down a bit */
-      margin-right: 10px;
-      width: 50px;
-      height: auto;
-      transition: all 0.3s ease;
-    }
-    
-    header h1 {
+    /* Branding Text */
+    .brand h1 {
       font-size: 2rem;
       color: var(--text-color);
     }
@@ -72,23 +56,20 @@
       list-style: none;
       display: flex;
     }
-    
     nav li {
       margin-left: 1.5rem;
     }
-    
     nav a {
       color: var(--text-color);
       text-decoration: none;
       font-weight: bold;
       transition: color 0.3s ease;
     }
-    
     nav a:hover {
       color: var(--accent);
     }
     
-    /* Home / Hero Section */
+    /* Hero Section */
     .hero {
       position: relative;
       background-image: url('your-hero-image.jpg'); /* Replace with your background image */
@@ -102,59 +83,59 @@
       text-align: center;
       overflow: hidden;
     }
-    
-    .hero .hero-content {
+    .hero-content {
       position: relative;
       z-index: 2;
       max-width: 800px;
       margin: 0 auto;
     }
-    
+    /* Full Logo Styling in Hero Section */
+    .full-logo {
+      display: block;
+      max-width: 200px; /* Adjust size as needed */
+      margin: 0 auto 20px auto;
+    }
     .hero h2 {
       font-size: 3rem;
       margin-bottom: 1rem;
     }
-    
     .hero p {
       font-size: 1.2rem;
       margin-bottom: 1rem;
     }
     
-    /* Decorative Images around the hero text */
+    /* Decorative Images */
     .design-image {
       position: absolute;
       opacity: 0.9;
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
-    
-    /* Positioning the decorative images */
-    .design-image.img1 { top: 10%; left: 5%; width: 80px; }
-    .design-image.img2 { top: 10%; right: 5%; width: 80px; }
+    /* The first two images are lowered by setting top to 30% */
+    .design-image.img1 { top: 30%; left: 5%; width: 80px; }
+    .design-image.img2 { top: 30%; right: 5%; width: 80px; }
     .design-image.img3 { bottom: 10%; left: 10%; width: 80px; }
     .design-image.img4 { bottom: 15%; right: 8%; width: 80px; }
     .design-image.img5 { top: 50%; left: 0%; width: 80px; }
     .design-image.img6 { bottom: 20%; right: 0%; width: 80px; }
     
-    /* Section Title Styling */
+    /* Section Styling */
     section {
       padding: 4rem 0;
     }
-    
     section h2 {
       text-align: center;
       margin-bottom: 2rem;
       font-size: 2.5rem;
     }
     
-    /* Portfolio / Products / Services Container */
+    /* Portfolio Container */
     .portfolio-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 1rem;
     }
-    
     .portfolio-item {
       width: 300px;
       background-color: #FFFFFF;
@@ -165,35 +146,30 @@
       transition: transform 0.3s ease;
       text-align: center;
     }
-    
     .portfolio-item:hover {
       transform: translateY(-5px);
     }
-    
     .portfolio-item img {
       width: 100%;
       display: block;
     }
-    
     .portfolio-item video,
     .portfolio-item embed {
       width: 100%;
       height: 400px;
       border: none;
     }
-    
     .portfolio-item h3 {
       padding: 1rem;
       font-size: 1.5rem;
     }
     
-    /* Services Dropdown Menu */
+    /* Dropdown Menu for Services */
     .dropdown {
       position: relative;
       display: inline-block;
       margin: 0 1rem;
     }
-    
     .dropdown button {
       padding: 0.5rem 1rem;
       border: none;
@@ -202,7 +178,6 @@
       color: var(--text-color);
       font-weight: bold;
     }
-    
     .dropdown-content {
       display: none;
       position: absolute;
@@ -212,7 +187,6 @@
       z-index: 1;
       padding: 0.5rem 0;
     }
-    
     .dropdown-content a {
       color: var(--text-color);
       padding: 12px 16px;
@@ -221,7 +195,6 @@
       align-items: center;
       font-weight: normal;
     }
-    
     .dropdown-content a img {
       width: 40px;
       height: 40px;
@@ -229,11 +202,9 @@
       object-fit: cover;
       border-radius: 5px;
     }
-    
     .dropdown-content a:hover {
       background-color: var(--primary-bg);
     }
-    
     .dropdown:hover .dropdown-content {
       display: block;
     }
@@ -246,22 +217,18 @@
       gap: 1rem;
       padding: 0 1rem;
     }
-    
     .contact-info {
       margin-bottom: 2rem;
       font-size: 1.2rem;
       text-align: center;
     }
-    
     .contact-info p {
       margin: 0.5rem 0;
     }
-    
     .social-links {
       display: flex;
       justify-content: center;
     }
-    
     .social-links a {
       margin: 0 1rem;
       color: var(--text-color);
@@ -269,7 +236,6 @@
       transition: color 0.3s ease;
       text-decoration: none;
     }
-    
     .social-links a:hover {
       color: var(--accent);
     }
@@ -280,18 +246,15 @@
       text-align: center;
       padding: 1rem 0;
     }
-    
     footer p {
       margin-bottom: 0.5rem;
     }
-    
     footer a.back-to-home {
       color: var(--accent);
       text-decoration: none;
       font-weight: bold;
       transition: color 0.3s ease;
     }
-    
     footer a.back-to-home:hover {
       color: var(--text-color);
     }
@@ -301,37 +264,31 @@
       header .container {
         flex-direction: column;
       }
-      
       nav ul {
         flex-direction: column;
         align-items: center;
       }
-      
       nav li {
         margin: 0.5rem 0;
       }
-      
       .portfolio-item {
         width: 90%;
       }
-      
-      .top-left-image {
-        width: 40px;
-        margin-top: 5px;
-      }
-      
       .design-image {
         width: 60px;
+      }
+      .full-logo {
+        max-width: 150px;
+        margin-bottom: 15px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Header / Navigation (Banner) -->
+  <!-- Header / Navigation -->
   <header>
     <div class="container">
-      <div class="logo-container">
-        <img src="top-left.jpg" alt="RYT DESIGNS Logo" class="top-left-image">
+      <div class="brand">
         <h1>RYT DESIGNS</h1>
       </div>
       <nav>
@@ -345,9 +302,11 @@
     </div>
   </header>
   
-  <!-- Home / Hero Section -->
+  <!-- Hero Section -->
   <section id="home" class="hero">
     <div class="hero-content">
+      <!-- Full Logo Image displayed in the hero -->
+      <img src="Kt8o8usihonWLJtAAj5o6.png" alt="Full Logo" class="full-logo">
       <h2>Creativity in Every Pixel</h2>
       <p>Designs to make any event special to you.</p>
       <p>
@@ -360,7 +319,7 @@
         Scroll down to explore our products, services, and to get in touch with our creative team.
       </p>
     </div>
-    <!-- Decorative images placed around the hero text -->
+    <!-- Decorative Images (with two brought down lower) -->
     <img src="packaging.jpg" alt="Packaging Design" class="design-image img1">
     <img src="tshirt.jpg" alt="T-Shirt Design" class="design-image img2">
     <img src="logo.jpg" alt="Logo Design" class="design-image img3">
