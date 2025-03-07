@@ -334,14 +334,14 @@
     <div class="portfolio-container">
       <!-- Product 1: Video (now displays website prototype thumbnail) -->
       <div class="portfolio-item">
-       <a href="RYT DESIGNS VIDEO" target="_blank">
+          <a href="website prototype/ryt designs video.mp4" target="_blank">
           <img src="website prototype/ryt designs video.mp4" alt="Website Prototype">
         </a>
-        <h3>Event Video</h3>
+        <h3>Event Videos</h3>
       </div>
       <!-- Product 2: Presentation PDF (now displays website prototype thumbnail) -->
       <div class="portfolio-item">
-        <a href="RYT DESIGNS PRESENTATION" target="_blank">
+        <a href="website prototype/ryt designs presentation.pdf" target="_blank">
           <img src="website prototype/ryt designs presentation.pdf" alt="Website Prototype">
         </a>
         <h3>Presentation</h3>
