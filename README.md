@@ -15,10 +15,10 @@
     
     /* Define Color Scheme: Dark Blue, White, Orange */
     :root {
-      --primary-bg: #0D1B2A; /* Dark Blue Background */
-      --header-footer-bg: #0A192F; /* Slightly darker blue for header & footer */
-      --text-color: #FFFFFF;  /* White text */
-      --accent: #FFA500;      /* Bold orange accent */
+      --primary-bg: #0D1B2A;           /* Dark Blue Background */
+      --header-footer-bg: #0A192F;      /* Slightly darker blue for header & footer */
+      --text-color: #FFFFFF;           /* White text */
+      --accent: #FFA500;               /* Bold orange accent */
     }
     
     body {
@@ -26,12 +26,19 @@
       background-color: var(--primary-bg);
       color: var(--text-color);
       line-height: 1.6;
+      /* Add top padding to avoid content being hidden behind fixed header */
+      padding-top: 80px;
     }
     
-    /* Header / Navigation */
+    /* Header / Navigation (Banner) - Fixed so it always shows */
     header {
       background-color: var(--header-footer-bg);
       padding: 1rem 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10;
     }
     header .container {
       display: flex;
@@ -61,17 +68,25 @@
       color: var(--accent);
     }
     
-    /* Hero Section (Home) */
+    /* Home / Hero Section */
     .hero {
-      background-image: url('your-hero-image.jpg'); /* Replace with your own hero image */
+      position: relative;
+      background-image: url('your-hero-image.jpg'); /* Replace with your own background image */
       background-size: cover;
       background-position: center;
-      height: 70vh;
+      padding: 4rem 2rem;
+      min-height: 90vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 0 2rem;
+      overflow: hidden;
+    }
+    .hero .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
     }
     .hero h2 {
       font-size: 3rem;
@@ -79,9 +94,22 @@
     }
     .hero p {
       font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto;
+      margin-bottom: 1rem;
     }
+    /* Decorative images around the hero text */
+    .design-image {
+      position: absolute;
+      opacity: 0.9;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    /* Position multiple decorative images */
+    .design-image.img1 { top: 5%; left: 5%; width: 80px; }
+    .design-image.img2 { top: 10%; right: 5%; width: 80px; }
+    .design-image.img3 { bottom: 10%; left: 10%; width: 80px; }
+    .design-image.img4 { bottom: 15%; right: 8%; width: 80px; }
+    .design-image.img5 { top: 50%; left: 0%; width: 80px; }
+    .design-image.img6 { bottom: 20%; right: 0%; width: 80px; }
     
     /* Section Title Styling */
     section {
@@ -106,7 +134,7 @@
       color: #000;
       border: 1px solid #ddd;
       overflow: hidden;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
       text-align: center;
     }
@@ -147,7 +175,7 @@
       position: absolute;
       background-color: var(--header-footer-bg);
       min-width: 250px;
-      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
       z-index: 1;
       padding: 0.5rem 0;
     }
@@ -211,22 +239,28 @@
     footer p {
       margin-bottom: 0.5rem;
     }
+    footer a.back-to-home {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    footer a.back-to-home:hover {
+      color: var(--text-color);
+    }
     
     /* Responsive Styles */
     @media (max-width: 768px) {
       .portfolio-item {
         width: 90%;
       }
-    
       header .container {
         flex-direction: column;
       }
-    
       nav ul {
         flex-direction: column;
         align-items: center;
       }
-    
       nav li {
         margin: 0.5rem 0;
       }
@@ -234,8 +268,7 @@
   </style>
 </head>
 <body>
-
-  <!-- Header / Navigation -->
+  <!-- Header / Navigation (Banner) -->
   <header>
     <div class="container">
       <h1>RYT DESIGNS</h1>
@@ -252,10 +285,26 @@
   
   <!-- Home / Hero Section -->
   <section id="home" class="hero">
-    <div>
+    <div class="hero-content">
       <h2>Creativity in Every Pixel</h2>
       <p>Designs to make any event special to you.</p>
+      <p>
+        At RYT DESIGNS, we believe that each project is more than just a design—it's an immersive experience crafted with passion and dedication. Our innovative approach merges cutting-edge technology with creative artistry to bring your vision to life.
+      </p>
+      <p>
+        Whether you're hosting a special event or building your brand, our designs are tailored to resonate with your audience and transform spaces into memories. Discover how our expertise can elevate your project and enhance your packaging, t-shirt designs, logos, and more.
+      </p>
+      <p>
+        Scroll down to explore our products, services, and to get in touch with our creative team.
+      </p>
     </div>
+    <!-- Decorative images placed all around the hero text -->
+    <img src="packaging.jpg" alt="Packaging Design" class="design-image img1">
+    <img src="tshirt.jpg" alt="T-Shirt Design" class="design-image img2">
+    <img src="logo.jpg" alt="Logo Design" class="design-image img3">
+    <img src="poster.jpg" alt="Poster Design" class="design-image img4">
+    <img src="brochure.jpg" alt="Brochure Design" class="design-image img5">
+    <img src="packaging2.jpg" alt="Packaging Design 2" class="design-image img6">
   </section>
   
   <!-- Products Section -->
@@ -345,6 +394,7 @@
   <footer>
     <p>&copy; 2025 Ryt Designs. All Rights Reserved.</p>
     <p>Designed by Ryt Designs</p>
+    <p><a href="#home" class="back-to-home">Back to Home</a></p>
   </footer>
   
 </body>
