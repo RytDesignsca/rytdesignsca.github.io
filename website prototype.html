@@ -26,7 +26,7 @@
       background-color: var(--primary-bg);
       color: var(--text-color);
       line-height: 1.6;
-      /* Add top padding to prevent content hiding behind fixed header */
+      /* Add top padding to prevent content from being hidden behind the header when visible */
       padding-top: 80px;
     }
     
@@ -39,6 +39,7 @@
       left: 0;
       width: 100%;
       z-index: 10;
+      transition: transform 0.3s ease-in-out;
     }
     header .container {
       display: flex;
@@ -47,12 +48,10 @@
       width: 90%;
       margin: 0 auto;
     }
-    /* Branding */
     .brand h1 {
       font-size: 2rem;
       color: var(--text-color);
     }
-    
     nav ul {
       list-style: none;
       display: flex;
@@ -89,11 +88,11 @@
       z-index: 2;
       max-width: 800px;
       margin: 0 auto;
+      padding: 0 1rem;
     }
-    /* Full Logo Styling in Hero Section */
     .full-logo {
       display: block;
-      max-width: 200px; /* Adjust size as needed */
+      max-width: 200px;
       margin: 0 auto 20px auto;
     }
     .hero h2 {
@@ -105,14 +104,13 @@
       margin-bottom: 1rem;
     }
     
-    /* Decorative Images */
+    /* Decorative Images - Arrangement for larger screens */
     .design-image {
       position: absolute;
       opacity: 0.9;
       border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
-    /* The first two images are lowered by setting top to 30% */
     .design-image.img1 { top: 30%; left: 5%; width: 80px; }
     .design-image.img2 { top: 30%; right: 5%; width: 80px; }
     .design-image.img3 { bottom: 10%; left: 10%; width: 80px; }
@@ -241,7 +239,7 @@
       color: var(--accent);
     }
     
-    /* Footer */
+    /* Footer (original styling) */
     footer {
       background-color: var(--header-footer-bg);
       text-align: center;
@@ -260,7 +258,7 @@
       color: var(--text-color);
     }
     
-    /* Responsive Styles */
+    /* Responsive Styles for Mobile and Tablet */
     @media (max-width: 768px) {
       header .container {
         flex-direction: column;
@@ -282,6 +280,18 @@
         max-width: 150px;
         margin-bottom: 15px;
       }
+    }
+    
+    /* Additional responsive improvements for smaller phones */
+    @media (max-width: 480px) {
+      .design-image.img1 { top: 40%; left: 3%; width: 50px; }
+      .design-image.img2 { top: 40%; right: 3%; width: 50px; }
+      .design-image.img3 { bottom: 5%; left: 5%; width: 50px; }
+      .design-image.img4 { bottom: 5%; right: 5%; width: 50px; }
+      .design-image.img5 { top: 55%; left: 0%; width: 50px; }
+      .design-image.img6 { bottom: 10%; right: 0%; width: 50px; }
+      .hero h2 { font-size: 2.5rem; }
+      .hero p { font-size: 1rem; }
     }
   </style>
 </head>
@@ -306,12 +316,12 @@
   <!-- Hero Section -->
   <section id="home" class="hero">
     <div class="hero-content">
-      <!-- Full Logo Image displayed in the hero -->
+      <!-- Full Logo displayed in the hero -->
       <img src="Kt8o8usihonWLJtAAj5o6.png" alt="Full Logo" class="full-logo">
       <h2>Creativity in Every Pixel</h2>
       <p>Designs to make any event special to you.</p>
       <p>
-        At RYT DESIGNS, we believe that each project is more than just a design—it's an immersive experience crafted with passion and dedication. Our innovative approach merges cutting-edge technology with creative artistry to bring your vision to life.
+        At RYT DESIGNS, we believe that each project is more than just a design — it's an immersive experience crafted with passion and dedication. Our innovative approach merges cutting-edge technology with creative artistry to bring your vision to life.
       </p>
       <p>
         Whether you're hosting a special event or building your brand, our designs are tailored to resonate with your audience and transform spaces into memories. Discover how our expertise can elevate your project and enhance your packaging, t-shirt designs, logos, and more.
@@ -333,36 +343,36 @@
   <section id="products">
     <h2>Our Products</h2>
     <div class="portfolio-container">
-      <!-- Product 1: Video (now displays website prototype thumbnail) -->
-         <a href="website prototype/ryt designs video.mp4" target="_blank">
-          <img src="website prototype/ryt designs video.mp4" alt="Website Prototype">
+      <!-- Product 1: Event Videos -->
+      <div class="portfolio-item">
+        <a href="website prototype/ryt designs video.mp4" target="_blank">
+          <img src="website prototype/ryt designs video.mp4" alt="Event Videos">
         </a>
         <h3>Event Videos</h3>
       </div>
-      <!-- Product 2: Presentation PDF (now displays website prototype thumbnail) -->
+      <!-- Product 2: Presentation PDF -->
       <div class="portfolio-item">
         <a href="website prototype/ryt designs presentation.pdf" target="_blank">
-          <img src="website prototype/ryt designs presentation.pdf" alt="Website Prototype">
+          <img src="website prototype/ryt designs presentation.pdf" alt="Presentation">
         </a>
         <h3>Presentation</h3>
-
       </div>
       <!-- Product 3: Itinerary -->
       <div class="portfolio-item">
         <img src="website prototype/A A itinerary.png" alt="Itinerary">
         <h3>Itinerary</h3>
       </div>
-      <!-- Product 4: Banner (updated to use website.png) -->
+      <!-- Product 4: Banner -->
       <div class="portfolio-item">
-        <img src="website prototype/Banner 4 website.png" alt="Website Prototype/Banner">
+        <img src="website prototype/Banner 4 website.png" alt="Banner">
         <h3>Banner</h3>
       </div>
-      <!-- Product 5: Bussiness Card -->
+      <!-- Product 5: Business Card -->
       <div class="portfolio-item">
-        <img src="website prototype/business card proto.jpg" alt="Bussiness Card">
-        <h3>Bussiness Card</h3>
+        <img src="website prototype/business card proto.jpg" alt="Business Card">
+        <h3>Business Card</h3>
       </div>
-      <!-- Product 6: Birtday Card -->
+      <!-- Product 6: Birthday Card -->
       <div class="portfolio-item">
         <img src="website prototype/celeb 4 website.png" alt="Birthday Card">
         <h3>Birthday Card</h3>
@@ -382,15 +392,15 @@
         <img src="website prototype/Menu 4 website.png" alt="Menu">
         <h3>Menu</h3>
       </div>
-      <!-- Product 10: youtube Thumbnail -->
+      <!-- Product 10: YouTube Thumbnail -->
       <div class="portfolio-item">
-        <img src="website prototype/youtube thumbnail 4 website.png" alt="youtube Thumbnail">
-        <h3>youtube Thumbnail</h3>
+        <img src="website prototype/youtube thumbnail 4 website.png" alt="YouTube Thumbnail">
+        <h3>YouTube Thumbnail</h3>
       </div>
-      <!-- Product 11: Website Prototype (updated image) -->
+      <!-- Product 11: Website Prototype -->
       <div class="portfolio-item">
         <img src="website prototype/website.png" alt="Website Prototype">
-        <h3>WEBSITE PROTOTYPE</h3>
+        <h3>Website Prototype</h3>
       </div>
     </div>
   </section>
@@ -439,7 +449,12 @@
       <div class="contact-info">
         <p><strong>Phone:</strong> +1 226-977-9311</p>
         <p><strong>Alternate Phone:</strong> +1 226-977-9310</p>
-        <p><strong>Email:</strong> <a href="mailto:rytdesignsca@gmail.com" style="color: var(--accent);">rytdesignsca@gmail.com</a></p>
+        <p>
+          <strong>Email:</strong> 
+          <a href="mailto:rytdesignsca@gmail.com" style="color: var(--accent);">
+            rytdesignsca@gmail.com
+          </a>
+        </p>
       </div>
       <div class="social-links">
         <a href="https://www.instagram.com/rytdesigns_/" target="_blank">Instagram</a>
@@ -448,11 +463,30 @@
     </div>
   </section>
   
-  <!-- Footer -->
+  <!-- Footer (non-fixed, original style) -->
   <footer>
-    <p>&copy; 2025 Ryt Designs. All Rights Reserved.</p>
-    <p>Designed by Ryt Designs</p>
+    <p>&copy; 2025 RYT DESIGNS. All Rights Reserved.</p>
+    <p>Designed by RYT DESIGNS</p>
     <p><a href="#home" class="back-to-home">Back to Home</a></p>
   </footer>
+  
+  <!-- JavaScript to hide/show the header on scroll -->
+  <script>
+    let lastScroll = 0;
+    const header = document.querySelector('header');
+
+    window.addEventListener('scroll', function() {
+      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      
+      // When scrolling down past 100px, hide the header.
+      if (currentScroll > lastScroll && currentScroll > 100) {
+        header.style.transform = 'translateY(-100%)';
+      } else {
+        // Scrolling up: show the header.
+        header.style.transform = 'translateY(0)';
+      }
+      lastScroll = currentScroll;
+    });
+  </script>
 </body>
 </html>
