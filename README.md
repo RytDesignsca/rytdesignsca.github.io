@@ -14,10 +14,10 @@
 
     /* Colour Scheme Variables */
     :root {
-      --primary-bg: #0D1B2A;           /* Dark Blue Background */
-      --header-footer-bg: #0A192F;      /* Slightly darker blue for header, footer & side panels */
-      --text-color: #FFFFFF;           /* White text */
-      --accent: #FFA500;               /* Bold orange accent */
+      --primary-bg: #0D1B2A;
+      --header-footer-bg: #0A192F;
+      --text-color: #FFFFFF;
+      --accent: #FFA500;
     }
 
     body {
@@ -120,7 +120,8 @@
     /* Hero Section */
     .hero {
       position: relative;
-      background-image: url('your-hero-image.jpg'); /* Replace with your hero image */
+      /* Use your new logo image as the background image */
+      background-image: url("Ryt Designs( new logo).png");
       background-size: cover;
       background-position: center;
       padding: 4rem 2rem;
@@ -151,21 +152,6 @@
       font-size: 1.2rem;
       margin-bottom: 1rem;
     }
-
-    /* Optional decorative images in hero */
-    .design-image {
-      position: absolute;
-      opacity: 0.9;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      z-index: 1;
-    }
-    .design-image.img1 { top: 30%; left: 5%; width: 80px; }
-    .design-image.img2 { top: 30%; right: 5%; width: 80px; }
-    .design-image.img3 { bottom: 10%; left: 10%; width: 80px; }
-    .design-image.img4 { bottom: 15%; right: 8%; width: 80px; }
-    .design-image.img5 { top: 50%; left: 0%; width: 80px; }
-    .design-image.img6 { bottom: 20%; right: 0%; width: 80px; }
 
     /* Design Process Section */
     .design-process {
@@ -266,18 +252,18 @@
       margin-bottom: 0.5rem;
     }
 
-    /* Freelance Banner Section with Search */
-    .freelance-banner {
+    /* Product Search Section (Moved to Home Screen, Transparent Background) */
+    #product-search {
       padding: 4rem 2rem;
       text-align: center;
-      background-color: var(--header-footer-bg);
+      background-color: transparent;
       color: var(--text-color);
     }
-    .freelance-banner .banner-content {
+    #product-search .banner-content {
       max-width: 800px;
       margin: 0 auto;
     }
-    .freelance-banner h2 {
+    #product-search h2 {
       font-size: 2.5rem;
       margin-bottom: 1.5rem;
     }
@@ -304,7 +290,6 @@
     .search-container button:hover {
       background-color: #e69500;
     }
-    /* Search Results Styling */
     #searchResults {
       max-width: 800px;
       margin: 20px auto;
@@ -330,45 +315,6 @@
     }
     .search-result button:hover {
       background-color: #e69500;
-    }
-
-    /* Previews Section (changed from Our Products) */
-    #previews {
-      padding: 4rem 0;
-    }
-    #previews h2 {
-      text-align: center;
-      margin-bottom: 2rem;
-      font-size: 2.5rem;
-    }
-    .portfolio-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-    }
-    .portfolio-item {
-      width: 300px;
-      background-color: #FFFFFF;
-      color: #000;
-      border: 1px solid #ddd;
-      overflow: hidden;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-      text-align: center;
-    }
-    .portfolio-item:hover {
-      transform: translateY(-5px);
-    }
-    .portfolio-item img,
-    .portfolio-item video,
-    .portfolio-item embed {
-      width: 100%;
-      display: block;
-    }
-    .portfolio-item h3 {
-      padding: 1rem;
-      font-size: 1.5rem;
     }
 
     /* Contact Section */
@@ -425,36 +371,6 @@
       color: var(--text-color);
     }
 
-    /* Checkout Modal Styles */
-    .modal {
-      display: none; /* Hidden by default */
-      position: fixed; 
-      z-index: 2000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0,0,0,0.8);
-    }
-    .modal-content {
-      background-color: #fefefe;
-      margin: 10% auto;
-      padding: 20px;
-      border: 1px solid #888;
-      width: 90%;
-      max-width: 500px;
-      color: #000;
-      border-radius: 8px;
-    }
-    .modal .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
     /* Responsive Styles */
     @media (max-width: 768px) {
       .hero h2 {
@@ -491,19 +407,20 @@
   </style>
 </head>
 <body>
-  <!-- Side Navigation Menu (Hidden by default) -->
+  <!-- Side Navigation Menu -->
   <div id="sideMenu">
     <span class="close-btn" onclick="closeMenu()">&times;</span>
     <a href="#home" onclick="closeMenu()">Home</a>
     <a href="#design-process" onclick="closeMenu()">Process</a>
     <a href="#popular-services" onclick="closeMenu()">Services</a>
     <a href="#design-packages" onclick="closeMenu()">Packages</a>
-    <a href="#freelance-banner" onclick="closeMenu()">Freelance</a>
-    <a href="#previews" onclick="closeMenu()">Previews</a>
+    <!-- Renamed from "Freelance" to "Product Search" -->
+    <a href="#product-search" onclick="closeMenu()">Product Search</a>
+    <a href="products.html" onclick="closeMenu()">Products</a>
     <a href="#contact" onclick="closeMenu()">Contact</a>
     <a href="javascript:void(0)" onclick="openPurchasesPanel(); closeMenu();">Purchases</a>
   </div>
-
+  
   <!-- Purchases Panel (Cart) -->
   <div id="purchasesPanel">
     <span class="close-btn" onclick="closePurchasesPanel()">&times;</span>
@@ -514,13 +431,14 @@
       <button onclick="openCheckout()" style="padding: 10px 20px; margin-top: 10px; background-color: var(--accent); border: none; color: var(--text-color); cursor: pointer; border-radius: 4px;">Checkout</button>
     </div>
   </div>
-
+  
   <!-- Buttons to open side panels -->
-  <button class="open-menu-btn" onclick="openMenu()">&#9776;</button>
+  <!-- Changed hamburger button's onclick to toggleMenu() -->
+  <button class="open-menu-btn" onclick="toggleMenu()">&#9776;</button>
   <button class="open-purchases-btn" onclick="openPurchasesPanel()">&#128722;</button>
-
+  
   <!-- Checkout Modal -->
-  <div id="checkoutModal" class="modal">
+  <div id="checkoutModal" class="modal" style="display:none;">
     <div class="modal-content">
       <span class="close" onclick="closeCheckout()">&times;</span>
       <h2>Checkout</h2>
@@ -538,7 +456,7 @@
       </form>
     </div>
   </div>
-
+  
   <!-- Main Content -->
   <div class="main-content">
     <!-- Hero Section -->
@@ -550,20 +468,11 @@
           At RYT DESIGNS, we transform your vision into immersive design experiences.
         </p>
         <p>
-          Explore our process, services, packages, previews, and more to see how we bring creativity to life.
+          Explore our process, services, packages, and more to see how we bring creativity to life.
         </p>
       </div>
-      <!-- Optional Decorative Images -->
-      <!--
-      <img src="packaging.jpg" alt="Packaging Design" class="design-image img1">
-      <img src="tshirt.jpg" alt="T-Shirt Design" class="design-image img2">
-      <img src="logo.jpg" alt="Logo Design" class="design-image img3">
-      <img src="poster.jpg" alt="Poster Design" class="design-image img4">
-      <img src="brochure.jpg" alt="Brochure Design" class="design-image img5">
-      <img src="packaging2.jpg" alt="Packaging Design 2" class="design-image img6">
-      -->
     </section>
-
+    
     <!-- Design Process Section -->
     <section id="design-process" class="design-process">
       <h2>Our Design Process</h2>
@@ -586,7 +495,7 @@
         </div>
       </div>
     </section>
-
+    
     <!-- Popular Services Section -->
     <section id="popular-services" class="popular-services">
       <h2>Popular Services</h2>
@@ -613,7 +522,7 @@
         </div>
       </div>
     </section>
-
+    
     <!-- Design Packages Section -->
     <section id="design-packages" class="design-packages">
       <h2>Design Packages</h2>
@@ -636,75 +545,20 @@
         </div>
       </div>
     </section>
-
-    <!-- Freelance Banner Section with Search for Services -->
-    <section id="freelance-banner" class="freelance-banner">
+    
+    <!-- Product Search Section (Transparent Background) -->
+    <section id="product-search">
       <div class="banner-content">
-        <h2>Search for Services</h2>
+        <h2>Product Search</h2>
         <div class="search-container">
-          <input type="text" id="serviceSearch" placeholder="Search services..." />
+          <input type="text" id="serviceSearch" placeholder="Search products..." />
           <button id="searchBtn" type="button">Search</button>
         </div>
         <div id="searchResults"></div>
-        <p style="margin-top: 1rem;">Available services: Presentations, Posters/Flyers, Videos for Events, Business Cards, Invitations, Logos for Businesses, YouTube Thumbnails (Basic &amp; Add-ons), Celebration Cards, Menus, Banner.</p>
+        <p style="margin-top: 1rem;">Available products: Presentations, Posters/Flyers, Videos for Events, Business Cards, Invitations, Logos for Businesses, YouTube Thumbnails (Basic &amp; Add-ons), Celebration Cards, Menus, Banner.</p>
       </div>
     </section>
-
-    <!-- Previews Section (changed from Our Products) -->
-    <section id="previews">
-      <h2>Previews</h2>
-      <div class="portfolio-container">
-        <div class="portfolio-item">
-          <a href="website prototype/ryt designs video.mp4" target="_blank">
-            <img src="website prototype/ryt designs video.mp4" alt="Event Videos" />
-          </a>
-          <h3>Event Videos</h3>
-        </div>
-        <div class="portfolio-item">
-          <a href="website prototype/ryt designs presentation.pdf" target="_blank">
-            <img src="website prototype/ryt designs presentation.pdf" alt="Presentation" />
-          </a>
-          <h3>Presentation</h3>
-        </div>
-        <div class="portfolio-item">
-          <img src="website prototype/A A itinerary.png" alt="Itinerary" />
-          <h3>Itinerary</h3>
-        </div>
-        <div class="portfolio-item">
-          <img src="website prototype/Banner 4 website.png" alt="Banner" />
-          <h3>Banner</h3>
-        </div>
-        <div class="portfolio-item">
-          <img src="website prototype/business card proto.jpg" alt="Business Card" />
-          <h3>Business Card</h3>
-        </div>
-        <div class="portfolio-item">
-          <img src="website prototype/celeb 4 website.png" alt="Birthday Card" />
-          <h3>Birthday Card</h3>
-        </div>
-        <div class="portfolio-item">
-          <img src="website prototype/invitation 4 website.png" alt="Invitation" />
-          <h3>Invitation</h3>
-        </div>
-        <div class="portfolio-item">
-          <img src="website prototype/Logo 4 website.png" alt="Logo" />
-          <h3>Logo</h3>
-        </div>
-        <div class="portfolio-item">
-          <img src="website prototype/Menu 4 website.png" alt="Menu" />
-          <h3>Menu</h3>
-        </div>
-        <div class="portfolio-item">
-          <img src="website prototype/youtube thumbnail 4 website.png" alt="YouTube Thumbnail" />
-          <h3>YouTube Thumbnail</h3>
-        </div>
-        <div class="portfolio-item">
-          <img src="website prototype/website.png" alt="Website Prototype" />
-          <h3>Website Prototype</h3>
-        </div>
-      </div>
-    </section>
-
+    
     <!-- Contact Section -->
     <section id="contact">
       <h2>Get in Touch</h2>
@@ -725,7 +579,7 @@
         </div>
       </div>
     </section>
-
+    
     <!-- Footer -->
     <footer>
       <p>&copy; 2025 RYT DESIGNS. All Rights Reserved.</p>
@@ -733,18 +587,20 @@
       <p><a href="#home" class="back-to-home">Back to Home</a></p>
     </footer>
   </div>
-
-  <!-- JavaScript for Functionality -->
+  
+  <!-- JavaScript for Panels, Search Functionality, and Toggling the Hamburger -->
   <script>
-    // Side Menu Functions
-    function openMenu() {
-      document.getElementById("sideMenu").style.width = "250px";
+    // Toggle Side Menu Function
+    function toggleMenu() {
+      const sideMenu = document.getElementById("sideMenu");
+      if (sideMenu.style.width === "250px") {
+        sideMenu.style.width = "0";
+      } else {
+        sideMenu.style.width = "250px";
+      }
     }
-    function closeMenu() {
-      document.getElementById("sideMenu").style.width = "0";
-    }
-
-    // Purchases Panel (Cart) Functions
+    
+    // Functions to open/close the Purchases Panel
     function openPurchasesPanel() {
       document.getElementById("purchasesPanel").style.width = "300px";
       updateCartUI();
@@ -752,26 +608,11 @@
     function closePurchasesPanel() {
       document.getElementById("purchasesPanel").style.width = "0";
     }
-
+    
     // Global Cart Array
     let cart = [];
-
-    // Services Database for Search
-    const services = [
-      { name: "Posters/Flyers", price: 15 },
-      { name: "Videos for Events", price: 25 },
-      { name: "Business Cards", price: 20 },
-      { name: "Invitations", price: 24 },
-      { name: "Logos for Businesses", price: 30 },
-      { name: "YouTube Thumbnails (Basic)", price: 20 },
-      { name: "YouTube Thumbnails (Add-ons)", price: 35 },
-      { name: "Celebration Cards", price: 10 },
-      { name: "Presentations", price: 30 },
-      { name: "Menus", price: 20 },
-      { name: "Banner", price: 35 }
-    ];
-
-    // Search Functionality
+    
+    // Search Functionality (Products Search)
     document.getElementById('searchBtn').addEventListener('click', function() {
       const query = document.getElementById('serviceSearch').value.toLowerCase().trim();
       const resultsContainer = document.getElementById('searchResults');
@@ -780,9 +621,22 @@
         resultsContainer.innerHTML = "<p>Please enter a search term.</p>";
         return;
       }
-      const results = services.filter(item => item.name.toLowerCase().includes(query));
+      const products = [
+        { name: "Posters/Flyers", price: 15 },
+        { name: "Videos for Events", price: 25 },
+        { name: "Business Cards", price: 20 },
+        { name: "Invitations", price: 24 },
+        { name: "Logos for Businesses", price: 30 },
+        { name: "YouTube Thumbnails (Basic)", price: 20 },
+        { name: "YouTube Thumbnails (Add-ons)", price: 35 },
+        { name: "Celebration Cards", price: 10 },
+        { name: "Presentations", price: 30 },
+        { name: "Menus", price: 20 },
+        { name: "Banner", price: 35 }
+      ];
+      const results = products.filter(item => item.name.toLowerCase().includes(query));
       if(results.length === 0){
-        resultsContainer.innerHTML = "<p>No services found.</p>";
+        resultsContainer.innerHTML = "<p>No products found.</p>";
         return;
       }
       results.forEach(item => {
@@ -793,7 +647,7 @@
         resultsContainer.appendChild(resultDiv);
       });
     });
-
+    
     // Add to Cart Function
     function addToCart(name, price) {
       const existing = cart.find(item => item.name === name);
@@ -805,7 +659,7 @@
       alert(name + " has been added to your cart.");
       updateCartUI();
     }
-
+    
     // Update Cart UI
     function updateCartUI() {
       const cartItemsContainer = document.getElementById('cartItems');
@@ -820,7 +674,7 @@
       });
       cartTotalDisplay.textContent = "Total: $" + total;
     }
-
+    
     // Checkout Modal Functions
     function openCheckout() {
       if(cart.length === 0){
@@ -834,7 +688,7 @@
     function closeCheckout() {
       document.getElementById("checkoutModal").style.display = "none";
     }
-
+    
     // Handle Checkout Form Submission
     document.getElementById("checkoutForm").addEventListener("submit", function(e) {
       e.preventDefault();
