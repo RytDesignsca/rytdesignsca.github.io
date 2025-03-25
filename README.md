@@ -15,11 +15,11 @@
     /* New Color Scheme: white, black, gray with teal accents */
     :root {
       --primary-bg: #ffffff;            /* Main background (white) */
-      --secondary-bg: #f7f7f7;          /* Light gray for some sections */
-      --header-footer-bg: #333333;      /* Dark gray for navigation and footer */
-      --text-color: #000000;            /* Text color (black) */
-      --inverse-text-color: #ffffff;    /* For text on dark backgrounds */
-      --accent: #008080;                /* Teal accent */
+      --secondary-bg: #f7f7f7;           /* Light gray for some sections */
+      --header-footer-bg: #333333;       /* Dark gray for navigation and footer */
+      --text-color: #000000;             /* Text color (black) */
+      --inverse-text-color: #ffffff;     /* For text on dark backgrounds */
+      --accent: #008080;                 /* Teal accent */
     }
 
     body {
@@ -144,6 +144,8 @@
       max-width: 800px;
       margin: 0 auto;
       padding: 0 1rem;
+      /* Bounce-in animation – retrigger on every visit */
+      animation: bounceIn 1s ease-out;
     }
     .full-logo {
       display: block;
@@ -159,6 +161,24 @@
       margin-bottom: 1rem;
     }
 
+    /* Bounce-in animation for hero content */
+    @keyframes bounceIn {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      60% {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+      80% {
+        transform: scale(0.9);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
     /* New Search Bar (in Hero) */
     .hero .search-container {
       display: flex;
@@ -166,7 +186,7 @@
       width: 100%;
       max-width: 600px;
       margin: 1.5rem auto 0;
-      background-color: #ffffff;
+      background-color: #000000;
       border: 1px solid gray;
       border-radius: 5px;
       padding: 5px;
@@ -189,17 +209,12 @@
     .hero .search-container button:hover {
       background-color: #222222;
     }
-    /* The button contains a magnifying glass icon – update the URL as needed */
-    .hero .search-container .search-icon {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      background-image: url('path/to/magnifying-glass-icon.svg');
-      background-size: cover;
-      background-repeat: no-repeat;
+    /* Inline SVG for a small teal magnifying glass */
+    .hero .search-container button svg {
+      display: block;
     }
 
-    /* Search Results (within Hero) */
+    /* Search Results (in Hero) */
     .hero #searchResults {
       max-width: 800px;
       margin: 1rem auto 0;
@@ -227,10 +242,18 @@
     .hero .search-result button:hover {
       background-color: darkcyan;
     }
-    .hero .search-result a {
+    .hero .search-result .preview-button {
       margin-left: 10px;
-      color: var(--accent);
-      text-decoration: none;
+      background-color: gray;
+      color: var(--inverse-text-color);
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .hero .search-result .preview-button:hover {
+      background-color: darkgray;
     }
 
     /* Design Process Section */
@@ -340,7 +363,9 @@
       padding: 4rem 2rem;
       text-align: center;
       background-color: var(--primary-bg);
+      display: none;  /* Hidden by default */
     }
+    /* When preview section is shown, we now include a header title */
     #preview h2 {
       font-size: 2.5rem;
       margin-bottom: 2rem;
@@ -382,7 +407,26 @@
       color: var(--inverse-text-color);
       cursor: pointer;
       border-radius: 4px;
-      display: none;
+      display: none; /* Only shown when filtering previews */
+    }
+
+    /* Toggle Previews Button – more attractive styling */
+    #togglePreviewsBtn {
+      display: block;
+      margin: 2rem auto;
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(135deg, var(--accent), #00a3a3);
+      border: none;
+      color: var(--inverse-text-color);
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    #togglePreviewsBtn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0, 128, 128, 0.4);
     }
 
     /* Contact Section */
@@ -503,11 +547,13 @@
   <!-- Side Navigation Menu -->
   <div id="sideMenu">
     <span class="close-btn" onclick="closeMenu()">&times;</span>
-    <a href="#home" onclick="closeMenu()">Home</a>
+    <!-- "Home" now also triggers the hero animation -->
+    <a href="#home" onclick="closeMenu(); triggerHeroAnimation();">Home</a>
     <a href="#design-process" onclick="closeMenu()">Process</a>
     <a href="#popular-services" onclick="closeMenu()">Services</a>
     <a href="#design-packages" onclick="closeMenu()">Packages</a>
-    <a href="#preview" onclick="closeMenu()">Preview</a>
+    <!-- The "Previews" link toggles the preview section -->
+    <a href="javascript:void(0)" onclick="togglePreviews(); closeMenu();">Previews</a>
     <a href="#contact" onclick="closeMenu()">Contact</a>
     <a href="javascript:void(0)" onclick="openPurchasesPanel(); closeMenu();">Purchases</a>
   </div>
@@ -559,15 +605,15 @@
 
         <!-- Product Search integrated into Home -->
         <div class="search-container">
-          <input type="text" id="serviceSearch" placeholder="Search for any service..." class="search-input" />
-          <button id="searchBtn" type="button" class="search-button">
-            <span class="search-icon"></span>
+          <input type="text" id="serviceSearch" placeholder="Search for any service..." />
+          <button id="searchBtn" type="button">
+            <!-- Inline SVG for a small teal magnifying glass -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#008080" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.414-1.414l-3.85-3.85zM6.5 11a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z"/>
+            </svg>
           </button>
         </div>
         <div id="searchResults"></div>
-        <p style="margin-top: 1rem; font-size: 0.9rem;">
-          Available products: Poster/Flyer - $15, Videos for events - $25, Business cards - $20, Invitations - $24, Logos for businesses - $30, YouTube Thumbnails(Basic) - $20, YouTube Thumbnail(Add-ons) - $35, Celebration cards - $10, Presentations - $30, Menus - $20, Banner - $35.
-        </p>
       </div>
     </section>
 
@@ -631,7 +677,7 @@
         </div>
         <div class="package-item">
           <h3>Logo &amp; Business Card Printing</h3>
-          <p>Get print-ready designs in one go.</p>
+          <p>Get print‑ready designs in one go.</p>
         </div>
         <div class="package-item">
           <h3>Logo &amp; Website</h3>
@@ -644,13 +690,16 @@
       </div>
     </section>
 
-    <!-- Preview Section -->
+    <!-- Toggle Previews Button -->
+    <button id="togglePreviewsBtn" onclick="togglePreviews()">Show Previews</button>
+
+    <!-- Preview Section (hidden by default) -->
     <section id="preview">
-      <h2>Preview</h2>
-      <!-- Control button to restore all previews when filtered -->
+      <!-- We now include a header title for the preview section -->
+      <h2>Previews</h2>
       <button class="show-all-btn" id="showAllBtn" onclick="showAllPreviews()">Show All Previews</button>
       <div class="portfolio-container">
-        <!-- Portfolio items – can be filtered via search Preview links -->
+        <!-- Portfolio items – displayed as pictures -->
         <div class="portfolio-item" id="product-event-videos">
           <a href="website prototype/ryt designs video.mp4" target="_blank">
             <img src="website prototype/ryt designs video.mp4" alt="Event Videos">
@@ -736,8 +785,7 @@
         <div class="contact-info">
           <p><strong>Phone:</strong> +1 226-977-9311</p>
           <p><strong>Alternate Phone:</strong> +1 226-977-9310</p>
-          <p>
-            <strong>Email:</strong>
+          <p><strong>Email:</strong>
             <a href="mailto:rytdesignsca@gmail.com" style="color: var(--accent);">
               rytdesignsca@gmail.com
             </a>
@@ -754,7 +802,7 @@
     <footer>
       <p>&copy; 2025 RYT DESIGNS. All Rights Reserved.</p>
       <p>Designed by RYT DESIGNS</p>
-      <p><a href="#home" class="back-to-home">Back to Home</a></p>
+      <p><a href="#home" class="back-to-home" onclick="triggerHeroAnimation()">Back to Home</a></p>
     </footer>
   </div>
 
@@ -801,7 +849,6 @@
       const resultsContainer = document.getElementById('searchResults');
       resultsContainer.innerHTML = "";
       if(query === ""){
-        resultsContainer.innerHTML = "<p>Please enter a search term.</p>";
         return;
       }
       const queryTerms = query.split(/\s+/).filter(term => term.length > 0);
@@ -843,7 +890,6 @@
         }
       });
       
-      // Sort results by score descending
       results.sort((a, b) => b.score - a.score);
       
       if(results.length === 0){
@@ -851,13 +897,13 @@
         return;
       }
       
-      // Generate results with Preview links that filter the portfolio items
       results.forEach(item => {
+        // Use a button for the preview link instead of an anchor
         const resultDiv = document.createElement('div');
         resultDiv.className = "search-result";
         resultDiv.innerHTML = `<span>${item.name} - $${item.price}</span>
           <button onclick='addToCart("${item.name}", ${item.price})'>Buy</button>
-          <a href="javascript:void(0)" onclick="showOnlyPreview('${item.id}')">Preview</a>`;
+          <button type="button" class="preview-button" onclick="showOnlyPreview('${item.id}')">Preview</button>`;
         resultsContainer.appendChild(resultDiv);
       });
     }
@@ -921,11 +967,7 @@
     function showOnlyPreview(itemId) {
       const portfolioItems = document.querySelectorAll(".portfolio-item");
       portfolioItems.forEach(item => {
-        if(item.id === itemId) {
-          item.style.display = "block";
-        } else {
-          item.style.display = "none";
-        }
+        item.style.display = (item.id === itemId) ? "block" : "none";
       });
       document.getElementById("showAllBtn").style.display = "block";
       document.getElementById("preview").scrollIntoView({ behavior: "smooth" });
@@ -937,6 +979,43 @@
       });
       document.getElementById("showAllBtn").style.display = "none";
     }
+
+    // Toggle the entire preview section visibility and reset filtering
+    function togglePreviews() {
+      const previewSection = document.getElementById("preview");
+      const toggleBtn = document.getElementById("togglePreviewsBtn");
+      if (previewSection.style.display === "none" || previewSection.style.display === "") {
+        previewSection.style.display = "block";
+        toggleBtn.textContent = "Hide Previews";
+      } else {
+        previewSection.style.display = "none";
+        toggleBtn.textContent = "Show Previews";
+      }
+      showAllPreviews();
+    }
+
+    // Trigger hero animation (reset and retrigger bounceIn)
+    function triggerHeroAnimation() {
+      const heroContent = document.querySelector('.hero-content');
+      heroContent.style.animation = 'none';
+      // Force reflow to reset animation
+      void heroContent.offsetWidth;
+      heroContent.style.animation = 'bounceIn 1s ease-out';
+    }
+
+    // On hash change to #home, trigger the hero animation
+    window.addEventListener("hashchange", function() {
+      if (location.hash === "#home") {
+        triggerHeroAnimation();
+      }
+    });
+
+    // On page load, if on #home (or no hash) trigger animation
+    window.addEventListener("DOMContentLoaded", function() {
+      if (!location.hash || location.hash === "#home") {
+        triggerHeroAnimation();
+      }
+    });
   </script>
 </body>
 </html>
