@@ -161,8 +161,6 @@
       font-size: 1.2rem;
       margin-bottom: 1rem;
     }
-
-    /* Bounce-in animation for hero content */
     @keyframes bounceIn {
       0% {
         transform: scale(0.5);
@@ -231,6 +229,7 @@
       align-items: center;
       color: var(--inverse-text-color);
     }
+    /* Common button styling for both Buy and Preview */
     .hero .search-result button {
       background-color: var(--accent);
       border: none;
@@ -239,22 +238,10 @@
       border-radius: 4px;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      margin-left: 10px;
     }
     .hero .search-result button:hover {
       background-color: darkcyan;
-    }
-    .hero .search-result .preview-button {
-      margin-left: 10px;
-      background-color: gray;
-      color: var(--inverse-text-color);
-      border: none;
-      padding: 5px 10px;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    .hero .search-result .preview-button:hover {
-      background-color: darkgray;
     }
 
     /* Design Process Section */
@@ -366,7 +353,7 @@
       background-color: var(--primary-bg);
       display: none;  /* Hidden by default */
     }
-    /* When preview section is shown, we now include a header title */
+    /* Preview section now includes a header title */
     #preview h2 {
       font-size: 2.5rem;
       margin-bottom: 2rem;
@@ -411,7 +398,7 @@
       display: none; /* Only shown when filtering previews */
     }
 
-    /* Toggle Previews Button – more attractive styling */
+    /* Toggle Previews Button – attractive styling */
     #togglePreviewsBtn {
       display: block;
       margin: 2rem auto;
@@ -553,8 +540,8 @@
     <a href="#design-process" onclick="closeMenu()">Process</a>
     <a href="#popular-services" onclick="closeMenu()">Services</a>
     <a href="#design-packages" onclick="closeMenu()">Packages</a>
-    <!-- The "Previews" link toggles the preview section -->
-    <a href="javascript:void(0)" onclick="togglePreviews(); closeMenu();">Previews</a>
+    <!-- The "Previews" link now simply scrolls to the toggle button -->
+    <a href="javascript:void(0)" onclick="scrollToTogglePreviews(); closeMenu();">Previews</a>
     <a href="#contact" onclick="closeMenu()">Contact</a>
     <a href="javascript:void(0)" onclick="openPurchasesPanel(); closeMenu();">Purchases</a>
   </div>
@@ -603,7 +590,6 @@
         <h2>Creativity in Every Pixel</h2>
         <p>At RYT DESIGNS, we transform your vision into immersive design experiences.</p>
         <p>Explore our process, services, packages, and more.</p>
-
         <!-- Product Search integrated into Home -->
         <div class="search-container">
           <input type="text" id="serviceSearch" placeholder="Search for any service..." />
@@ -696,7 +682,6 @@
 
     <!-- Preview Section (hidden by default) -->
     <section id="preview">
-      <!-- We now include a header title for the preview section -->
       <h2>Previews</h2>
       <button class="show-all-btn" id="showAllBtn" onclick="showAllPreviews()">Show All Previews</button>
       <div class="portfolio-container">
@@ -899,12 +884,11 @@
       }
       
       results.forEach(item => {
-        // Use a button for the preview link instead of an anchor
         const resultDiv = document.createElement('div');
         resultDiv.className = "search-result";
         resultDiv.innerHTML = `<span>${item.name} - $${item.price}</span>
           <button onclick='addToCart("${item.name}", ${item.price})'>Buy</button>
-          <button type="button" class="preview-button" onclick="showOnlyPreview('${item.id}')">Preview</button>`;
+          <button type="button" onclick="showOnlyPreview('${item.id}')">Preview</button>`;
         resultsContainer.appendChild(resultDiv);
       });
     }
@@ -966,12 +950,19 @@
 
     // Preview Filtering Functions
     function showOnlyPreview(itemId) {
+      // Force preview section to be shown and override toggle text
+      const previewSection = document.getElementById("preview");
+      const toggleBtn = document.getElementById("togglePreviewsBtn");
+      if (previewSection.style.display === "none" || previewSection.style.display === "") {
+        previewSection.style.display = "block";
+        toggleBtn.textContent = "Hide Previews";
+      }
       const portfolioItems = document.querySelectorAll(".portfolio-item");
       portfolioItems.forEach(item => {
         item.style.display = (item.id === itemId) ? "block" : "none";
       });
       document.getElementById("showAllBtn").style.display = "block";
-      document.getElementById("preview").scrollIntoView({ behavior: "smooth" });
+      previewSection.scrollIntoView({ behavior: "smooth" });
     }
     function showAllPreviews() {
       const portfolioItems = document.querySelectorAll(".portfolio-item");
@@ -993,6 +984,12 @@
         toggleBtn.textContent = "Show Previews";
       }
       showAllPreviews();
+    }
+
+    // Function to scroll to the "Show Previews" toggle button
+    function scrollToTogglePreviews() {
+      const toggleBtn = document.getElementById("togglePreviewsBtn");
+      toggleBtn.scrollIntoView({ behavior: "smooth" });
     }
 
     // Trigger hero animation (reset and retrigger bounceIn)
@@ -1020,4 +1017,3 @@
   </script>
 </body>
 </html>
-
