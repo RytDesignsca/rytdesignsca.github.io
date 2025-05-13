@@ -1,5 +1,5 @@
 
-html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="description" content="RYT DESIGNS - Creativity in Every Pixel." />
