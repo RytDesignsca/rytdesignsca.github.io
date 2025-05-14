@@ -1,12 +1,11 @@
 
-
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="description" content="RYT DESIGNS - Creativity in Every Pixel." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RYT DESIGNS</title>
   <style>
-    /* --- All your existing CSS remains unchanged --- */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
       --primary-bg: #ffffff;
@@ -22,10 +21,7 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
     }
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
+    a { color: var(--accent); text-decoration: none; }
     #sideMenu {height:100%;width:0;position:fixed;z-index:1000;top:0;left:0;background-color:var(--header-footer-bg);overflow-x:hidden;transition:0.5s;padding-top:60px;}
     #sideMenu a {padding:10px 10px 10px 30px;font-size:1.2rem;color:var(--inverse-text-color);display:block;transition:color .3s ease;}
     #sideMenu a:hover {color:var(--accent);}
@@ -37,135 +33,160 @@
     .open-purchases-btn {position:fixed;top:20px;right:20px;background-color:var(--header-footer-bg);color:var(--inverse-text-color);border:none;font-size:24px;padding:8px;cursor:pointer;z-index:2100;}
     .main-content {padding:20px;transition:margin-left 0.5s;}
     #productsContent {display:none;}
-    /* --- HERO (NEW HOMEPAGE LAYOUT) --- */
-    .hero {
-      position: relative;
-      background: linear-gradient(120deg, #e0fbfc 0 30%, #ffffff 100%);
-      padding: 5rem 2rem 4rem 2rem;
-      min-height: 68vh;
+    .hero-flex {
       display: flex;
+      justify-content: center;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow: hidden;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 0 1rem;
-      animation: bounceIn 1s ease-out;
-    }
-    .full-logo {
-      display: block;
-      max-width: 180px;
-      margin: 0 auto 24px;
-      filter: drop-shadow(0 0 8px #dde6e6);
-    }
-    .hero h2 {
-      font-size: 2.7rem;
-      font-weight: 700;
-      color: #163d3c;
-      margin-bottom: 1.2rem;
-      line-height: 1.1;
-      letter-spacing: -1px;
-      text-shadow: 0 3px 8px rgba(0,0,0,0.03);
-    }
-    .hero .subtitle {
-      color: #295c5b;
-      font-size: 1.19rem;
-      margin-bottom: 2rem;
-      line-height: 1.6;
-      opacity: 0.92;
-    }
-    .hero-buttons {
-      margin: 2.5rem 0 0 0;
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .btn-primary, .btn-secondary {
-      font-size: 1.04rem;
-      padding: 13px 32px;
-      cursor: pointer;
-      border-radius: 30px;
-      border: none;
-      transition: background 0.22s, color 0.22s, box-shadow 0.22s;
-      font-weight: 600;
-      letter-spacing: 1px;
-      margin: 0.2rem 0;
-    }
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-      box-shadow: 0 2px 12px rgba(0,128,128,0.06);
-    }
-    .btn-primary:hover { background: #005b5b; }
-    .btn-secondary {
+      min-height: 60vh;
+      gap: 56px;
       background: #fff;
-      color: var(--accent);
-      border: 2px solid var(--accent);
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
     }
-    .btn-secondary:hover {
-      background: #e7f5f4;
-      color: #005b5b;
+    .slider-section {
+      flex: 1.15 1 0%;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
     }
-    .search-container {
+    .slider-image-container {
+      width: 470px;
+      max-width: 95vw;
+      height: 350px;
+      border-radius: 18px;
+      background: #f6f6f6;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 2px 15px rgba(44,44,45,0.07);
+    }
+    .slider-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .slider-caption {
+      position: absolute;
+      bottom: 24px;
+      left: 36px;
+      background: #fffacd;
+      color: #333;
+      border-radius: 20px;
+      padding: 7px 22px 7px 38px;
+      font-size: 1rem;
+      font-weight: 500;
+      box-shadow: 0 3px 10px rgba(120,120,120,0.09);
       display: flex;
       align-items: center;
-      width: 100%;
-      max-width: 460px;
-      margin: 2.5rem auto 0;
-      background-color: #fff;
-      border: 1px solid #c7e2e2;
-      border-radius: 40px;
-      padding: 5px 8px;
-      box-shadow: 0 2px 8px rgba(0,128,128,0.04);
+      gap: 7px;
     }
-    .search-container input[type="text"] {
-      flex-grow: 1;
-      padding: 13px 18px;
-      border: none;
-      outline: none;
-      font-size: 1rem;
-      color: #444;
-      border-radius: 40px;
-      background: transparent;
+    .slider-caption img {
+      width: 32px; height: 32px; border-radius: 50%; margin-right: 8px; object-fit: cover;
     }
-    .search-container button {
-      background-color: var(--accent);
-      border: none;
-      height: 42px;
-      width: 42px;
-      border-radius: 50%;
-      cursor: pointer;
-      margin-left: 3px;
-      display: flex; align-items: center; justify-content: center;
+    .slider-label {
+      position: absolute;
+      bottom: 8px; left: 28px;
+      font-size: 0.93rem;
+      font-style: italic;
+      color: #606060;
+      background: none;
+      border-radius: 3px;
+      margin-top: 7px;
     }
-    .search-container button:hover { background: #005b5b; }
-    .search-container button svg { fill: #fff; }
-    #searchResults {
-      max-width: 800px;
-      margin: 1rem auto 0;
+    .slider-dots {
+      margin: 24px 0 0 0;
+      display: flex;
+      gap: 11px;
+      justify-content: flex-start;
+    }
+    .dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: #d4d4d4; cursor: pointer; transition: background 0.18s;
+      border: none; outline: none;
+    }
+    .dot.active { background: var(--header-footer-bg);}
+    .hero-side {
+      flex: 1.2 1 0%;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .hero-side h2 {
+      font-size: 3.6rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      line-height: 1.06;
+      letter-spacing: -2px;
       text-align: left;
     }
-    .popular-keywords {
-      margin-top: 2.1rem;
-      font-size: 0.98rem;
-      color: #268989;
+    .hero-side .subtitle {
+      color: #222;
+      font-size: 1.16rem;
+      margin-bottom: 1.8rem;
+      line-height: 1.6;
       opacity: 0.92;
+      text-align: left;
+      max-width: 460px;
     }
-    .popular-keywords a { color: var(--accent); margin: 0 2px; }
-    .popular-keywords a:hover { text-decoration: underline;}
-    @keyframes bounceIn {
-      0% { transform: scale(0.5); opacity: 0; }
-      60% { transform: scale(1.12); opacity: 1; }
-      80% { transform: scale(0.95); }
-      100% { transform: scale(1);}
+    .home-search-row {
+      display: flex;
+      gap: 14px;
+      width: 100%;
+      margin-bottom: 1.2rem;
     }
-    /* Remaining original styles unchanged! */
+    .home-search-row input[type="text"] {
+      flex: 1;
+      padding: 18px;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      border: 1px solid #d1d1d1;
+    }
+    .home-search-row button {
+      background: #222;
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      border-radius: 30px;
+      padding: 0 32px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .home-search-row button:hover { background: var(--accent);}
+    .popular-tags {
+      display: flex;
+      gap: 10px;
+      margin-top: 0.2rem;
+      align-items: center;
+    }
+    .popular-label {
+      color: #666;
+      font-size: 1.06rem;
+      margin-right: 5px;
+    }
+    .tag-btn {
+      background: #e7e7e7;
+      color: #333;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      padding: 7px 17px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s;
+    }
+    .tag-btn:hover, .tag-btn.active {
+      background: var(--accent);
+      color: #fff;
+    }
     .design-process {padding:4rem 2rem;text-align:center;background-color:var(--secondary-bg);}
     .design-process h2 {font-size:2.5rem;margin-bottom:2rem;}
     .process-steps {display:flex;justify-content:center;gap:2rem;}
@@ -208,14 +229,30 @@
     #productsContent .product-item p {font-size:1.2rem;margin-bottom:1rem;}
     #productsContent .back-home {display:block;margin-top:2rem;text-align:center;font-size:1.1rem;text-decoration:none;color:var(--accent);}
     #productsContent .back-home:hover {text-decoration:underline;}
-    @media (max-width: 768px) {
-      .hero h2 {font-size:2.1rem;}
-      .hero .subtitle {font-size:1rem;}
+    @media (max-width: 1024px) {
+      .hero-flex {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 24px;
+        max-width: 100vw;
+      }
+      .slider-section,
+      .hero-side { align-items: center; width: 100%; }
+      .slider-image-container { width: 98vw; max-width:480px;}
+      .hero-side h2 { font-size: 2.3rem; }
+    }
+    @media (max-width: 700px) {
+      .hero-flex {flex-direction: column; gap: 11px;}
+      .slider-image-container { width: 98vw; max-width: 340px; height: 200px;}
+      .hero-side h2 { font-size: 1.4rem; }
+      .subtitle { font-size: 1rem;}
     }
     @media (max-width: 480px) {
-      .hero h2 {font-size:1.2rem;}
-      .hero .subtitle {font-size:0.95rem;}
+      .slider-image-container { height: 150px; }
+      .hero-side h2 { font-size: 1rem; }
+      .subtitle { font-size: 0.97rem;}
       #sideMenu a {font-size:1rem;}
+      .tag-btn { font-size: 0.8rem; padding: 4px 10px;}
     }
   </style>
 </head>
@@ -232,7 +269,7 @@
     <a href="javascript:void(0)" onclick="openPurchasesPanel(); closeMenu();">Purchases</a>
   </div>
 
-  <!-- Purchases Panel (Cart) -->
+  <!-- Purchases Panel (Cart), Hamburger Menu, and Modal (Unchanged) -->
   <div id="purchasesPanel">
     <span class="close-btn" onclick="closePurchasesPanel()">&times;</span>
     <div style="padding: 20px;">
@@ -267,36 +304,39 @@
   <div class="main-content">
     <!-- Home Content (Visible by default) -->
     <div id="homeContent">
-      <!-- HERO (NEW) -->
-      <section id="home" class="hero">
-        <div class="hero-content">
-          <img src="Kt8o8usihonWLJtAAj5o6.png" alt="Full Logo" class="full-logo" />
-          <h2>Grow Your Business with Great Design</h2>
-          <div class="subtitle">We combine creativity and strategy to help entrepreneurs, startups, and brands look amazing.<br>
-            Get custom logos, stunning websites, and branding that elevates your impact.</div>
-          <div class="hero-buttons">
-            <button class="btn-primary" onclick="location.hash='#popular-services';">Explore Services</button>
-            <button class="btn-secondary" onclick="location.hash='#contact';">Contact Us</button>
+      <!-- HERO FLEX LAYOUT -->
+      <section id="home" style="background: #fff; padding: 60px 0 40px 0;">
+        <div class="hero-flex">
+          <!-- LEFT: Slider -->
+          <div class="slider-section">
+            <div class="slider-image-container" id="slider-image-container">
+              <img src="rytdesignsca.github.io/website prototype/Album cover.png" alt="Slider Image" id="hero-slider-image" />
+              <div class="slider-caption" id="slider-caption">
+                Album cover design
+              </div>
+              <div class="slider-label" id="slider-label">RYT DESIGNS</div>
+            </div>
+            <div class="slider-dots" id="slider-dots"></div>
           </div>
-          <div class="search-container">
-            <input type="text" id="serviceSearch" placeholder="What design do you need?" />
-            <button id="searchBtn" type="button">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#ffffff" viewBox="0 0 16 16">
-                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.414-1.414l-3.85-3.85zM6.5 11a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z"/>
-              </svg>
-            </button>
-          </div>
-          <div id="searchResults"></div>
-          <div class="popular-keywords">
-            <span>Popular:&nbsp;</span>
-            <a href="#" onclick="document.getElementById('serviceSearch').value='Logo Design'; performSearch(); return false;">Logo Design</a>,
-            <a href="#" onclick="document.getElementById('serviceSearch').value='Website'; performSearch(); return false;">Website</a>,
-            <a href="#" onclick="document.getElementById('serviceSearch').value='Flyer'; performSearch(); return false;">Flyer</a>
+          <!-- RIGHT: Text + Search -->
+          <div class="hero-side">
+            <h2>Grow with<br>great design</h2>
+            <div class="subtitle">No matter what your business needs, we can connect you with a creative expert to make your business look and feel professional. Because good design makes great business.</div>
+            <form class="home-search-row" onsubmit="performSearch(); return false;">
+              <input type="text" id="serviceSearch" placeholder="What do you need designed?" autocomplete="off" />
+              <button id="searchBtn" type="submit">Get a design</button>
+            </form>
+            <div class="popular-tags">
+              <span class="popular-label">Popular:</span>
+              <button class="tag-btn" type="button" onclick="document.getElementById('serviceSearch').value='Logo design'; performSearch();">Logo design</button>
+              <button class="tag-btn" type="button" onclick="document.getElementById('serviceSearch').value='Website'; performSearch();">Website</button>
+              <button class="tag-btn" type="button" onclick="document.getElementById('serviceSearch').value='Branding'; performSearch();">Branding</button>
+            </div>
+            <div id="searchResults"></div>
           </div>
         </div>
       </section>
-
-      <!-- Remaining homepage sections are untouched -->
+      <!-- Remaining homepage sections untouched -->
       <section id="design-process" class="design-process">
         <h2>Our Design Process</h2>
         <div class="process-steps">
@@ -385,11 +425,7 @@
       <footer>
         <p>&copy; 2025 RYT DESIGNS. All Rights Reserved.</p>
         <p>Designed by RYT DESIGNS</p>
-        <p>
-          <a href="#home" class="back-to-home" onclick="triggerHeroAnimation(); showHome();">
-            Back to Home
-          </a>
-        </p>
+        <p><a href="#home" class="back-to-home" onclick="triggerHeroAnimation(); showHome();">Back to Home</a></p>
       </footer>
     </div>
     <!-- Products Content (Hidden by default) -->
@@ -415,9 +451,7 @@
       </div>
     </div>
   </div>
-  <!-- JavaScript for Interactions -->
   <script>
-    // Side Menu functions
     const sideMenu = document.getElementById("sideMenu");
     const purchasesPanel = document.getElementById("purchasesPanel");
     function toggleMenu() {if (sideMenu.style.width === "250px") {closeMenu();} else {sideMenu.style.width = "250px";}}
@@ -535,10 +569,12 @@
       document.getElementById("productsContent").style.display = "block";
     }
     function triggerHeroAnimation() {
-      const heroContent = document.querySelector('.hero-content');
-      heroContent.style.animation = 'none';
-      void heroContent.offsetWidth;
-      heroContent.style.animation = 'bounceIn 1s ease-out';
+      const heroContent = document.querySelector('.hero-side');
+      if(heroContent){
+        heroContent.style.animation = 'none';
+        void heroContent.offsetWidth;
+        heroContent.style.animation = 'bounceIn 1s ease-out';
+      }
     }
     window.addEventListener("hashchange", function() {
       if (location.hash === "#home") {
@@ -549,6 +585,58 @@
       if (!location.hash || location.hash === "#home") {
         showHome();
         triggerHeroAnimation();
+      }
+      // HERO SLIDER
+      window.heroSlides = [
+        {
+          img: "rytdesignsca.github.io/website prototype/Album cover.png",
+          caption: "Album cover design",
+          label: "RYT DESIGNS"
+        },
+        {
+          img: "rytdesignsca.github.io/website prototype/Product label.png",
+          caption: "Product label design",
+          label: "RYT DESIGNS"
+        },
+        {
+          img: "rytdesignsca.github.io/website prototype/Ryt Skin.png",
+          caption: "Ryt Skin branding",
+          label: "RYT DESIGNS"
+        },
+        {
+          img: "rytdesignsca.github.io/website prototype/T-Shirt design.png",
+          caption: "T-Shirt design",
+          label: "RYT DESIGNS"
+        },
+        {
+          img: "rytdesignsca.github.io/website prototype/Ryt Designs Poster.png",
+          caption: "Poster design",
+          label: "RYT DESIGNS"
+        }
+      ];
+      let idx = 0;
+      function showSlide(n) {
+        idx = n;
+        document.getElementById('hero-slider-image').src = window.heroSlides[n].img;
+        document.getElementById('slider-caption').innerHTML = window.heroSlides[n].caption;
+        document.getElementById('slider-label').innerHTML = window.heroSlides[n].label;
+        const dots = document.querySelectorAll('.dot');
+        dots.forEach((d,i)=>{ d.classList.toggle('active',i===n); });
+      }
+      function buildDots() {
+        const dotBox = document.getElementById('slider-dots');
+        dotBox.innerHTML = "";
+        window.heroSlides.forEach((s, i) => {
+          const dot = document.createElement('button');
+          dot.className = 'dot' + (i === 0 ? ' active' : '');
+          dot.onclick = ()=>showSlide(i);
+          dotBox.appendChild(dot);
+        });
+      }
+      if(document.getElementById('slider-dots')){
+        buildDots();
+        showSlide(0);
+        setInterval(()=>{ idx=(idx+1)%window.heroSlides.length; showSlide(idx); }, 6000);
       }
     });
   </script>
