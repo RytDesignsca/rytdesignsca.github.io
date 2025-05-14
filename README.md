@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -308,33 +308,33 @@
       <section id="home" style="background: #fff; padding: 60px 0 40px 0;">
         <div class="hero-flex">
           <!-- LEFT: Slider -->
-          <div <div id="hero-slider">
-  <div class="slider-item">
-    <img src="https://rytdesignsca.github.io/website%20prototype/Album%20cover.png" alt="Album cover design">
-    <div class="slider-caption">Album cover design</div>
-    <div class="slider-label">RYT DESIGNS</div>
-  </div>
-  <div class="slider-item">
-    <img src="https://rytdesignsca.github.io/website%20prototype/Product%20label.png" alt="Product label design">
-    <div class="slider-caption">Product label design</div>
-    <div class="slider-label">RYT DESIGNS</div>
-  </div>
-  <div class="slider-item">
-    <img src="https://rytdesignsca.github.io/website%20prototype/Ryt%20Skin.png" alt="Ryt Skin branding">
-    <div class="slider-caption">Ryt Skin branding</div>
-    <div class="slider-label">RYT DESIGNS</div>
-  </div>
-  <div class="slider-item">
-    <img src="https://rytdesignsca.github.io/website%20prototype/T-Shirt%20design.png" alt="T-Shirt design">
-    <div class="slider-caption">T-Shirt design</div>
-    <div class="slider-label">RYT DESIGNS</div>
-  </div>
-  <div class="slider-item">
-    <img src="https://rytdesignsca.github.io/website%20prototype/Ryt%20Designs%20Poster.png" alt="Poster design">
-    <div class="slider-caption">Poster design</div>
-    <div class="slider-label">RYT DESIGNS</div>
-  </div>
-</div>
+          <div class="slider-section">
+            <div class="slider-image-container" id="slider-image-container">
+              <img src="rytdesignsca.github.io/website prototype/Album cover.png" alt="Slider Image" id="hero-slider-image" />
+              <div class="slider-caption" id="slider-caption">
+                Album cover design
+              </div>
+              <div class="slider-label" id="slider-label">RYT DESIGNS</div>
+            </div>
+            <div class="slider-dots" id="slider-dots"></div>
+          </div>
+          <!-- RIGHT: Text + Search -->
+          <div class="hero-side">
+            <h2>Grow with<br>great design</h2>
+            <div class="subtitle">No matter what your business needs, we can connect you with a creative expert to make your business look and feel professional. Because good design makes great business.</div>
+            <form class="home-search-row" onsubmit="performSearch(); return false;">
+              <input type="text" id="serviceSearch" placeholder="What do you need designed?" autocomplete="off" />
+              <button id="searchBtn" type="submit">Get a design</button>
+            </form>
+            <div class="popular-tags">
+              <span class="popular-label">Popular:</span>
+              <button class="tag-btn" type="button" onclick="document.getElementById('serviceSearch').value='Logo design'; performSearch();">Logo design</button>
+              <button class="tag-btn" type="button" onclick="document.getElementById('serviceSearch').value='Website'; performSearch();">Website</button>
+              <button class="tag-btn" type="button" onclick="document.getElementById('serviceSearch').value='Branding'; performSearch();">Branding</button>
+            </div>
+            <div id="searchResults"></div>
+          </div>
+        </div>
       </section>
       <!-- Remaining homepage sections untouched -->
       <section id="design-process" class="design-process">
