@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -51,20 +51,27 @@
       flex-direction: column;
       align-items: flex-end;
     }
-    .slider-image-container {
+    #hero-slider {
       width: 470px;
       max-width: 95vw;
       height: 350px;
       border-radius: 18px;
       background: #f6f6f6;
       display: flex;
+      flex-direction: column;
       align-items: flex-end;
       justify-content: center;
       position: relative;
       overflow: hidden;
       box-shadow: 0 2px 15px rgba(44,44,45,0.07);
     }
-    .slider-image-container img {
+    .slider-item {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      margin-bottom: 18px;
+    }
+    .slider-item img {
       width: 100%;
       height: 100%;
       object-fit: contain;
@@ -72,7 +79,7 @@
     }
     .slider-caption {
       position: absolute;
-      bottom: 24px;
+      bottom: 54px;
       left: 36px;
       background: #fffacd;
       color: #333;
@@ -85,29 +92,14 @@
       align-items: center;
       gap: 7px;
     }
-    .slider-caption img {
-      width: 32px; height: 32px; border-radius: 50%; margin-right: 8px; object-fit: cover;
-    }
     .slider-label {
       position: absolute;
-      bottom: 8px; left: 28px;
+      bottom: 24px; left: 28px;
       font-size: 0.93rem;
       font-style: italic;
       color: #606060;
       background: none;
       border-radius: 3px;
-      margin-top: 7px;
-    }
-    .slider-dots {
-      margin: 24px 0 0 0;
-      display: flex;
-      gap: 11px;
-      justify-content: flex-start;
-    }
-    .dot {
-      width: 10px; height: 10px; border-radius: 50%;
-      background: #d4d4d4; cursor: pointer; transition: background 0.18s;
-      border: none; outline: none;
     }
     .dot.active { background: var(--header-footer-bg);}
     .hero-side {
@@ -238,17 +230,17 @@
       }
       .slider-section,
       .hero-side { align-items: center; width: 100%; }
-      .slider-image-container { width: 98vw; max-width:480px;}
+      #hero-slider { width: 98vw; max-width:480px;}
       .hero-side h2 { font-size: 2.3rem; }
     }
     @media (max-width: 700px) {
       .hero-flex {flex-direction: column; gap: 11px;}
-      .slider-image-container { width: 98vw; max-width: 340px; height: 200px;}
+      #hero-slider { width: 98vw; max-width: 340px; height: 200px;}
       .hero-side h2 { font-size: 1.4rem; }
       .subtitle { font-size: 1rem;}
     }
     @media (max-width: 480px) {
-      .slider-image-container { height: 150px; }
+      #hero-slider { height: 150px; }
       .hero-side h2 { font-size: 1rem; }
       .subtitle { font-size: 0.97rem;}
       #sideMenu a {font-size:1rem;}
@@ -300,23 +292,39 @@
     </div>
   </div>
 
-  <!-- Main Content Container -->
   <div class="main-content">
-    <!-- Home Content (Visible by default) -->
     <div id="homeContent">
-      <!-- HERO FLEX LAYOUT -->
       <section id="home" style="background: #fff; padding: 60px 0 40px 0;">
         <div class="hero-flex">
           <!-- LEFT: Slider -->
           <div class="slider-section">
-            <div class="slider-image-container" id="slider-image-container">
-              <img src="rytdesignsca.github.io/website prototype/Album cover.png" alt="Slider Image" id="hero-slider-image" />
-              <div class="slider-caption" id="slider-caption">
-                Album cover design
+            <div id="hero-slider">
+              <div class="slider-item">
+                <img src="https://rytdesignsca.github.io/website%20prototype/Album%20cover.png" alt="Album cover design">
+                <div class="slider-caption">Album cover design</div>
+                <div class="slider-label">RYT DESIGNS</div>
               </div>
-              <div class="slider-label" id="slider-label">RYT DESIGNS</div>
+              <div class="slider-item">
+                <img src="https://rytdesignsca.github.io/website%20prototype/Product%20label.png" alt="Product label design">
+                <div class="slider-caption">Product label design</div>
+                <div class="slider-label">RYT DESIGNS</div>
+              </div>
+              <div class="slider-item">
+                <img src="https://rytdesignsca.github.io/website%20prototype/Ryt%20Skin.png" alt="Ryt Skin branding">
+                <div class="slider-caption">Ryt Skin branding</div>
+                <div class="slider-label">RYT DESIGNS</div>
+              </div>
+              <div class="slider-item">
+                <img src="https://rytdesignsca.github.io/website%20prototype/T-Shirt%20design.png" alt="T-Shirt design">
+                <div class="slider-caption">T-Shirt design</div>
+                <div class="slider-label">RYT DESIGNS</div>
+              </div>
+              <div class="slider-item">
+                <img src="https://rytdesignsca.github.io/website%20prototype/Ryt%20Designs%20Poster.png" alt="Poster design">
+                <div class="slider-caption">Poster design</div>
+                <div class="slider-label">RYT DESIGNS</div>
+              </div>
             </div>
-            <div class="slider-dots" id="slider-dots"></div>
           </div>
           <!-- RIGHT: Text + Search -->
           <div class="hero-side">
@@ -336,7 +344,7 @@
           </div>
         </div>
       </section>
-      <!-- Remaining homepage sections untouched -->
+      <!-- Your other homepage sections remain untouched -->
       <section id="design-process" class="design-process">
         <h2>Our Design Process</h2>
         <div class="process-steps">
@@ -428,7 +436,9 @@
         <p><a href="#home" class="back-to-home" onclick="triggerHeroAnimation(); showHome();">Back to Home</a></p>
       </footer>
     </div>
+
     <!-- Products Content (Hidden by default) -->
+    <!-- ... YOUR PRODUCTS SECTION UNCHANGED ... -->
     <div id="productsContent">
       <header>
         <h1>RYT DESIGNS Products</h1>
@@ -452,6 +462,7 @@
     </div>
   </div>
   <script>
+    // JS for sidebar etc unchanged
     const sideMenu = document.getElementById("sideMenu");
     const purchasesPanel = document.getElementById("purchasesPanel");
     function toggleMenu() {if (sideMenu.style.width === "250px") {closeMenu();} else {sideMenu.style.width = "250px";}}
@@ -585,58 +596,6 @@
       if (!location.hash || location.hash === "#home") {
         showHome();
         triggerHeroAnimation();
-      }
-      // HERO SLIDER
-      window.heroSlides = [
-        {
-          img: "rytdesignsca.github.io/website prototype/Album cover.png",
-          caption: "Album cover design",
-          label: "RYT DESIGNS"
-        },
-        {
-          img: "rytdesignsca.github.io/website prototype/Product label.png",
-          caption: "Product label design",
-          label: "RYT DESIGNS"
-        },
-        {
-          img: "rytdesignsca.github.io/website prototype/Ryt Skin.png",
-          caption: "Ryt Skin branding",
-          label: "RYT DESIGNS"
-        },
-        {
-          img: "rytdesignsca.github.io/website prototype/T-Shirt design.png",
-          caption: "T-Shirt design",
-          label: "RYT DESIGNS"
-        },
-        {
-          img: "rytdesignsca.github.io/website prototype/Ryt Designs Poster.png",
-          caption: "Poster design",
-          label: "RYT DESIGNS"
-        }
-      ];
-      let idx = 0;
-      function showSlide(n) {
-        idx = n;
-        document.getElementById('hero-slider-image').src = window.heroSlides[n].img;
-        document.getElementById('slider-caption').innerHTML = window.heroSlides[n].caption;
-        document.getElementById('slider-label').innerHTML = window.heroSlides[n].label;
-        const dots = document.querySelectorAll('.dot');
-        dots.forEach((d,i)=>{ d.classList.toggle('active',i===n); });
-      }
-      function buildDots() {
-        const dotBox = document.getElementById('slider-dots');
-        dotBox.innerHTML = "";
-        window.heroSlides.forEach((s, i) => {
-          const dot = document.createElement('button');
-          dot.className = 'dot' + (i === 0 ? ' active' : '');
-          dot.onclick = ()=>showSlide(i);
-          dotBox.appendChild(dot);
-        });
-      }
-      if(document.getElementById('slider-dots')){
-        buildDots();
-        showSlide(0);
-        setInterval(()=>{ idx=(idx+1)%window.heroSlides.length; showSlide(idx); }, 6000);
       }
     });
   </script>
