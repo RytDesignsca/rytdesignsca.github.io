@@ -299,6 +299,12 @@
           <!-- LEFT: Slider -->
           <div class="slider-section">
             <div id="hero-slider">
+              <!-- Slider navigation -->
+<div id="slider-arrows" style="display:flex;justify-content:space-between;align-items:center;width:100%;position: absolute;top: 45%;left: 0;z-index: 2;pointer-events: none;">
+  <button id="slider-prev" style="pointer-events:auto;background:rgba(0,0,0,0.3);color:#fff;border:none;font-size:2rem;border-radius:50%;padding:5px 15px;cursor:pointer;margin-left:12px;">&#8592;</button>
+  <button id="slider-next" style="pointer-events:auto;background:rgba(0,0,0,0.3);color:#fff;border:none;font-size:2rem;border-radius:50%;padding:5px 15px;cursor:pointer;margin-right:12px;">&#8594;</button>
+</div>
+<div id="slider-dots" style="display:flex;justify-content:center;gap:10px;position:absolute;bottom:10px;left:0;right:0;"></div>
               <div class="slider-item">
                 <img src="https://rytdesignsca.github.io/website%20prototype/Album%20cover.png" alt="Album cover design">
                 <div class="slider-caption">Album cover design</div>
@@ -601,3 +607,56 @@
   </script>
 </body>
 </html>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const items = document.querySelectorAll("#hero-slider .slider-item");
+  const arrows = { prev: document.getElementById("slider-prev"), next: document.getElementById("slider-next") };
+  const dotsContainer = document.getElementById("slider-dots");
+  let current = 0, timer = null;
+
+  function show(idx) {
+    items.forEach((slide, i) => {
+      slide.style.display = i === idx ? "block" : "none";
+    });
+    [...dotsContainer.children].forEach((d, i) => {
+      d.style.background = i === idx ? "#008080" : "#aaa";
+    });
+    current = idx;
+  }
+
+  // Create dots
+  items.forEach((_, i) => {
+    const d = document.createElement("span");
+    d.style.width = d.style.height = "12px";
+    d.style.borderRadius = "50%";
+    d.style.background = "#aaa";
+    d.style.display = "inline-block";
+    d.style.cursor = "pointer";
+    d.onclick = ()=>{ show(i); resetAuto(); }
+    dotsContainer.appendChild(d);
+  });
+
+  function prevSlide() {
+    show((current - 1 + items.length) % items.length);
+    resetAuto();
+  }
+  function nextSlide() {
+    show((current + 1) % items.length);
+    resetAuto();
+  }
+
+  arrows.prev.onclick = prevSlide;
+  arrows.next.onclick = nextSlide;
+
+  function autoSlide() {
+    timer = setInterval(nextSlide, 5000);
+  }
+  function resetAuto() {
+    clearInterval(timer);
+    autoSlide();
+  }
+
+  show(0);
+  autoSlide();
+});
+</script>
