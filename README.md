@@ -17,72 +17,32 @@
       --slider-bg: #e7f2fa;
       --beige: #fffacd;
       --shadow: 0 2px 18px 2px rgba(44,44,45,0.09);
-      --light-border: #e5e5e5;
     }
+    html, body { height: 100%; }
     body {
       background: var(--primary-bg);
       color: var(--text-color);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
       margin: 0;
       padding: 0;
+      overflow-x: hidden;
     }
     a { color: var(--accent); text-decoration: none; }
-
-    /* Header Bar */
-    .headerbar {
-      width: 100%;
-      height: 58px;
-      background: var(--primary-bg);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-sizing: border-box;
-      position: relative;
-      border: 0;
-      margin-bottom: 0.7rem;
-    }
-    .header-logo {
-      text-align: center;
-      flex: 1;
-      z-index: 1;
-    }
-    .header-logo h1 {
-      color: var(--accent);
-      font-size: 2.3rem;
-      margin: 0;
-      font-weight: bold;
-      letter-spacing: .5px;
-      display: inline-block;
-      vertical-align: middle;
-    }
-    .header-divider {
-      position: absolute;
-      left: 0; right: 0;
-      height: 1px;
-      background: #ecf1f2;
-      top: 50px;
-      z-index: 0;
-      width: 90%;
-      margin: 0 auto;
-      right: 5%; left: 5%;
-    }
-    /* Hamburger */
     .open-menu-btn {
       background-color: var(--header-footer-bg);
       color: var(--inverse-text-color);
       border: none;
-      width: 40px;
-      height: 58px;
+      width: 48px; height: 48px;
       font-size: 32px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 0;
-      margin-left: 12px;
-      box-sizing: border-box;
-      flex-shrink:0;
+      position: fixed;
+      top: 12px; left: 12px;
+      z-index: 1201;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.06);
     }
     .burger-icon {
       display: block;
@@ -97,42 +57,33 @@
       width: 100%;
       background: #fff;
       border-radius: 2px;
-      opacity: 1;
       left: 0;
-      transition: .16s;
     }
     .burger-icon span:nth-child(1) { top: 3px; }
     .burger-icon span:nth-child(2) { top: 12px; }
     .burger-icon span:nth-child(3) { top: 21px; }
-    /* Cart */
     .open-purchases-btn {
       background-color: var(--header-footer-bg);
       color: var(--inverse-text-color);
       border: none;
-      width: 40px;
-      height: 58px;
+      width: 48px; height: 48px;
       font-size: 25px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 0;
-      margin-right: 12px;
-      flex-shrink:0;
-      position:relative;
-    }
-    .cart-ico::before {
-      content: "";
+      position: fixed;
+      top: 12px; right: 12px;
+      z-index: 1201;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.06);
     }
     .cart-ico {
       font-size: 28px;
-      /* Using emoji/Font awesome here is preferred for live */
-      /* fallback: */
       background: url('https://img.icons8.com/material-outlined/24/ffffff/shopping-cart--v2.png') no-repeat center;
       width: 28px; height: 28px; display: block;
       filter: brightness(0) invert(1);
     }
-    /* Side Menu */
     #sideMenu {
       height: 100%;
       width: 0;
@@ -142,8 +93,9 @@
       left: 0;
       background-color: var(--header-footer-bg);
       overflow-x: hidden;
-      transition: 0.4s;
+      transition: 0.35s;
       padding-top: 58px;
+      box-shadow: 2px 0 8px 0 rgba(0,0,0,0.10);
     }
     #sideMenu .close-btn {
       position: absolute;
@@ -155,16 +107,14 @@
     }
     #sideMenu a {
       padding: 14px 32px;
-      font-size: 1.21rem;
+      font-size: 1.13rem;
       color: var(--inverse-text-color);
       display: block;
       transition: color .2s;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-      font-weight: 500;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
       letter-spacing: .2px;
     }
     #sideMenu a:hover { color: var(--accent); background: #232323; }
-    /* Cart Panel */
     #purchasesPanel {
       height: 100%;
       width: 0;
@@ -174,8 +124,9 @@
       background-color: var(--header-footer-bg);
       color: var(--inverse-text-color);
       overflow-y: auto;
-      transition: 0.5s;
+      transition: 0.4s;
       padding-top: 58px;
+      box-shadow: -2px 0 8px 0 rgba(0,0,0,0.09);
     }
     #purchasesPanel .close-btn {
       position: absolute;
@@ -218,11 +169,9 @@
       font-size:1.1rem;
       padding:10px 0;
     }
-    /* Modal */
     .modal {display:none;position:fixed;z-index:3000;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,0.5);}
     .modal-content {background-color:var(--header-footer-bg);margin:10% auto;padding:20px;border:1px solid #888;width:90%;max-width:480px;border-radius:9px;position:relative;color:var(--inverse-text-color);}
     .modal-content .close {position:absolute;top:10px;right:20px;font-size:32px;font-weight:bold;cursor:pointer;}
-    /* --- HERO LAYOUT --- */
     .hero-flex {
       display: flex;
       justify-content: center;
@@ -246,7 +195,6 @@
       min-width: 0;
       justify-content: center;
     }
-    /* --- SLIDER --- */
     #hero-slider {
       width: 470px;
       max-width: 95vw;
@@ -312,7 +260,6 @@
     #slider-dots .active-dot {
       background: var(--header-footer-bg);
     }
-    /* SLIDER CAPTION ONLY SHOW FOR T-SHIRT DESIGN */
     .slider-caption {
       display:none;
       position: absolute;
@@ -504,29 +451,19 @@
     #productsContent .back-home {display:block;margin-top:2rem;text-align:center;font-size:1.1rem;text-decoration:none;color:var(--accent);}
     #productsContent .back-home:hover {text-decoration:underline;}
     @media (max-width: 600px) {
-      .header-logo h1 { font-size: 1.3rem; }
-      #hero-slider { max-width:99vw; height: 180px;}
-      .slider-caption {font-size:0.92rem;padding:6px 18px;bottom:18px;left:12px;}
-      .slider-label { font-size:0.8rem; left: 12px;bottom:6px;}
-      .hero-side h2 {font-size:1.39rem;}
-      .subtitle {font-size:0.98rem;}
-      .popular-tags {flex-wrap:wrap;}
+      .open-menu-btn, .open-purchases-btn {
+        width: 40px; height: 40px; top: 7px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="headerbar">
-    <button class="open-menu-btn" onclick="toggleMenu()" aria-label="Open menu">
-      <span class="burger-icon"><span></span><span></span><span></span></span>
-    </button>
-    <div class="header-logo">
-      <h1>Ryt Designs</h1>
-    </div>
-    <button class="open-purchases-btn" onclick="openPurchasesPanel()" aria-label="Cart">
-      <span class="cart-ico"></span>
-    </button>
-    <div class="header-divider"></div>
-  </div>
+  <button class="open-menu-btn" onclick="toggleMenu()" aria-label="Open menu">
+    <span class="burger-icon"><span></span><span></span><span></span></span>
+  </button>
+  <button class="open-purchases-btn" onclick="openPurchasesPanel()" aria-label="Cart">
+    <span class="cart-ico"></span>
+  </button>
   <div id="sideMenu">
     <span class="close-btn" onclick="closeMenu()">&times;</span>
     <a href="#home" onclick="showHome(); closeMenu(); triggerHeroAnimation();">Home</a>
@@ -740,9 +677,9 @@ document.addEventListener("DOMContentLoaded", function() {
     dotsContainer.appendChild(d);
   });
   function nextSlide() {
-    clearInterval(timer); // Stop the timer
+    clearInterval(timer);
     show((current + 1) % items.length);
-    autoSlide(); // Restart the timer
+    autoSlide();
   }
   function autoSlide(){timer = setInterval(nextSlide, 4500);}
   function resetAuto(){clearInterval(timer);autoSlide();}
