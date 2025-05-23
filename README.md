@@ -35,30 +35,15 @@
       width: 48px; height: 48px;
       font-size: 32px;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       border-radius: 0;
       position: fixed;
       top: 12px; left: 12px;
       z-index: 1201;
       box-shadow: 0 1px 8px rgba(0,0,0,0.06);
     }
-    .burger-icon {
-      display: block;
-      width: 28px;
-      height: 28px;
-      position: relative;
-    }
-    .burger-icon span {
-      display: block;
-      position: absolute;
-      height: 3px;
-      width: 100%;
-      background: #fff;
-      border-radius: 2px;
-      left: 0;
-    }
+    .burger-icon { display: block; width: 28px; height: 28px; position: relative; }
+    .burger-icon span { display: block; position: absolute; height: 3px; width: 100%; background: #fff; border-radius: 2px; left: 0; }
     .burger-icon span:nth-child(1) { top: 3px; }
     .burger-icon span:nth-child(2) { top: 12px; }
     .burger-icon span:nth-child(3) { top: 21px; }
@@ -69,13 +54,9 @@
       width: 48px; height: 48px;
       font-size: 25px;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       border-radius: 0;
-      position: fixed;
-      top: 12px; right: 12px;
-      z-index: 1201;
+      position: fixed; top: 12px; right: 12px; z-index: 1201;
       box-shadow: 0 1px 8px rgba(0,0,0,0.06);
     }
     .cart-ico {
@@ -87,10 +68,7 @@
     #sideMenu {
       height: 100%;
       width: 0;
-      position: fixed;
-      z-index: 2500;
-      top: 0;
-      left: 0;
+      position: fixed; z-index: 2500; top: 0; left: 0;
       background-color: var(--header-footer-bg);
       overflow-x: hidden;
       transition: 0.35s;
@@ -98,12 +76,8 @@
       box-shadow: 2px 0 8px 0 rgba(0,0,0,0.10);
     }
     #sideMenu .close-btn {
-      position: absolute;
-      top: 14px; right: 18px;
-      font-size: 42px;
-      color: #fff;
-      cursor: pointer;
-      line-height: 1;
+      position: absolute; top: 14px; right: 18px;
+      font-size: 42px; color: #fff; cursor: pointer; line-height: 1;
     }
     #sideMenu a {
       padding: 14px 32px;
@@ -116,11 +90,8 @@
     }
     #sideMenu a:hover { color: var(--accent); background: #232323; }
     #purchasesPanel {
-      height: 100%;
-      width: 0;
-      position: fixed;
-      z-index: 2400;
-      top: 0; right: 0;
+      height: 100%; width: 0;
+      position: fixed; z-index: 2400; top: 0; right: 0;
       background-color: var(--header-footer-bg);
       color: var(--inverse-text-color);
       overflow-y: auto;
@@ -129,12 +100,8 @@
       box-shadow: -2px 0 8px 0 rgba(0,0,0,0.09);
     }
     #purchasesPanel .close-btn {
-      position: absolute;
-      top: 14px; left: 18px;
-      font-size: 38px;
-      color: #fff;
-      cursor: pointer;
-      line-height: 1;
+      position: absolute; top: 14px; left: 18px;
+      font-size: 38px; color: #fff; cursor: pointer; line-height: 1;
     }
     #purchasesPanel h2 {text-align:center;}
     #purchasesPanel ul {
@@ -153,21 +120,11 @@
       font-size: 1rem;
     }
     #purchasesPanel li button {
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      padding: 3px 9px;
-      cursor: pointer;
-      margin-left: 12px;
-      font-size: 0.95rem;
+      background: var(--accent); color: #fff; border: none; border-radius: 4px;
+      padding: 3px 9px; cursor: pointer; margin-left: 12px; font-size: 0.95rem;
     }
     #purchasesPanel button[onclick="openCheckout()"] {
-      display:block;
-      width:100%;
-      margin: 12px 0 0 0;
-      font-size:1.1rem;
-      padding:10px 0;
+      display:block; width:100%; margin: 12px 0 0 0; font-size:1.1rem; padding:10px 0;
     }
     .modal {display:none;position:fixed;z-index:3000;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,0.5);}
     .modal-content {background-color:var(--header-footer-bg);margin:10% auto;padding:20px;border:1px solid #888;width:90%;max-width:480px;border-radius:9px;position:relative;color:var(--inverse-text-color);}
@@ -451,9 +408,7 @@
     #productsContent .back-home {display:block;margin-top:2rem;text-align:center;font-size:1.1rem;text-decoration:none;color:var(--accent);}
     #productsContent .back-home:hover {text-decoration:underline;}
     @media (max-width: 600px) {
-      .open-menu-btn, .open-purchases-btn {
-        width: 40px; height: 40px; top: 7px;
-      }
+      .open-menu-btn, .open-purchases-btn { width: 40px; height: 40px; top: 7px;}
     }
   </style>
 </head>
@@ -470,7 +425,7 @@
     <a href="#design-process" onclick="showHome(); closeMenu();">Process</a>
     <a href="#popular-services" onclick="showHome(); closeMenu();">Services</a>
     <a href="#design-packages" onclick="showHome(); closeMenu();">Packages</a>
-    <a href="#products" onclick="showProducts(); closeMenu();">Products</a>
+    <a href="https://rytdesignsca.github.io/rytdesignsca-products-page-/" onclick="closeMenu()" target="_blank" rel="noopener">Products</a>
     <a href="#contact" onclick="showHome(); closeMenu();">Contact</a>
     <a href="javascript:void(0)" onclick="openPurchasesPanel(); closeMenu();">Purchases</a>
   </div>
@@ -633,30 +588,23 @@
         <p><a href="#home" class="back-to-home">Back to Home</a></p>
       </footer>
     </div>
-    <div id="productsContent">
-      <header>
-        <h1>RYT DESIGNS Products</h1>
-      </header>
-      <div class="container">
-        <div class="product-grid">
-          <div class="product-item"><h3>Poster/Flyer</h3><p>$15</p></div>
-          <div class="product-item"><h3>Videos for events</h3><p>$25</p></div>
-          <div class="product-item"><h3>Business cards</h3><p>$20</p></div>
-          <div class="product-item"><h3>Invitations</h3><p>$24</p></div>
-          <div class="product-item"><h3>Logos for businesses</h3><p>$30</p></div>
-          <div class="product-item"><h3>YouTube Thumbnails (Basic)</h3><p>$20</p></div>
-          <div class="product-item"><h3>YouTube Thumbnail (Add-ons)</h3><p>$35</p></div>
-          <div class="product-item"><h3>Celebration cards</h3><p>$10</p></div>
-          <div class="product-item"><h3>Presentations</h3><p>$30</p></div>
-          <div class="product-item"><h3>Menus</h3><p>$20</p></div>
-          <div class="product-item"><h3>Banner</h3><p>$35</p></div>
-        </div>
-        <a class="back-home" href="#home" onclick="showHome();">Back to Home</a>
-      </div>
-    </div>
   </div>
 <script>
 let current = 0, timer = null;
+const PRODUCTS = [
+  { keywords: ["poster", "flyer"], label: "Poster/Flyer", price: 15 },
+  { keywords: ["video", "event"], label: "Videos for events", price: 25 },
+  { keywords: ["business card", "bus card", "card"], label: "Business cards", price: 20 },
+  { keywords: ["invitation", "invite"], label: "Invitations", price: 24 },
+  { keywords: ["logo", "businesses", "logos"], label: "Logos for businesses", price: 30 },
+  { keywords: ["youtube thumbnail", "thumbnails basic", "basic thumbnail"], label: "YouTube Thumbnails(Basic)", price: 20 },
+  { keywords: ["youtube addon", "thumbnail addon"], label: "YouTube Thumbnail(Add-ons)", price: 35 },
+  { keywords: ["celebration", "celebrate card"], label: "Celebration cards", price: 10 },
+  { keywords: ["presentation"], label: "Presentations", price: 30 },
+  { keywords: ["menu", "menus"], label: "Menus", price: 20 },
+  { keywords: ["banner"], label: "Banner", price: 35 },
+  { keywords: ["simple", "basic", "text design", "graphics"], label: "Basic designs (simple text or graphics)", price: 10 }
+];
 document.addEventListener("DOMContentLoaded", function() {
   // SLIDER LOGIC
   const items = document.querySelectorAll("#hero-slider .slider-item");
@@ -686,18 +634,13 @@ document.addEventListener("DOMContentLoaded", function() {
   show(0);autoSlide();
 
   document.querySelectorAll('.back-to-home').forEach(el=>
-    el.onclick = e => { document.getElementById("homeContent").style.display="block";
-                        document.getElementById("productsContent").style.display="none"; }
+    el.onclick = e => { document.getElementById("homeContent").style.display="block"; }
   );
   window.showHome = function(){
     document.getElementById("homeContent").style.display="block";
-    document.getElementById("productsContent").style.display="none";
-  }
-  window.showProducts = function(){
-    document.getElementById("homeContent").style.display="none";
-    document.getElementById("productsContent").style.display="block";
   }
 });
+
 const sideMenu = document.getElementById("sideMenu");
 const purchasesPanel = document.getElementById("purchasesPanel");
 let cart = [];
@@ -705,7 +648,21 @@ function toggleMenu() {if (sideMenu.style.width === "200px") {closeMenu();} else
 function closeMenu() {sideMenu.style.width = "0";}
 function openPurchasesPanel() {purchasesPanel.style.width = "260px";updateCartUI();}
 function closePurchasesPanel() {purchasesPanel.style.width = "0";}
-function performSearch() {}
+function performSearch() {
+  const val = document.getElementById('serviceSearch').value.toLowerCase().trim();
+  if (!val) return;
+  let matched = PRODUCTS.find(prod =>
+    prod.keywords.some(word => val.includes(word))
+      || prod.label.toLowerCase().includes(val)
+      || val.includes(prod.label.toLowerCase().replace(/[\(\)\-]/g,'').replace(/ +/g, ''))
+  );
+  if(matched){
+    window.open("https://rytdesignsca.github.io/rytdesignsca-products-page-/", "_blank");
+    return;
+  } else {
+    alert("No matching product found.");
+  }
+}
 function addToCart(id, name, price) {
   const existing = cart.find(item => item.id === id);
   if (existing) {
