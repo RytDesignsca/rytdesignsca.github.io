@@ -23,9 +23,7 @@
       background: var(--primary-bg);
       color: var(--text-color);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
+      margin: 0; padding: 0; overflow-x: hidden;
     }
     a { color: var(--accent); text-decoration: none; }
     .open-menu-btn {
@@ -106,18 +104,14 @@
     #purchasesPanel h2 {text-align:center;}
     #purchasesPanel ul {
       list-style: none;
-      padding: 0 0 0 0;
-      margin: 12px 0;
+      padding: 0; margin: 12px 0;
     }
     #purchasesPanel li {
       background: #454545;
       border-radius: 4px;
       margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 12px;
-      font-size: 1rem;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 12px; font-size: 1rem;
     }
     #purchasesPanel li button {
       background: var(--accent); color: #fff; border: none; border-radius: 4px;
@@ -352,20 +346,20 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 8px;
     }
     .search-result button {
       background: var(--accent);
       color: #fff !important;
       border: none;
-      border-radius: 11px;
-      margin-left: 7px;
-      padding: 3px 13px;
+      border-radius: 10px;
+      margin-left: 10px;
+      padding: 6px 15px;
       font-size: 0.95rem;
       cursor: pointer;
+      font-weight: 600;
     }
-    .search-result button:last-child {
-      background: #333;
-    }
+    .search-result button:last-child { background: #333; }
     .design-process, .popular-services, .design-packages, #contact {width:100%;margin:0 auto;}
     .design-process {padding:3.2rem 0 2.2rem 0;text-align:center;background-color:var(--secondary-bg);}
     .design-process h2 {font-size:2.1rem;margin-bottom:2rem;}
@@ -396,17 +390,6 @@
     footer p {margin-bottom:0.3rem;}
     footer a.back-to-home {color:var(--accent);text-decoration:none;font-weight:bold;transition:color 0.3s ease;}
     footer a.back-to-home:hover {color:var(--inverse-text-color);}
-    #productsContent {display:none;}
-    #productsContent header {background-color:var(--header-footer-bg);color:var(--inverse-text-color);padding:1rem;text-align:center;}
-    #productsContent header h1 {font-size:2rem;}
-    #productsContent .container {max-width:1200px;margin:2rem auto;padding:1rem;}
-    #productsContent .product-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));grid-gap:1.5rem;}
-    #productsContent .product-item {background-color:var(--secondary-bg);border:1px solid #ccc;border-radius:8px;padding:1rem;text-align:center;transition:transform 0.3s ease;}
-    #productsContent .product-item:hover {transform:translateY(-5px);}
-    #productsContent .product-item h3 {margin-bottom:0.5rem;font-size:1.5rem;}
-    #productsContent .product-item p {font-size:1.2rem;margin-bottom:1rem;}
-    #productsContent .back-home {display:block;margin-top:2rem;text-align:center;font-size:1.1rem;text-decoration:none;color:var(--accent);}
-    #productsContent .back-home:hover {text-decoration:underline;}
     @media (max-width: 600px) {
       .open-menu-btn, .open-purchases-btn { width: 40px; height: 40px; top: 7px;}
     }
@@ -486,7 +469,7 @@
           <div class="subtitle">
             Your Vision, My Creativity—Limitless Possibilities.
           </div>
-          <form class="home-search-row" onsubmit="performSearch(); return false;">
+          <form class="home-search-row" onsubmit="event.preventDefault(); performSearch();">
             <input type="text" id="serviceSearch" placeholder="What do you need designed?" autocomplete="off" />
             <button id="searchBtn" type="submit">Get a design</button>
           </form>
@@ -592,18 +575,18 @@
 <script>
 let current = 0, timer = null;
 const PRODUCTS = [
-  { keywords: ["poster", "flyer"], label: "Poster/Flyer", price: 15 },
-  { keywords: ["video", "event"], label: "Videos for events", price: 25 },
-  { keywords: ["business card", "bus card", "card"], label: "Business cards", price: 20 },
-  { keywords: ["invitation", "invite"], label: "Invitations", price: 24 },
-  { keywords: ["logo", "businesses", "logos"], label: "Logos for businesses", price: 30 },
-  { keywords: ["youtube thumbnail", "thumbnails basic", "basic thumbnail"], label: "YouTube Thumbnails(Basic)", price: 20 },
-  { keywords: ["youtube addon", "thumbnail addon"], label: "YouTube Thumbnail(Add-ons)", price: 35 },
-  { keywords: ["celebration", "celebrate card"], label: "Celebration cards", price: 10 },
-  { keywords: ["presentation"], label: "Presentations", price: 30 },
-  { keywords: ["menu", "menus"], label: "Menus", price: 20 },
-  { keywords: ["banner"], label: "Banner", price: 35 },
-  { keywords: ["simple", "basic", "text design", "graphics"], label: "Basic designs (simple text or graphics)", price: 10 }
+  { keywords: ["poster", "flyer"], label: "Poster/Flyer", price: 15, id: "poster-flyer" },
+  { keywords: ["video", "event"], label: "Videos for events", price: 25, id: "videos-events" },
+  { keywords: ["business card", "card"], label: "Business cards", price: 20, id: "business-cards" },
+  { keywords: ["invitation", "invite"], label: "Invitations", price: 24, id: "invitations" },
+  { keywords: ["logo", "logos", "businesses"], label: "Logos for businesses", price: 30, id: "logos-biz" },
+  { keywords: ["youtube thumbnail", "thumbnails basic", "basic thumbnail"], label: "YouTube Thumbnails(Basic)", price: 20, id: "basic-thumb" },
+  { keywords: ["youtube addon", "thumbnail addon"], label: "YouTube Thumbnail(Add-ons)", price: 35, id: "add-on-thumb" },
+  { keywords: ["celebration", "celebrate card"], label: "Celebration cards", price: 10, id: "celebration-cards" },
+  { keywords: ["presentations", "presentation"], label: "Presentations", price: 30, id: "presentations" },
+  { keywords: ["menu", "menus"], label: "Menus", price: 20, id: "menus" },
+  { keywords: ["banner"], label: "Banner", price: 35, id: "banner" },
+  { keywords: ["simple", "basic", "text design", "graphics"], label: "Basic designs (simple text or graphics)", price: 10, id: "basic-design" }
 ];
 document.addEventListener("DOMContentLoaded", function() {
   // SLIDER LOGIC
@@ -633,6 +616,9 @@ document.addEventListener("DOMContentLoaded", function() {
   function resetAuto(){clearInterval(timer);autoSlide();}
   show(0);autoSlide();
 
+  document.getElementById('serviceSearch').addEventListener('input', performSearch);
+  document.getElementById('serviceSearch').addEventListener('focus', performSearch);
+
   document.querySelectorAll('.back-to-home').forEach(el=>
     el.onclick = e => { document.getElementById("homeContent").style.display="block"; }
   );
@@ -649,18 +635,34 @@ function closeMenu() {sideMenu.style.width = "0";}
 function openPurchasesPanel() {purchasesPanel.style.width = "260px";updateCartUI();}
 function closePurchasesPanel() {purchasesPanel.style.width = "0";}
 function performSearch() {
-  const val = document.getElementById('serviceSearch').value.toLowerCase().trim();
-  if (!val) return;
-  let matched = PRODUCTS.find(prod =>
-    prod.keywords.some(word => val.includes(word))
-      || prod.label.toLowerCase().includes(val)
-      || val.includes(prod.label.toLowerCase().replace(/[\(\)\-]/g,'').replace(/ +/g, ''))
-  );
-  if(matched){
-    window.open("https://rytdesignsca.github.io/rytdesignsca-products-page-/", "_blank");
+  let val = document.getElementById('serviceSearch').value.trim().toLowerCase();
+  let results = [];
+  if (val === "") {
+    document.getElementById('searchResults').innerHTML = "";
     return;
+  }
+  PRODUCTS.forEach(prod => {
+    // Match on label or any keyword
+    if (
+      prod.label.toLowerCase().includes(val)
+      || prod.keywords.some(k => k && val.includes(k))
+      || val.includes(prod.label.toLowerCase().replace(/[\(\)\-]/g, '').replace(/ +/g, ''))
+    ) {
+      results.push(prod);
+    }
+  });
+  const resultsDiv = document.getElementById('searchResults');
+  if (results.length === 0) {
+    resultsDiv.innerHTML = "<div class='search-result'>No matching products found.</div>";
   } else {
-    alert("No matching product found.");
+    resultsDiv.innerHTML = "";
+    results.forEach(prod => {
+      const r = document.createElement('div');
+      r.className = "search-result";
+      r.innerHTML = `<span>${prod.label} - $${prod.price}</span>
+        <button onclick="addToCart('${prod.id.replace(/'/g,'')}', '${prod.label.replace(/'/g,'')}', ${prod.price})">Buy</button>`;
+      resultsDiv.appendChild(r);
+    });
   }
 }
 function addToCart(id, name, price) {
