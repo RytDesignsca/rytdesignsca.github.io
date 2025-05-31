@@ -476,8 +476,8 @@
           <div class="popular-tags">
             <span class="popular-label">Popular:</span>
             <button class="tag-btn" type="button" onclick="document.getElementById('serviceSearch').value='Logo design'; performSearch();">Logo design</button>
-            <button class="tag-btn" type="button" onclick="document.getElementById('serviceSearch').value='Website'; performSearch();">Website</button>
-            <button class="tag-btn" type="button" onclick="document.getElementById('serviceSearch').value='Branding'; performSearch();">Branding</button>
+            <button class="tag-btn" type="button" onclick="document.getElementById('serviceSearch').value='Poster/Flyer'; performSearch();">Poster/Flyer</button>
+            <button class="tag-btn" type="button" onclick="document.getElementById('serviceSearch').value='T-Shirt design'; performSearch();">T-Shirt design</button>
           </div>
           <div id="searchResults"></div>
         </div>
@@ -507,20 +507,20 @@
         <h2>Popular Services</h2>
         <div class="services-boxes">
           <div class="service-box">
-            <img src="web-development-icon.png" alt="Website Development" />
-            <h3>Website Development</h3>
+            <img src="flyers-icon.png" alt="Flyers" />
+            <h3>Flyers</h3>
           </div>
           <div class="service-box">
             <img src="logo-design-icon.png" alt="Logo Design" />
             <h3>Logo Design</h3>
           </div>
           <div class="service-box">
-            <img src="seo-icon.png" alt="SEO" />
-            <h3>SEO</h3>
+            <img src="product-design-icon.png" alt="Product Design" />
+            <h3>Product Design</h3>
           </div>
           <div class="service-box">
-            <img src="voice-over-icon.png" alt="Voice Over" />
-            <h3>Voice Over</h3>
+            <img src="packaging-label-icon.png" alt="Packaging and Label" />
+            <h3>Packaging and Label</h3>
           </div>
           <div class="service-box">
             <img src="social-media-icon.png" alt="Social Media" />
@@ -578,7 +578,7 @@ document.addEventListener("DOMContentLoaded", function() {
   let current = 0, timer = null;
   const PRODUCTS = [
     { keywords: ["poster", "flyer"], label: "Poster/Flyer", price: 15, id: "poster-flyer" },
-    { keywords: ["video", "event"], label: "Videos for events", price: 25, id: "videos-events" },
+    { keywords: ["flyer", "flyers", "poster"], label: "Flyers", price: 15, id: "flyers" },
     { keywords: ["business card", "card"], label: "Business cards", price: 20, id: "business-cards" },
     { keywords: ["invitation", "invite"], label: "Invitations", price: 24, id: "invitations" },
     { keywords: ["logo", "logos", "businesses"], label: "Logos for businesses", price: 30, id: "logos-biz" },
@@ -588,7 +588,11 @@ document.addEventListener("DOMContentLoaded", function() {
     { keywords: ["presentations", "presentation"], label: "Presentations", price: 30, id: "presentations" },
     { keywords: ["menu", "menus"], label: "Menus", price: 20, id: "menus" },
     { keywords: ["banner"], label: "Banner", price: 35, id: "banner" },
-    { keywords: ["simple", "basic", "text design", "graphics"], label: "Basic designs (simple text or graphics)", price: 10, id: "basic-design" }
+    { keywords: ["simple", "basic", "text design", "graphics"], label: "Basic designs (simple text or graphics)", price: 10, id: "basic-design" },
+    { keywords: ["album cover", "music cover", "album"], label: "Album Cover", price: 50, id: "album-cover" },
+    { keywords: ["product label", "label"], label: "Product Label", price: 25, id: "product-label" },
+    { keywords: ["clothing design", "t-shirt", "shirt", "hoodie"], label: "Clothing Design", price: 50, id: "clothing-design" },
+    { keywords: ["product design", "packaging", "label", "product"], label: "Product Design", price: 40, id: "product-design" }
   ];
 
   // --- Cart Logic ---
