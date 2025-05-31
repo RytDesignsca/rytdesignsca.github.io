@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -477,8 +476,8 @@
           <div class="popular-tags">
             <span class="popular-label">Popular:</span>
             <button class="tag-btn" type="button" onclick="document.getElementById('serviceSearch').value='Logo design'; performSearch();">Logo design</button>
-            <button class="tag-btn" type="button" onclick="document.getElementById('serviceSearch').value='Website'; performSearch();">Website</button>
-            <button class="tag-btn" type="button" onclick="document.getElementById('serviceSearch').value='Branding'; performSearch();">Branding</button>
+            <button class="tag-btn" type="button" onclick="document.getElementById('serviceSearch').value='Poster/Flyer'; performSearch();">Poster/Flyer</button>
+            <button class="tag-btn" type="button" onclick="document.getElementById('serviceSearch').value='T-Shirt design'; performSearch();">T-Shirt design</button>
           </div>
           <div id="searchResults"></div>
         </div>
@@ -508,20 +507,20 @@
         <h2>Popular Services</h2>
         <div class="services-boxes">
           <div class="service-box">
-            <img src="web-development-icon.png" alt="Website Development" />
-            <h3>Website Development</h3>
+            <img src="flyers-icon.png" alt="Flyers" />
+            <h3>Flyers</h3>
           </div>
           <div class="service-box">
             <img src="logo-design-icon.png" alt="Logo Design" />
             <h3>Logo Design</h3>
           </div>
           <div class="service-box">
-            <img src="seo-icon.png" alt="SEO" />
-            <h3>SEO</h3>
+            <img src="product-design-icon.png" alt="Product Design" />
+            <h3>Product Design</h3>
           </div>
           <div class="service-box">
-            <img src="voice-over-icon.png" alt="Voice Over" />
-            <h3>Voice Over</h3>
+            <img src="packaging-label-icon.png" alt="Packaging and Label" />
+            <h3>Packaging and Label</h3>
           </div>
           <div class="service-box">
             <img src="social-media-icon.png" alt="Social Media" />
@@ -574,23 +573,141 @@
     </div>
   </div>
 <script>
-let current = 0, timer = null;
-const PRODUCTS = [
-  { keywords: ["poster", "flyer"], label: "Poster/Flyer", price: 15, id: "poster-flyer" },
-  { keywords: ["video", "event"], label: "Videos for events", price: 25, id: "videos-events" },
-  { keywords: ["business card", "card"], label: "Business cards", price: 20, id: "business-cards" },
-  { keywords: ["invitation", "invite"], label: "Invitations", price: 24, id: "invitations" },
-  { keywords: ["logo", "logos", "businesses"], label: "Logos for businesses", price: 30, id: "logos-biz" },
-  { keywords: ["youtube thumbnail", "thumbnails basic", "basic thumbnail"], label: "YouTube Thumbnails(Basic)", price: 20, id: "basic-thumb" },
-  { keywords: ["youtube addon", "thumbnail addon"], label: "YouTube Thumbnail(Add-ons)", price: 35, id: "add-on-thumb" },
-  { keywords: ["celebration", "celebrate card"], label: "Celebration cards", price: 10, id: "celebration-cards" },
-  { keywords: ["presentations", "presentation"], label: "Presentations", price: 30, id: "presentations" },
-  { keywords: ["menu", "menus"], label: "Menus", price: 20, id: "menus" },
-  { keywords: ["banner"], label: "Banner", price: 35, id: "banner" },
-  { keywords: ["simple", "basic", "text design", "graphics"], label: "Basic designs (simple text or graphics)", price: 10, id: "basic-design" }
-];
 document.addEventListener("DOMContentLoaded", function() {
   // SLIDER LOGIC
+  let current = 0, timer = null;
+  const PRODUCTS = [
+    { keywords: ["poster", "flyer"], label: "Poster/Flyer", price: 15, id: "poster-flyer" },
+    { keywords: ["flyer", "flyers", "poster"], label: "Flyers", price: 15, id: "flyers" },
+    { keywords: ["business card", "card"], label: "Business cards", price: 20, id: "business-cards" },
+    { keywords: ["invitation", "invite"], label: "Invitations", price: 24, id: "invitations" },
+    { keywords: ["logo", "logos", "businesses"], label: "Logos for businesses", price: 30, id: "logos-biz" },
+    { keywords: ["youtube thumbnail", "thumbnails basic", "basic thumbnail"], label: "YouTube Thumbnails(Basic)", price: 20, id: "basic-thumb" },
+    { keywords: ["youtube addon", "thumbnail addon"], label: "YouTube Thumbnail(Add-ons)", price: 35, id: "add-on-thumb" },
+    { keywords: ["celebration", "celebrate card"], label: "Celebration cards", price: 10, id: "celebration-cards" },
+    { keywords: ["presentations", "presentation"], label: "Presentations", price: 30, id: "presentations" },
+    { keywords: ["menu", "menus"], label: "Menus", price: 20, id: "menus" },
+    { keywords: ["banner"], label: "Banner", price: 35, id: "banner" },
+    { keywords: ["simple", "basic", "text design", "graphics"], label: "Basic designs (simple text or graphics)", price: 10, id: "basic-design" },
+    { keywords: ["album cover", "music cover", "album"], label: "Album Cover", price: 50, id: "album-cover" },
+    { keywords: ["product label", "label"], label: "Product Label", price: 25, id: "product-label" },
+    { keywords: ["clothing design", "t-shirt", "shirt", "hoodie"], label: "Clothing Design", price: 50, id: "clothing-design" },
+    { keywords: ["product design", "packaging", "label", "product"], label: "Product Design", price: 40, id: "product-design" }
+  ];
+
+  // --- Cart Logic ---
+  let cart = [];
+  const sideMenu = document.getElementById("sideMenu");
+  const purchasesPanel = document.getElementById("purchasesPanel");
+
+  window.toggleMenu = function() {
+    if (sideMenu.style.width === "200px") {
+      closeMenu();
+    } else {
+      sideMenu.style.width = "200px";
+    }
+  }
+  window.closeMenu = function() { sideMenu.style.width = "0"; }
+  window.openPurchasesPanel = function() {
+    purchasesPanel.style.width = "260px";
+    updateCartUI();
+  }
+  window.closePurchasesPanel = function() { purchasesPanel.style.width = "0"; }
+
+  function updateCartUI() {
+    const cartItemsContainer = document.getElementById('cartItems');
+    const cartTotalDisplay = document.getElementById('cartTotal');
+    cartItemsContainer.innerHTML = "";
+    cart.forEach((item, index) => {
+      const li = document.createElement('li');
+      li.textContent = `${item.name} x ${item.quantity} - $${item.price * item.quantity}`;
+      const removeBtn = document.createElement('button');
+      removeBtn.textContent = "Remove";
+      removeBtn.onclick = function() {
+        cart.splice(index, 1);
+        updateCartUI();
+      };
+      li.appendChild(removeBtn);
+      cartItemsContainer.appendChild(li);
+    });
+    cartTotalDisplay.textContent = "Total: $" + cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  }
+
+  window.addToCart = function(id, name, price) {
+    const existing = cart.find(item => item.id === id);
+    if (existing) {
+      existing.quantity += 1;
+    } else {
+      cart.push({ id, name, price, quantity: 1 });
+    }
+    updateCartUI();
+  }
+
+  window.openCheckout = function() {
+    if(cart.length === 0){
+      alert("Your cart is empty.");
+      return;
+    }
+    let total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    document.getElementById("orderTotal").textContent = total;
+    document.getElementById("checkoutModal").style.display = "block";
+  }
+  window.closeCheckout = function() { document.getElementById("checkoutModal").style.display = "none"; }
+
+  document.getElementById("checkoutForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    alert("Payment successful! Thank you for your purchase.");
+    cart = [];
+    updateCartUI();
+    window.closeCheckout();
+    window.closePurchasesPanel();
+  });
+
+  window.onclick = function(event) {
+    const modal = document.getElementById("checkoutModal");
+    if (event.target === modal) {
+      window.closeCheckout();
+    }
+  }
+
+  // --- End Cart Logic ---
+
+  // --- Search Logic ---
+  function performSearch() {
+    let val = document.getElementById('serviceSearch').value.trim().toLowerCase();
+    let results = [];
+    if (val === "") {
+      document.getElementById('searchResults').innerHTML = "";
+      return;
+    }
+    PRODUCTS.forEach(prod => {
+      if (
+        prod.label.toLowerCase().includes(val)
+        || prod.keywords.some(k => k && val.includes(k))
+        || val.includes(prod.label.toLowerCase().replace(/[\(\)\-]/g, '').replace(/ +/g, ''))
+      ) {
+        results.push(prod);
+      }
+    });
+    const resultsDiv = document.getElementById('searchResults');
+    if (results.length === 0) {
+      resultsDiv.innerHTML = "<div class='search-result'>No matching products found.</div>";
+    } else {
+      resultsDiv.innerHTML = "";
+      results.forEach(prod => {
+        const r = document.createElement('div');
+        r.className = "search-result";
+        r.innerHTML = `<span>${prod.label} - $${prod.price}</span>
+          <button onclick="addToCart('${prod.id.replace(/'/g,'')}', '${prod.label.replace(/'/g,'')}', ${prod.price})">Buy</button>`;
+        resultsDiv.appendChild(r);
+      });
+    }
+  }
+  window.performSearch = performSearch;
+  document.getElementById('serviceSearch').addEventListener('input', performSearch);
+  document.getElementById('serviceSearch').addEventListener('focus', performSearch);
+
+  // --- Slider Logic ---
   const items = document.querySelectorAll("#hero-slider .slider-item");
   const dotsContainer = document.getElementById("slider-dots");
   function show(idx) {
@@ -605,7 +722,7 @@ document.addEventListener("DOMContentLoaded", function() {
   items.forEach((el, i) => {
     const d = document.createElement("span");
     d.ariaLabel = `Go to slide ${i + 1}`;
-    d.onclick = function(){ show(i); resetAuto(); }
+    d.onclick = function(){ show(i); resetAuto();}
     dotsContainer.appendChild(d);
   });
   function nextSlide() {
@@ -617,123 +734,28 @@ document.addEventListener("DOMContentLoaded", function() {
   function resetAuto(){clearInterval(timer);autoSlide();}
   show(0);autoSlide();
 
-  document.getElementById('serviceSearch').addEventListener('input', performSearch);
-  document.getElementById('serviceSearch').addEventListener('focus', performSearch);
-
   document.querySelectorAll('.back-to-home').forEach(el=>
     el.onclick = e => { document.getElementById("homeContent").style.display="block"; }
   );
-  window.showHome = function(){
-    document.getElementById("homeContent").style.display="block";
+  window.showHome = function(){ document.getElementById("homeContent").style.display="block"; }
+  
+  // page re-animation
+  window.triggerHeroAnimation = function() {
+    const heroContent = document.querySelector('.hero-side');
+    if(heroContent){
+      heroContent.style.animation = 'none';
+      void heroContent.offsetWidth;
+      heroContent.style.animation = 'bounceIn 1s ease-out';
+    }
   }
-});
-
-const sideMenu = document.getElementById("sideMenu");
-const purchasesPanel = document.getElementById("purchasesPanel");
-let cart = [];
-function toggleMenu() {if (sideMenu.style.width === "200px") {closeMenu();} else {sideMenu.style.width = "200px";}}
-function closeMenu() {sideMenu.style.width = "0";}
-function openPurchasesPanel() {purchasesPanel.style.width = "260px";updateCartUI();}
-function closePurchasesPanel() {purchasesPanel.style.width = "0";}
-function performSearch() {
-  let val = document.getElementById('serviceSearch').value.trim().toLowerCase();
-  let results = [];
-  if (val === "") {
-    document.getElementById('searchResults').innerHTML = "";
-    return;
-  }
-  PRODUCTS.forEach(prod => {
-    // Match on label or any keyword
-    if (
-      prod.label.toLowerCase().includes(val)
-      || prod.keywords.some(k => k && val.includes(k))
-      || val.includes(prod.label.toLowerCase().replace(/[\(\)\-]/g, '').replace(/ +/g, ''))
-    ) {
-      results.push(prod);
+  window.addEventListener("hashchange", function() {
+    if (location.hash === "#home") {
+      window.triggerHeroAnimation();
     }
   });
-  const resultsDiv = document.getElementById('searchResults');
-  if (results.length === 0) {
-    resultsDiv.innerHTML = "<div class='search-result'>No matching products found.</div>";
-  } else {
-    resultsDiv.innerHTML = "";
-    results.forEach(prod => {
-      const r = document.createElement('div');
-      r.className = "search-result";
-      r.innerHTML = `<span>${prod.label} - $${prod.price}</span>
-        <button onclick="addToCart('${prod.id.replace(/'/g,'')}', '${prod.label.replace(/'/g,'')}', ${prod.price})">Buy</button>`;
-      resultsDiv.appendChild(r);
-    });
-  }
-}
-function addToCart(id, name, price) {
-  const existing = cart.find(item => item.id === id);
-  if (existing) {
-    existing.quantity += 1;
-  } else {
-    cart.push({ id, name, price, quantity: 1 });
-  }
-  updateCartUI();
-}
-function updateCartUI() {
-  const cartItemsContainer = document.getElementById('cartItems');
-  const cartTotalDisplay = document.getElementById('cartTotal');
-  cartItemsContainer.innerHTML = "";
-  cart.forEach((item, index) => {
-    const li = document.createElement('li');
-    li.textContent = `${item.name} x ${item.quantity} - $${item.price * item.quantity}`;
-    const removeBtn = document.createElement('button');
-    removeBtn.textContent = "Remove";
-    removeBtn.onclick = () => {
-      cart.splice(index, 1);
-      updateCartUI();
-    };
-    li.appendChild(removeBtn);
-    cartItemsContainer.appendChild(li);
-  });
-  cartTotalDisplay.textContent = "Total: $" + cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-}
-function openCheckout() {
-  if(cart.length === 0){
-    alert("Your cart is empty.");
-    return;
-  }
-  let total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  document.getElementById("orderTotal").textContent = total;
-  document.getElementById("checkoutModal").style.display = "block";
-}
-function closeCheckout() { document.getElementById("checkoutModal").style.display = "none"; }
-document.getElementById("checkoutForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-  alert("Payment successful! Thank you for your purchase.");
-  cart = [];
-  updateCartUI();
-  closeCheckout();
-  closePurchasesPanel();
-});
-window.onclick = function(event) {
-  const modal = document.getElementById("checkoutModal");
-  if (event.target === modal) {
-    closeCheckout();
-  }
-}
-function triggerHeroAnimation() {
-  const heroContent = document.querySelector('.hero-side');
-  if(heroContent){
-    heroContent.style.animation = 'none';
-    void heroContent.offsetWidth;
-    heroContent.style.animation = 'bounceIn 1s ease-out';
-  }
-}
-window.addEventListener("hashchange", function() {
-  if (location.hash === "#home") {
-    triggerHeroAnimation();
-  }
-});
-window.addEventListener("DOMContentLoaded", function() {
   if (!location.hash || location.hash === "#home") {
-    showHome();
-    triggerHeroAnimation();
+    window.showHome();
+    window.triggerHeroAnimation();
   }
 });
 </script>
