@@ -408,7 +408,7 @@
     <a href="#design-process" onclick="showHome(); closeMenu();">Process</a>
     <a href="#popular-services" onclick="showHome(); closeMenu();">Services</a>
     <a href="#design-packages" onclick="showHome(); closeMenu();">Packages</a>
-    <a href="https://rytdesignsca.github.io/rytdesignsca-products-page-/" onclick="closeMenu()" target="_blank" rel="noopener">Products</a>
+  <a href="https://rytdesignsca.github.io/Products/" onclick="closeMenu()" target="_blank" rel="noopener">Products</a>
     <a href="#contact" onclick="showHome(); closeMenu();">Contact</a>
     <a href="javascript:void(0)" onclick="openPurchasesPanel(); closeMenu();">Purchases</a>
   </div>
