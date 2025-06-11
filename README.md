@@ -393,6 +393,76 @@
     @media (max-width: 600px) {
       .open-menu-btn, .open-purchases-btn { width: 40px; height: 40px; top: 7px;}
     }
+    /* --- additional form & Calendly styles --- */
+    .project-inquiry-form {
+      background: #fff;
+      box-shadow: 0 2px 16px #eee;
+      padding: 24px 18px;
+      border-radius: 11px;
+      max-width: 425px;
+      margin: 0 auto 22px auto;
+      text-align: left;
+    }
+    .project-inquiry-form label {
+      display: block;
+      font-weight: 600;
+      margin-top: 1.1em;
+      margin-bottom: 3px;
+    }
+    .project-inquiry-form input, .project-inquiry-form textarea, .project-inquiry-form select {
+      width: 100%;
+      padding: 8px 10px;
+      font-size: 1rem;
+      margin-bottom: 8px;
+      border: 1px solid #e5e5e5;
+      border-radius: 5px;
+      outline: none;
+      box-sizing: border-box;
+    }
+    .project-inquiry-form textarea {
+      min-height: 70px;
+      resize: vertical;
+    }
+    .project-inquiry-form button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 11px 28px;
+      font-size: 1.12rem;
+      cursor: pointer;
+      margin-top: 9px;
+      font-weight: 700;
+      transition: background 0.18s;
+    }
+    .project-inquiry-form button:hover {
+      background: #005f5f;
+    }
+    .form-success {
+      color: green;
+      font-weight: 600;
+      margin-top: 8px;
+      margin-bottom: 0.6em;
+      text-align: center;
+    }
+    .form-error {
+      color: #ad2b2b;
+      font-weight: 500;
+      margin-top: 5px;
+      margin-bottom: 0.6em;
+      text-align: center;
+    }
+    .calendly-inline-widget {
+      min-width: 320px;
+      height: 550px;
+      margin: 20px auto;
+      border-radius: 11px;
+      box-shadow: 0 1px 9px #eee;
+    }
+    @media (max-width: 600px) {
+      .project-inquiry-form, .calendly-inline-widget { max-width: 98vw; }
+    }
+    .contact-or { text-align:center;margin:14px 0; font-weight:600; color:#444;}
   </style>
 </head>
 <body>
@@ -408,7 +478,8 @@
     <a href="#design-process" onclick="showHome(); closeMenu();">Process</a>
     <a href="#popular-services" onclick="showHome(); closeMenu();">Services</a>
     <a href="#design-packages" onclick="showHome(); closeMenu();">Packages</a>
-  <a href="https://rytdesignsca.github.io/Products/" onclick="closeMenu()" target="_blank" rel="noopener">Products</a>
+    <!-- Products link now transfers cart to Products page -->
+    <a href="javascript:void(0)" onclick="transferCartToProducts(); closeMenu();">Products</a>
     <a href="#contact" onclick="showHome(); closeMenu();">Contact</a>
     <a href="javascript:void(0)" onclick="openPurchasesPanel(); closeMenu();">Purchases</a>
   </div>
@@ -552,7 +623,34 @@
       <section id="contact">
         <h2>Get in Touch</h2>
         <div class="contact-container">
-          <div class="contact-info">
+          <form id="projectInquiryForm" class="project-inquiry-form" autocomplete="off">
+            <div class="form-success" id="formSuccess" style="display:none;"></div>
+            <div class="form-error" id="formError" style="display:none;"></div>
+            <label for="name">Your Name *</label>
+            <input type="text" id="name" required placeholder="Jane Doe">
+            <label for="email">Your Email *</label>
+            <input type="email" id="email" required placeholder="name@email.com">
+            <label for="style">What's your project style?</label>
+            <select id="style" required>
+              <option value="">- Select -</option>
+              <option>Modern & Minimalist</option>
+              <option>Bold & Vibrant</option>
+              <option>Classic & Elegant</option>
+              <option>Fun & Playful</option>
+              <option>Not sure / Surprise me</option>
+            </select>
+            <label for="vision">Tell us about your vision</label>
+            <textarea id="vision" required placeholder="e.g. I want a bold, clean logo for my bakery, maybe with pastel colors..."></textarea>
+            <label for="requirements">Key requirements or inspirations?</label>
+            <textarea id="requirements" placeholder="Logo shapes, colors, examples, must-have ideas, etc."></textarea>
+            <button type="submit">Send Inquiry</button>
+          </form>
+          <div class="contact-or">or Book a Free 15-min Consultation:</div>
+          <div class="calendly-inline-widget"
+              data-url="https://calendly.com/rytdesignsca/consultation?hide_gdpr_banner=1">
+          </div>
+          <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+          <div class="contact-info" style="margin-top:19px;">
             <p><strong>Phone:</strong> +1 226-977-9311</p>
             <p><strong>Alternate Phone:</strong> +1 226-977-9310</p>
             <p><strong>Email:</strong>
@@ -574,6 +672,39 @@
   </div>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
+  // -- Project Inquiry Form logic --
+  const form = document.getElementById('projectInquiryForm');
+  const formSuccess = document.getElementById('formSuccess');
+  const formError = document.getElementById('formError');
+  if (form) {
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = form.querySelector("#name").value.trim();
+      const email = form.querySelector("#email").value.trim();
+      const style = form.querySelector("#style").value;
+      const vision = form.querySelector("#vision").value.trim();
+      const requirements = form.querySelector("#requirements").value.trim();
+      if (!name || !email || !vision || !style) {
+        formError.style.display = "block";
+        formError.textContent = "Please fill in all required fields.";
+        formSuccess.style.display = "none";
+        return;
+      }
+      setTimeout(() => {
+        formError.style.display = "none";
+        formSuccess.style.display = "block";
+        formSuccess.textContent = "Thank you! Your project inquiry has been sent.";
+        form.reset();
+      }, 800);
+    });
+  }
+  window.transferCartToProducts = function() {
+      if (window.cart && Array.isArray(window.cart)) {
+        sessionStorage.setItem('rytCart', JSON.stringify(window.cart));
+      }
+      window.open("https://rytdesignsca.github.io/Products/", "_blank");
+  };
+
   // SLIDER LOGIC
   let current = 0, timer = null;
   const PRODUCTS = [
@@ -594,7 +725,6 @@ document.addEventListener("DOMContentLoaded", function() {
     { keywords: ["clothing design", "t-shirt", "shirt", "hoodie"], label: "Clothing Design", price: 50, id: "clothing-design" },
     { keywords: ["product design", "packaging", "label", "product"], label: "Product Design", price: 40, id: "product-design" }
   ];
-
   // --- Cart Logic ---
   let cart = [];
   const sideMenu = document.getElementById("sideMenu");
@@ -738,8 +868,6 @@ document.addEventListener("DOMContentLoaded", function() {
     el.onclick = e => { document.getElementById("homeContent").style.display="block"; }
   );
   window.showHome = function(){ document.getElementById("homeContent").style.display="block"; }
-  
-  // page re-animation
   window.triggerHeroAnimation = function() {
     const heroContent = document.querySelector('.hero-side');
     if(heroContent){
