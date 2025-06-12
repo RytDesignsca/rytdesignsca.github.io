@@ -393,7 +393,6 @@
     @media (max-width: 600px) {
       .open-menu-btn, .open-purchases-btn { width: 40px; height: 40px; top: 7px;}
     }
-    /* --- additional form & Calendly styles --- */
     .project-inquiry-form {
       background: #fff;
       box-shadow: 0 2px 16px #eee;
@@ -452,18 +451,11 @@
       margin-bottom: 0.6em;
       text-align: center;
     }
-    .calendly-inline-widget {
-      min-width: 320px;
-      height: 550px;
-      margin: 20px auto;
-      border-radius: 11px;
-      box-shadow: 0 1px 9px #eee;
-    }
-    @media (max-width: 600px) {
-      .project-inquiry-form, .calendly-inline-widget { max-width: 98vw; }
-    }
     .contact-or { text-align:center;margin:14px 0; font-weight:600; color:#444;}
   </style>
+  <!-- Google Calendar Appointment Scheduling begin -->
+  <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
+  <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
 </head>
 <body>
   <button class="open-menu-btn" onclick="toggleMenu()" aria-label="Open menu">
@@ -478,7 +470,6 @@
     <a href="#design-process" onclick="showHome(); closeMenu();">Process</a>
     <a href="#popular-services" onclick="showHome(); closeMenu();">Services</a>
     <a href="#design-packages" onclick="showHome(); closeMenu();">Packages</a>
-    <!-- Products link now transfers cart to Products page -->
     <a href="javascript:void(0)" onclick="transferCartToProducts(); closeMenu();">Products</a>
     <a href="#contact" onclick="showHome(); closeMenu();">Contact</a>
     <a href="javascript:void(0)" onclick="openPurchasesPanel(); closeMenu();">Purchases</a>
@@ -645,11 +636,8 @@
             <textarea id="requirements" placeholder="Logo shapes, colors, examples, must-have ideas, etc."></textarea>
             <button type="submit">Send Inquiry</button>
           </form>
-          <div class="contact-or">or Book a Free 15-min Consultation:</div>
-          <div class="calendly-inline-widget"
-              data-url="https://calendly.com/rytdesignsca/consultation?hide_gdpr_banner=1">
-          </div>
-          <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+          <div class="contact-or">or Book a Free 15‑min Consultation:</div>
+          <div id="gcal-button-container"></div>
           <div class="contact-info" style="margin-top:19px;">
             <p><strong>Phone:</strong> +1 226-977-9311</p>
             <p><strong>Alternate Phone:</strong> +1 226-977-9310</p>
@@ -705,6 +693,19 @@ document.addEventListener("DOMContentLoaded", function() {
       window.open("https://rytdesignsca.github.io/Products/", "_blank");
   };
 
+  // Google Calendar Button Injection
+  window.addEventListener('load', function() {
+    var btnTarget = document.getElementById('gcal-button-container');
+    if (btnTarget && window.calendar && window.calendar.schedulingButton) {
+      calendar.schedulingButton.load({
+        url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3VpIaEgD8-5JS2dBR-7XaOx9beJuvfUs5Fq7CtY0VZ1hQdcewcz0RyCSxQClVQWASiLuzz36AK?gv=true',
+        color: '#8E24AA',
+        label: 'Book an appointment',
+        target: btnTarget
+      });
+    }
+  });
+
   // SLIDER LOGIC
   let current = 0, timer = null;
   const PRODUCTS = [
@@ -729,7 +730,6 @@ document.addEventListener("DOMContentLoaded", function() {
   let cart = [];
   const sideMenu = document.getElementById("sideMenu");
   const purchasesPanel = document.getElementById("purchasesPanel");
-
   window.toggleMenu = function() {
     if (sideMenu.style.width === "200px") {
       closeMenu();
@@ -743,7 +743,6 @@ document.addEventListener("DOMContentLoaded", function() {
     updateCartUI();
   }
   window.closePurchasesPanel = function() { purchasesPanel.style.width = "0"; }
-
   function updateCartUI() {
     const cartItemsContainer = document.getElementById('cartItems');
     const cartTotalDisplay = document.getElementById('cartTotal');
@@ -762,7 +761,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     cartTotalDisplay.textContent = "Total: $" + cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   }
-
   window.addToCart = function(id, name, price) {
     const existing = cart.find(item => item.id === id);
     if (existing) {
@@ -772,7 +770,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     updateCartUI();
   }
-
   window.openCheckout = function() {
     if(cart.length === 0){
       alert("Your cart is empty.");
@@ -783,7 +780,6 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("checkoutModal").style.display = "block";
   }
   window.closeCheckout = function() { document.getElementById("checkoutModal").style.display = "none"; }
-
   document.getElementById("checkoutForm").addEventListener("submit", function(e) {
     e.preventDefault();
     alert("Payment successful! Thank you for your purchase.");
@@ -792,16 +788,13 @@ document.addEventListener("DOMContentLoaded", function() {
     window.closeCheckout();
     window.closePurchasesPanel();
   });
-
   window.onclick = function(event) {
     const modal = document.getElementById("checkoutModal");
     if (event.target === modal) {
       window.closeCheckout();
     }
   }
-
   // --- End Cart Logic ---
-
   // --- Search Logic ---
   function performSearch() {
     let val = document.getElementById('serviceSearch').value.trim().toLowerCase();
@@ -836,7 +829,6 @@ document.addEventListener("DOMContentLoaded", function() {
   window.performSearch = performSearch;
   document.getElementById('serviceSearch').addEventListener('input', performSearch);
   document.getElementById('serviceSearch').addEventListener('focus', performSearch);
-
   // --- Slider Logic ---
   const items = document.querySelectorAll("#hero-slider .slider-item");
   const dotsContainer = document.getElementById("slider-dots");
@@ -863,7 +855,6 @@ document.addEventListener("DOMContentLoaded", function() {
   function autoSlide(){timer = setInterval(nextSlide, 4500);}
   function resetAuto(){clearInterval(timer);autoSlide();}
   show(0);autoSlide();
-
   document.querySelectorAll('.back-to-home').forEach(el=>
     el.onclick = e => { document.getElementById("homeContent").style.display="block"; }
   );
@@ -887,5 +878,20 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 </script>
+<!-- Google Calendar Appointment Scheduling end -->
+<script>
+(function() {
+  var target = document.getElementById('gcal-button-container');
+  window.addEventListener('load', function() {
+    calendar.schedulingButton.load({
+      url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3VpIaEgD8-5JS2dBR-7XaOx9beJuvfUs5Fq7CtY0VZ1hQdcewcz0RyCSxQClVQWASiLuzz36AK?gv=true',
+      color: '#8E24AA',
+      label: 'Book an appointment',
+      target,
+    });
+  });
+})();
+</script>
+<!-- end Google Calendar Appointment Scheduling -->
 </body>
 </html>
