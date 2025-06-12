@@ -393,7 +393,6 @@
     @media (max-width: 600px) {
       .open-menu-btn, .open-purchases-btn { width: 40px; height: 40px; top: 7px;}
     }
-    /* --- additional form & Calendly styles --- */
     .project-inquiry-form {
       background: #fff;
       box-shadow: 0 2px 16px #eee;
@@ -452,18 +451,10 @@
       margin-bottom: 0.6em;
       text-align: center;
     }
-    .calendly-inline-widget {
-      min-width: 320px;
-      height: 550px;
-      margin: 20px auto;
-      border-radius: 11px;
-      box-shadow: 0 1px 9px #eee;
-    }
-    @media (max-width: 600px) {
-      .project-inquiry-form, .calendly-inline-widget { max-width: 98vw; }
-    }
     .contact-or { text-align:center;margin:14px 0; font-weight:600; color:#444;}
   </style>
+  <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
+  <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
 </head>
 <body>
   <button class="open-menu-btn" onclick="toggleMenu()" aria-label="Open menu">
@@ -478,7 +469,6 @@
     <a href="#design-process" onclick="showHome(); closeMenu();">Process</a>
     <a href="#popular-services" onclick="showHome(); closeMenu();">Services</a>
     <a href="#design-packages" onclick="showHome(); closeMenu();">Packages</a>
-    <!-- Products link now transfers cart to Products page -->
     <a href="javascript:void(0)" onclick="transferCartToProducts(); closeMenu();">Products</a>
     <a href="#contact" onclick="showHome(); closeMenu();">Contact</a>
     <a href="javascript:void(0)" onclick="openPurchasesPanel(); closeMenu();">Purchases</a>
@@ -496,6 +486,9 @@
     <div class="modal-content">
       <span class="close" onclick="closeCheckout()">&times;</span>
       <h2>Checkout</h2>
+      <div style="color: red; font-weight: bold; margin-bottom: 12px;">
+        This checkout is for demonstration only. Do not enter real payment details.
+      </div>
       <form id="checkoutForm">
         <p>Order Total: $<span id="orderTotal"></span></p>
         <label for="cardholder">Cardholder Name:</label><br>
@@ -623,15 +616,16 @@
       <section id="contact">
         <h2>Get in Touch</h2>
         <div class="contact-container">
-          <form id="projectInquiryForm" class="project-inquiry-form" autocomplete="off">
+          <!-- Single project inquiry form using Formspree -->
+          <form id="projectInquiryForm" class="project-inquiry-form" autocomplete="off" method="POST" action="https://formspree.io/f/mjkrwwpk">
             <div class="form-success" id="formSuccess" style="display:none;"></div>
             <div class="form-error" id="formError" style="display:none;"></div>
             <label for="name">Your Name *</label>
-            <input type="text" id="name" required placeholder="Jane Doe">
+            <input type="text" id="name" name="name" required placeholder="Jane Doe">
             <label for="email">Your Email *</label>
-            <input type="email" id="email" required placeholder="name@email.com">
+            <input type="email" id="email" name="email" required placeholder="name@email.com">
             <label for="style">What's your project style?</label>
-            <select id="style" required>
+            <select id="style" name="style" required>
               <option value="">- Select -</option>
               <option>Modern & Minimalist</option>
               <option>Bold & Vibrant</option>
@@ -640,16 +634,13 @@
               <option>Not sure / Surprise me</option>
             </select>
             <label for="vision">Tell us about your vision</label>
-            <textarea id="vision" required placeholder="e.g. I want a bold, clean logo for my bakery, maybe with pastel colors..."></textarea>
+            <textarea id="vision" name="vision" required placeholder="e.g. I want a bold, clean logo for my bakery, maybe with pastel colors..."></textarea>
             <label for="requirements">Key requirements or inspirations?</label>
-            <textarea id="requirements" placeholder="Logo shapes, colors, examples, must-have ideas, etc."></textarea>
+            <textarea id="requirements" name="requirements" placeholder="Logo shapes, colors, examples, must-have ideas, etc."></textarea>
             <button type="submit">Send Inquiry</button>
           </form>
-          <div class="contact-or">or Book a Free 15-min Consultation:</div>
-          <div class="calendly-inline-widget"
-              data-url="https://calendly.com/rytdesignsca/consultation?hide_gdpr_banner=1">
-          </div>
-          <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+          <div class="contact-or">or Book a Free 15‑min Consultation:</div>
+          <div id="gcal-button-container"></div>
           <div class="contact-info" style="margin-top:19px;">
             <p><strong>Phone:</strong> +1 226-977-9311</p>
             <p><strong>Alternate Phone:</strong> +1 226-977-9310</p>
@@ -670,222 +661,224 @@
       </footer>
     </div>
   </div>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  // -- Project Inquiry Form logic --
-  const form = document.getElementById('projectInquiryForm');
-  const formSuccess = document.getElementById('formSuccess');
-  const formError = document.getElementById('formError');
-  if (form) {
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      const name = form.querySelector("#name").value.trim();
-      const email = form.querySelector("#email").value.trim();
-      const style = form.querySelector("#style").value;
-      const vision = form.querySelector("#vision").value.trim();
-      const requirements = form.querySelector("#requirements").value.trim();
-      if (!name || !email || !vision || !style) {
-        formError.style.display = "block";
-        formError.textContent = "Please fill in all required fields.";
-        formSuccess.style.display = "none";
-        return;
-      }
-      setTimeout(() => {
-        formError.style.display = "none";
-        formSuccess.style.display = "block";
-        formSuccess.textContent = "Thank you! Your project inquiry has been sent.";
-        form.reset();
-      }, 800);
-    });
-  }
-  window.transferCartToProducts = function() {
-      if (window.cart && Array.isArray(window.cart)) {
-        sessionStorage.setItem('rytCart', JSON.stringify(window.cart));
-      }
-      window.open("https://rytdesignsca.github.io/Products/", "_blank");
-  };
-
-  // SLIDER LOGIC
-  let current = 0, timer = null;
-  const PRODUCTS = [
-    { keywords: ["poster", "flyer"], label: "Poster/Flyer", price: 15, id: "poster-flyer" },
-    { keywords: ["flyer", "flyers", "poster"], label: "Flyers", price: 15, id: "flyers" },
-    { keywords: ["business card", "card"], label: "Business cards", price: 20, id: "business-cards" },
-    { keywords: ["invitation", "invite"], label: "Invitations", price: 24, id: "invitations" },
-    { keywords: ["logo", "logos", "businesses"], label: "Logos for businesses", price: 30, id: "logos-biz" },
-    { keywords: ["youtube thumbnail", "thumbnails basic", "basic thumbnail"], label: "YouTube Thumbnails(Basic)", price: 20, id: "basic-thumb" },
-    { keywords: ["youtube addon", "thumbnail addon"], label: "YouTube Thumbnail(Add-ons)", price: 35, id: "add-on-thumb" },
-    { keywords: ["celebration", "celebrate card"], label: "Celebration cards", price: 10, id: "celebration-cards" },
-    { keywords: ["presentations", "presentation"], label: "Presentations", price: 30, id: "presentations" },
-    { keywords: ["menu", "menus"], label: "Menus", price: 20, id: "menus" },
-    { keywords: ["banner"], label: "Banner", price: 35, id: "banner" },
-    { keywords: ["simple", "basic", "text design", "graphics"], label: "Basic designs (simple text or graphics)", price: 10, id: "basic-design" },
-    { keywords: ["album cover", "music cover", "album"], label: "Album Cover", price: 50, id: "album-cover" },
-    { keywords: ["product label", "label"], label: "Product Label", price: 25, id: "product-label" },
-    { keywords: ["clothing design", "t-shirt", "shirt", "hoodie"], label: "Clothing Design", price: 50, id: "clothing-design" },
-    { keywords: ["product design", "packaging", "label", "product"], label: "Product Design", price: 40, id: "product-design" }
-  ];
-  // --- Cart Logic ---
-  let cart = [];
-  const sideMenu = document.getElementById("sideMenu");
-  const purchasesPanel = document.getElementById("purchasesPanel");
-
-  window.toggleMenu = function() {
-    if (sideMenu.style.width === "200px") {
-      closeMenu();
-    } else {
-      sideMenu.style.width = "200px";
-    }
-  }
-  window.closeMenu = function() { sideMenu.style.width = "0"; }
-  window.openPurchasesPanel = function() {
-    purchasesPanel.style.width = "260px";
-    updateCartUI();
-  }
-  window.closePurchasesPanel = function() { purchasesPanel.style.width = "0"; }
-
-  function updateCartUI() {
-    const cartItemsContainer = document.getElementById('cartItems');
-    const cartTotalDisplay = document.getElementById('cartTotal');
-    cartItemsContainer.innerHTML = "";
-    cart.forEach((item, index) => {
-      const li = document.createElement('li');
-      li.textContent = `${item.name} x ${item.quantity} - $${item.price * item.quantity}`;
-      const removeBtn = document.createElement('button');
-      removeBtn.textContent = "Remove";
-      removeBtn.onclick = function() {
-        cart.splice(index, 1);
-        updateCartUI();
-      };
-      li.appendChild(removeBtn);
-      cartItemsContainer.appendChild(li);
-    });
-    cartTotalDisplay.textContent = "Total: $" + cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  }
-
-  window.addToCart = function(id, name, price) {
-    const existing = cart.find(item => item.id === id);
-    if (existing) {
-      existing.quantity += 1;
-    } else {
-      cart.push({ id, name, price, quantity: 1 });
-    }
-    updateCartUI();
-  }
-
-  window.openCheckout = function() {
-    if(cart.length === 0){
-      alert("Your cart is empty.");
-      return;
-    }
-    let total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-    document.getElementById("orderTotal").textContent = total;
-    document.getElementById("checkoutModal").style.display = "block";
-  }
-  window.closeCheckout = function() { document.getElementById("checkoutModal").style.display = "none"; }
-
-  document.getElementById("checkoutForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-    alert("Payment successful! Thank you for your purchase.");
-    cart = [];
-    updateCartUI();
-    window.closeCheckout();
-    window.closePurchasesPanel();
-  });
-
-  window.onclick = function(event) {
-    const modal = document.getElementById("checkoutModal");
-    if (event.target === modal) {
-      window.closeCheckout();
-    }
-  }
-
-  // --- End Cart Logic ---
-
-  // --- Search Logic ---
-  function performSearch() {
-    let val = document.getElementById('serviceSearch').value.trim().toLowerCase();
-    let results = [];
-    if (val === "") {
-      document.getElementById('searchResults').innerHTML = "";
-      return;
-    }
-    PRODUCTS.forEach(prod => {
-      if (
-        prod.label.toLowerCase().includes(val)
-        || prod.keywords.some(k => k && val.includes(k))
-        || val.includes(prod.label.toLowerCase().replace(/[\(\)\-]/g, '').replace(/ +/g, ''))
-      ) {
-        results.push(prod);
-      }
-    });
-    const resultsDiv = document.getElementById('searchResults');
-    if (results.length === 0) {
-      resultsDiv.innerHTML = "<div class='search-result'>No matching products found.</div>";
-    } else {
-      resultsDiv.innerHTML = "";
-      results.forEach(prod => {
-        const r = document.createElement('div');
-        r.className = "search-result";
-        r.innerHTML = `<span>${prod.label} - $${prod.price}</span>
-          <button onclick="addToCart('${prod.id.replace(/'/g,'')}', '${prod.label.replace(/'/g,'')}', ${prod.price})">Buy</button>`;
-        resultsDiv.appendChild(r);
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // -- Project Inquiry Form logic (Formspree) --
+    const form = document.getElementById('projectInquiryForm');
+    const formSuccess = document.getElementById('formSuccess');
+    const formError = document.getElementById('formError');
+    if (form) {
+      form.addEventListener('submit', function(e){
+        // Let the browser/Formspree handle submission, just show feedback after a short delay
+        setTimeout(() => {
+          formSuccess.style.display = "block";
+          formSuccess.textContent = "Thank you! Your inquiry has been sent.";
+          formError.style.display = "none";
+          form.reset();
+        }, 300);
       });
     }
-  }
-  window.performSearch = performSearch;
-  document.getElementById('serviceSearch').addEventListener('input', performSearch);
-  document.getElementById('serviceSearch').addEventListener('focus', performSearch);
+    window.transferCartToProducts = function() {
+        if (window.cart && Array.isArray(window.cart)) {
+          sessionStorage.setItem('rytCart', JSON.stringify(window.cart));
+        }
+        window.open("https://rytdesignsca.github.io/Products/", "_blank");
+    };
 
-  // --- Slider Logic ---
-  const items = document.querySelectorAll("#hero-slider .slider-item");
-  const dotsContainer = document.getElementById("slider-dots");
-  function show(idx) {
-    items.forEach((slide, i) => {
-      slide.classList.toggle("active", i === idx);
-    });
-    [...dotsContainer.children].forEach((d, i) => {
-      d.className = i === idx ? "active-dot" : "";
-    });
-    current = idx;
-  }
-  items.forEach((el, i) => {
-    const d = document.createElement("span");
-    d.ariaLabel = `Go to slide ${i + 1}`;
-    d.onclick = function(){ show(i); resetAuto();}
-    dotsContainer.appendChild(d);
-  });
-  function nextSlide() {
-    clearInterval(timer);
-    show((current + 1) % items.length);
-    autoSlide();
-  }
-  function autoSlide(){timer = setInterval(nextSlide, 4500);}
-  function resetAuto(){clearInterval(timer);autoSlide();}
-  show(0);autoSlide();
-
-  document.querySelectorAll('.back-to-home').forEach(el=>
-    el.onclick = e => { document.getElementById("homeContent").style.display="block"; }
-  );
-  window.showHome = function(){ document.getElementById("homeContent").style.display="block"; }
-  window.triggerHeroAnimation = function() {
-    const heroContent = document.querySelector('.hero-side');
-    if(heroContent){
-      heroContent.style.animation = 'none';
-      void heroContent.offsetWidth;
-      heroContent.style.animation = 'bounceIn 1s ease-out';
+    // Google Calendar Button Injection
+    function loadGcalButton() {
+      var btnTarget = document.getElementById('gcal-button-container');
+      if (btnTarget && window.calendar && window.calendar.schedulingButton) {
+        calendar.schedulingButton.load({
+          url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3VpIaEgD8-5JS2dBR-7XaOx9beJuvfUs5Fq7CtY0VZ1hQdcewcz0RyCSxQClVQWASiLuzz36AK?gv=true',
+          color: '#8E24AA',
+          label: 'Book an appointment',
+          target: btnTarget
+        });
+      } else {
+        setTimeout(loadGcalButton, 400);
+      }
     }
-  }
-  window.addEventListener("hashchange", function() {
-    if (location.hash === "#home") {
+    loadGcalButton();
+
+    // SLIDER LOGIC
+    let current = 0, timer = null;
+    const PRODUCTS = [
+      { keywords: ["poster", "flyer"], label: "Poster/Flyer", price: 15, id: "poster-flyer" },
+      { keywords: ["flyer", "flyers", "poster"], label: "Flyers", price: 15, id: "flyers" },
+      { keywords: ["business card", "card"], label: "Business cards", price: 20, id: "business-cards" },
+      { keywords: ["invitation", "invite"], label: "Invitations", price: 24, id: "invitations" },
+      { keywords: ["logo", "logos", "businesses"], label: "Logos for businesses", price: 30, id: "logos-biz" },
+      { keywords: ["youtube thumbnail", "thumbnails basic", "basic thumbnail"], label: "YouTube Thumbnails (Basic)", price: 20, id: "basic-thumb" },
+      { keywords: ["youtube addon", "thumbnail addon"], label: "YouTube Thumbnail (Add-ons)", price: 35, id: "add-on-thumb" },
+      { keywords: ["celebration", "celebrate card"], label: "Celebration cards", price: 10, id: "celebration-cards" },
+      { keywords: ["presentations", "presentation"], label: "Presentations", price: 30, id: "presentations" },
+      { keywords: ["menu", "menus"], label: "Menus", price: 20, id: "menus" },
+      { keywords: ["banner"], label: "Banner", price: 35, id: "banner" },
+      { keywords: ["simple", "basic", "text design", "graphics"], label: "Basic designs (simple text or graphics)", price: 10, id: "basic-design" },
+      { keywords: ["album cover", "music cover", "album"], label: "Album Cover", price: 50, id: "album-cover" },
+      { keywords: ["product label", "label"], label: "Product Label", price: 25, id: "product-label" },
+      { keywords: ["clothing design", "t-shirt", "shirt", "hoodie"], label: "Clothing Design", price: 50, id: "clothing-design" },
+      { keywords: ["product design", "packaging", "label", "product"], label: "Product Design", price: 40, id: "product-design" }
+    ];
+    // --- Cart Logic ---
+    let cart = [];
+    const sideMenu = document.getElementById("sideMenu");
+    const purchasesPanel = document.getElementById("purchasesPanel");
+    window.toggleMenu = function() {
+      if (sideMenu.style.width === "200px") {
+        closeMenu();
+      } else {
+        sideMenu.style.width = "200px";
+      }
+    }
+    window.closeMenu = function() { sideMenu.style.width = "0"; }
+    window.openPurchasesPanel = function() {
+      purchasesPanel.style.width = "260px";
+      updateCartUI();
+    }
+    window.closePurchasesPanel = function() { purchasesPanel.style.width = "0"; }
+    function updateCartUI() {
+      const cartItemsContainer = document.getElementById('cartItems');
+      const cartTotalDisplay = document.getElementById('cartTotal');
+      cartItemsContainer.innerHTML = "";
+      cart.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.textContent = `${item.name} x ${item.quantity} - $${item.price * item.quantity}`;
+        const removeBtn = document.createElement('button');
+        removeBtn.textContent = "Remove";
+        removeBtn.onclick = function() {
+          cart.splice(index, 1);
+          updateCartUI();
+        };
+        li.appendChild(removeBtn);
+        cartItemsContainer.appendChild(li);
+      });
+      cartTotalDisplay.textContent = "Total: $" + cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    }
+    window.addToCart = function(id, name, price) {
+      const existing = cart.find(item => item.id === id);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ id, name, price, quantity: 1 });
+      }
+      updateCartUI();
+    }
+    window.openCheckout = function() {
+      if(cart.length === 0){
+        alert("Your cart is empty.");
+        return;
+      }
+      let total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      document.getElementById("orderTotal").textContent = total;
+      document.getElementById("checkoutModal").style.display = "block";
+    }
+    window.closeCheckout = function() { document.getElementById("checkoutModal").style.display = "none"; }
+    document.getElementById("checkoutForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Payment successful! Thank you for your purchase.");
+      cart = [];
+      updateCartUI();
+      window.closeCheckout();
+      window.closePurchasesPanel();
+    });
+    window.onclick = function(event) {
+      const modal = document.getElementById("checkoutModal");
+      if (event.target === modal) {
+        window.closeCheckout();
+      }
+    }
+    // --- End Cart Logic ---
+    // --- Search Logic ---
+    function performSearch() {
+      let val = document.getElementById('serviceSearch').value.trim().toLowerCase();
+      let results = [];
+      if (val === "") {
+        document.getElementById('searchResults').innerHTML = "";
+        return;
+      }
+      PRODUCTS.forEach(prod => {
+        if (
+          prod.label.toLowerCase().includes(val)
+          || prod.keywords.some(k => k && val.includes(k))
+          || val.includes(prod.label.toLowerCase().replace(/[\(\)\-]/g, '').replace(/ +/g, ''))
+        ) {
+          results.push(prod);
+        }
+      });
+      const resultsDiv = document.getElementById('searchResults');
+      if (results.length === 0) {
+        resultsDiv.innerHTML = "<div class='search-result'>No matching products found.</div>";
+      } else {
+        resultsDiv.innerHTML = "";
+        results.forEach(prod => {
+          const r = document.createElement('div');
+          r.className = "search-result";
+          r.innerHTML = `<span>${prod.label} - $${prod.price}</span>
+            <button onclick="addToCart('${prod.id.replace(/'/g,'')}', '${prod.label.replace(/'/g,'')}', ${prod.price})">Buy</button>`;
+          resultsDiv.appendChild(r);
+        });
+      }
+    }
+    window.performSearch = performSearch;
+    document.getElementById('serviceSearch').addEventListener('input', performSearch);
+    document.getElementById('serviceSearch').addEventListener('focus', performSearch);
+    // --- Slider Logic ---
+    const items = document.querySelectorAll("#hero-slider .slider-item");
+    const dotsContainer = document.getElementById("slider-dots");
+    function show(idx) {
+      items.forEach((slide, i) => {
+        slide.classList.toggle("active", i === idx);
+      });
+      [...dotsContainer.children].forEach((d, i) => {
+        d.className = i === idx ? "active-dot" : "";
+      });
+      current = idx;
+    }
+    items.forEach((el, i) => {
+      const d = document.createElement("span");
+      d.setAttribute('aria-label', `Go to slide ${i + 1}`);
+      d.setAttribute('role', 'button');
+      d.setAttribute('tabindex', '0');
+      d.onclick = function(){ show(i); resetAuto();}
+      d.onkeydown = function(e) {
+        if (e.key === "Enter" || e.key === " ") {
+          show(i); resetAuto();
+        }
+      };
+      dotsContainer.appendChild(d);
+    });
+    function nextSlide() {
+      clearInterval(timer);
+      show((current + 1) % items.length);
+      autoSlide();
+    }
+    function autoSlide(){timer = setInterval(nextSlide, 4500);}
+    function resetAuto(){clearInterval(timer);autoSlide();}
+    show(0);autoSlide();
+    document.querySelectorAll('.back-to-home').forEach(el=>
+      el.onclick = e => { document.getElementById("homeContent").style.display="block"; }
+    );
+    window.showHome = function(){ document.getElementById("homeContent").style.display="block"; }
+    window.triggerHeroAnimation = function() {
+      const heroContent = document.querySelector('.hero-side');
+      if(heroContent){
+        heroContent.style.animation = 'none';
+        void heroContent.offsetWidth;
+        heroContent.style.animation = 'bounceIn 1s ease-out';
+      }
+    }
+    window.addEventListener("hashchange", function() {
+      if (location.hash === "#home") {
+        window.triggerHeroAnimation();
+      }
+    });
+    if (!location.hash || location.hash === "#home") {
+      window.showHome();
       window.triggerHeroAnimation();
     }
   });
-  if (!location.hash || location.hash === "#home") {
-    window.showHome();
-    window.triggerHeroAnimation();
-  }
-});
-</script>
+  </script>
 </body>
 </html>
