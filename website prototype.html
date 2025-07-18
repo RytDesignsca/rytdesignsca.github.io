@@ -3,342 +3,244 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <meta name="description" content="RYT DESIGNS — Portfolio"/>
   <title>RYT DESIGNS | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;600;400&family=Manrope:wght@700;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900;700;400&display=swap" rel="stylesheet">
   <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
   <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
-  <!-- GSAP for super smooth animations -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <style>
     :root {
-      --bg: #181921;
-      --c-white: #fbfbfb;
-      --c-strong: #08e8de;
-      --c-flash: #ff4f81;
-      --c-yellow: #ffee32;
-      --c-shadow: 0 2px 26px 0 rgba(44,44,45,0.18);
-      --transition: 0.3s cubic-bezier(.71,.06,.31,.98);
-      --card-bg: #23233a;
-      --header-h: 100px;
+      --main-bg: #181c28;
+      --panel-bg: #22243a;
+      --neon: #23f0ff;
+      --accent: #ffe066;
+      --white: #fff;
+      --hot: #ff4d97;
+      --input-bg: #191a1f;
+      --form-glow: 0 0 34px #13fff5aa;
+      --panel-radius: 15px;
     }
-    html, body { padding: 0; margin: 0; min-height: 100vh; background: var(--bg); }
-    body {
-      color: var(--c-white);
-      font-family: 'Montserrat', 'Manrope', Arial, sans-serif;
-      letter-spacing: 0.01em;
-      background: var(--bg);
-      overflow-x: hidden;
-    }
-    .nav {
-      width: 100vw; height: var(--header-h);
-      display:flex;align-items:center;justify-content:space-between;
-      background: transparent; position: sticky; top: 0; z-index: 200;
-      padding: 0 32px;
-    }
-    .nav .logo {
+    html,body {
+      background: var(--main-bg);
+      color: var(--white);
       font-family: 'Montserrat', Arial, sans-serif;
-      color: var(--c-strong);
-      font-size: 2.1rem; 
-      font-weight:800;
-      letter-spacing: -1.5px;
-      position:relative;
-      text-shadow: 0 0 18px #00f9, 0 1px 0 #16171f;
-      cursor:pointer;
-      user-select: none;
+      margin: 0; padding: 0;
+      min-height: 100vh;
     }
-    .nav .menu {
-      display: flex; gap: 24px;
-      font-size: 1.1rem;
-      font-family: inherit;
-      align-items: center;
-      user-select:none;
-    }
-    .nav .menu a {
-      color: var(--c-white);
-      text-decoration: none;
-      font-weight: 700;
-      position: relative;
-      letter-spacing: 0.1em;
-      transition: color var(--transition);
-      padding: 2px 10px;
-      border-radius: 7px;
-    }
-    .nav .menu a.active,
-    .nav .menu a:hover {
-      color: var(--c-flash);
-      background: var(--card-bg);
-    }
-    @media (max-width: 700px) {
-      .nav { flex-direction:column; height: auto;}
-      .nav .menu { gap:16px;}
-    }
+    body { letter-spacing: .01em; }
 
-    .blitz-hero {
-      min-height: 300px;
-      text-align:center;
-      display:flex;flex-direction:column;align-items:center;justify-content:center;
-      margin-bottom:18px;
-      animation: fadeDown 1.1s cubic-bezier(.71,.06,.31,.98);
+    /* --- NAV --- */
+    .nav {
+      max-width:1280px;width:100vw;padding:26px 38px 26px 38px;margin:auto;
+      display:flex;align-items:center;justify-content:space-between;
+      background:transparent;
     }
-    .blitz-hero .hero-title {
-      font-size: clamp(2.1rem,7vw,4.5rem);
+    .logo { 
+      font-size: 2.1rem;
       font-weight: 900;
-      margin: 22px 0 0 0;
-      color: var(--c-yellow);
-      letter-spacing: -0.02em;
-      line-height: 0.95;
-      text-shadow: 0 6px 28px #000b, 0 2px 1px #f8f8;
-      position:relative;
-      cursor:pointer;
-      user-select: none;
-      transition: filter .25s;
-      filter: drop-shadow(0 2px 16px var(--c-strong));
-      animation: chromaPulse 6s infinite alternate;
+      color: var(--neon);
+      letter-spacing: -2px;
+      filter: drop-shadow(0 0 13px var(--neon));
+      user-select:none;cursor:pointer;
+      text-shadow: 0 0 18px #8ff;
     }
-    .blitz-hero .hero-title:hover { filter: brightness(1.25) drop-shadow(0 0 48px var(--c-flash)); }
-    .blitz-hero .hero-tag {
-      font-size: 1.2rem;
-      margin-top: 1.3em;
-      font-weight: 600;
-      color: var(--c-strong);
-      letter-spacing: 0.09em;
-      opacity: 0.96;
-      text-shadow: 0 3px 32px #0d8,0 1px 1px #004;
+    .menu {
+      display:flex;gap:34px;font-weight:700;font-size:1.13rem;user-select:none;
     }
-    @keyframes fadeDown {
-      0% { opacity: 0; transform: translateY(-40px);}
-      100% { opacity: 1; transform: translateY(0);}
+    .menu a {
+      color:var(--white);text-decoration:none;transition:.2s;padding:2px 10px;border-radius:6px;
     }
-    @keyframes chromaPulse {
-      0% { text-shadow: 0 6px 28px #000b, 0 2px 1px #fffb, 0 0 1px var(--c-flash);}
-      100% { text-shadow: 0 6px 28px #000b, 0 2px 1px #fffb, 0 0 14px var(--c-strong);}
+    .menu a.active,.menu a:hover { color:var(--neon); background:rgba(35,240,255,0.13);}
+    @media(max-width:700px){ .nav {flex-direction:column;padding:13px 2vw;} .logo {font-size: 1.3rem;} .menu{gap:18px;}}
+
+    /* --- HERO --- */
+    .hero {
+      text-align:center;margin-top:12px;margin-bottom:12px;
+    }
+    .hero-title {
+      font-size: clamp(2.2rem,7vw,4.5rem);
+      font-weight: 900;
+      color: var(--neon);
+      background: linear-gradient(90deg, #23f0ff 40%, #ffe066 95%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow:
+        0 0 48px var(--neon),
+        0 2px 8px #000f, 
+        0 1px 1px #d9dcd6;
+      filter: brightness(1.5) drop-shadow(0 0 22px #23f0ff);
+      letter-spacing:0;
+      animation: neonPulse 2.5s infinite alternate;
+      margin-bottom: .5em;
+      user-select:none;
+      text-transform:uppercase;
+    }
+    @keyframes neonPulse {
+      0% { filter: brightness(1.3) drop-shadow(0 0 18px #23f0ff);}
+      100% { filter: brightness(1.8) drop-shadow(0 0 31px #ffe066);}
+    }
+    .hero-sub {
+      font-size:1.26rem;font-weight:600;color:var(--accent);text-shadow: 0 1px 19px #ffe06644;
     }
 
-    /* GALLERY GRID */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(220px, 1fr));
-      gap: 34px 26px;
-      padding: 44px max(4vw,28px);
-      max-width: 1350px;
-      margin:0 auto 64px auto;
-      position: relative;
+    /* --- GALLERY --- */
+    .gallerywrap {
+      max-width: 1150px;
+      margin:55px auto 38px auto;
+    }
+    .gallery-grid {
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:32px 22px;width:100%;
+      margin:0 auto;
     }
     .gallery-card {
-      background: var(--card-bg);
-      border-radius: 15px;
+      background: #fff;
+      border-radius: 13px;
       overflow: hidden;
-      box-shadow: var(--c-shadow), 0 0 0 3px transparent;
+      box-shadow: 0 7px 32px #181c2899;
+      transition: transform .21s, box-shadow .23s;
+      display: flex;
+      flex-direction: column;
+      align-items:center;
       cursor: pointer;
-      display: flex; flex-direction: column; align-items:center;
-      transition: transform .23s cubic-bezier(.71,.06,.31,.98),
-        box-shadow .23s cubic-bezier(.71,.06,.31,.98),
-        filter .2s;
-      filter: brightness(1) saturate(1) blur(0);
       position: relative;
-      min-height: 284px;
-      animation: popUp .9s cubic-bezier(.58,-0.02,.44,1.24) backwards;
+      min-height: 224px;
     }
     .gallery-card:hover {
-      transform: translateY(-12px) scale(1.05) rotate(-1deg);
-      box-shadow: 0 12px 54px #0005,0 0 0 3px var(--c-strong);
-      filter: brightness(1.13) saturate(1.11);
-      z-index:10;
-    }
-    @keyframes popUp {
-      0% { transform: scale(0.7) translateY(65px); opacity: 0; }
-      65% { transform: scale(1.13) translateY(-9px); }
-      85% { transform: scale(0.93) translateY(3px);}
-      100% { transform: scale(1) translateY(0); opacity: 1;}
+      transform: translateY(-9px) scale(1.04);
+      box-shadow: 0 16px 43px #23f0ff33;
     }
     .gallery-card img {
-      display:block;
-      width:100%;
-      aspect-ratio: 1/1;
-      object-fit:cover;
-      border-radius: 0 0 18px 18px;
-      margin: 0;
-      transition: filter .18s;
-      background: #1a2225; 
-      min-height: 180px;
+      width:100%; display:block; min-height:210px;object-fit:cover;
+      background: #e9f6f5;
+      border-bottom: 2px solid var(--neon);
     }
-    .gallery-card:hover img { filter: brightness(1.07) blur(.2px) saturate(1.11); }
-    .gallery-card .label {
-      margin: 0;
-      padding: 18px 10px 0 10px;
-      text-align:center;
-      font-weight: 700; font-size:1.03rem;
-      letter-spacing:0.07em; 
-      color: var(--c-yellow);
-      width: 92%;
-      line-height: 1.27;
-      text-shadow: 0 1px 16px #ccc8;
-      user-select: none;
-      font-family: inherit;
+    .gallery-card .caption {
+      padding:12px 0 17px 0;font-size:1.13rem;font-weight:800;color:var(--main-bg);letter-spacing:.03em;text-align:center;text-shadow:0 1px 14px #ffe06655;
+      width: 93%;
     }
-    .gallery-card .desc {
-      color: #babaff;
-      font-size: 0.98rem; 
-      padding: 4px 15px 0 15px;
-      text-align: center;
-      opacity: 0.92;
-      font-weight: 400;
-      font-family: 'Manrope', Arial, sans-serif;
-      margin-bottom:16px;
+    @media(max-width:650px){.gallery-grid{gap:13px 1vw;}.gallery-card{min-height:120px;}.gallery-card img{min-height:95px;}}
+    /* --- FORM/PANEL --- */
+    .form-section {
+      display: flex; flex-direction: column; align-items: center; margin-bottom:65px;
     }
-    @media (max-width: 680px) {
-      .gallery { gap: 14px 6vw; padding:9vw 3vw;}
-      .gallery-card { min-height:190px;}
-      .gallery-card img { min-height: 110px;}
-      .gallery-card .label { font-size: 0.98rem;}
+    .form-panel {
+      background: var(--panel-bg);
+      border-radius: var(--panel-radius);
+      box-shadow: var(--form-glow),0 6px 20px #000f;
+      padding:36px 30px 19px 30px;
+      max-width:400px; width:95vw; margin: 0 auto;
+      animation: glowIn 1.3s;
+      position:relative;
     }
-
-    /* ABOUT / CONTACT */
-    .about-section {
-      margin: 0 auto 44px auto; max-width: 600px; text-align: center;
-      color: #ffe; opacity:0.97;
-      font-size: 1.13rem;
-      line-height: 1.8;
-      animation: fadeDown 1s 0.02s backwards;
-    }
-    /* -- Cool bouncy popping form -- */
-    .contact-form-wrap {
-      margin: 86px auto; max-width: 420px;
-      background: var(--card-bg);
-      border-radius: 15px;
-      padding: 39px 18px 17px 18px;
-      box-shadow: 0 3px 28px #15f5a3a8;
-      animation: popUp 1.1s 0.14s cubic-bezier(.58,-0.02,.44,1.24) backwards;
+    @keyframes glowIn {
+      0% {filter: brightness(.6) blur(7px); opacity: .33;}
+      100% {filter: none; opacity: 1;}
     }
     .project-inquiry-form label {
-      display: block;
-      font-weight: 700;
-      margin-top: 1em;
-      margin-bottom: 3px;
-      color: var(--c-flash);
-      letter-spacing: 0.04em;
+      font-size:1.03rem;font-weight:700;margin-top:1.09em;margin-bottom:7px;display:block;color:var(--accent);letter-spacing:0.04em;
     }
     .project-inquiry-form input, .project-inquiry-form textarea, .project-inquiry-form select {
-      width: 100%; margin-bottom: 8px;
-      border: none; border-radius: 7px;
-      background: #171d23ef; color: #fff;
-      font-size: 1.01rem; padding: 8px 11px;
-      font-family: inherit;
-      box-shadow: 0 2px 7px #10aaa911;
-      outline: none;
-      transition: box-shadow .22s;
-      letter-spacing: 0.02em;
+      width:100%;margin-bottom:14px;border:none;border-radius:7px;
+      background:var(--input-bg);color:#fff;font-size:1.08rem;
+      padding:9px 11px;font-family:inherit;outline:none;transition:box-shadow .13s;
     }
-    .project-inquiry-form input:focus, .project-inquiry-form textarea:focus {
-      box-shadow: 0 0 0 3px var(--c-flash) inset;
-    }
-    .project-inquiry-form textarea { min-height:70px; resize:vertical;}
+    .project-inquiry-form input:focus,.project-inquiry-form textarea:focus{box-shadow:0 0 0 2px var(--neon) inset;}
+    .project-inquiry-form textarea {min-height:66px;}
     .project-inquiry-form button {
-      background: linear-gradient(90deg,var(--c-flash) 40%,var(--c-strong));
-      color: #fff; border: none; border-radius: 7px;
-      padding: 12px 28px; font-size: 1.08rem;
-      cursor: pointer; margin-top: 13px; font-weight:800;
-      transition: filter .19s, background .18s;
-      filter: drop-shadow(0 2px 12px #05ffe181);
-      font-family: inherit;
-      letter-spacing: 0.1em;
+      background: linear-gradient(90deg, var(--hot) 13%, var(--neon));
+      color: #fff; border: none; border-radius:8px;
+      padding:13px 0;font-size:1.17rem;width:100%;font-weight:800;
+      margin-top:8px;transition:background .17s, filter .11s;
+      box-shadow:0 3px 24px #23f0ff44;
+      letter-spacing:.1em; cursor:pointer;
+      filter: brightness(1.08);
     }
     .project-inquiry-form button:hover {
-      filter: brightness(1.05) drop-shadow(0 1px 18px #15f5a3f5);
-      background: linear-gradient(90deg,var(--c-strong) 40%,var(--c-flash));
+      background: linear-gradient(90deg, var(--neon) 20%, var(--hot));
+      filter:brightness(1.15);
     }
-    .form-success, .form-error {
-      text-align: center; font-weight: 700; margin: 7px 0 10px 0;
-      font-size: 1.07rem;
-      letter-spacing: 0.09em;
+    .form-success,.form-error {
+      text-align:center;font-weight:800;font-size:1.05rem;padding:5px 0 7px 0;
     }
-    .form-success { color: #1afe7d;}
-    .form-error { color: #ff4f81;}
-    .contact-or {
-      text-align:center;margin:14px 0 18px 0; font-weight:700; color:var(--c-strong); font-size:1.07rem; letter-spacing: 0.05em;
+    .form-success{color:var(--neon);}
+    .form-error{color:var(--hot);}
+    .contact-or {text-align:center;margin:17px 0 9px 0;font-weight:700;color:var(--neon);}
+    .form-panel .calendar-booking {display:flex;justify-content:center;margin-top:14px;margin-bottom:19px;}
+    #gcal-button-container button, #gcal-button-container > div > button {
+      font-size:1.10rem !important;
+      padding:14px 31px !important;
+      border-radius:10px !important;font-weight:900 !important;letter-spacing:0.09em !important;
+      background:linear-gradient(90deg,#23f0ff 20%,#ffe066 99%)!important;color:#181c28!important;border:0!important;box-shadow:0 1px 9px #23f0ff44 !important;
+      margin:auto !important;text-transform:uppercase;
     }
-    .social-links {
-      display:flex;justify-content:center;gap: 1.5rem;margin-bottom:12px;margin-top:12px;
-      font-size:1.37rem;
-      letter-spacing:0.18em;
-      animation: fadeDown 0.86s 0.17s backwards;
-    }
-    .social-links a {
-      color:var(--c-yellow); text-decoration:none;transition:color .2s;
-      font-weight: 700;
-    }
-    .social-links a:hover {color:var(--c-flash);}
     .contact-info {
-      color: #ccfde9;
-      text-align: center;
-      margin:7px 0 30px 0;
-      font-size: 1.07rem;
+      color:var(--neon);margin:0.7em 0 0.3em 0;text-align:center;font-size: 1.09rem;
     }
-    .calendar-booking {
-      display:flex;justify-content:center;align-items:center;margin-top:24px;margin-bottom:20px;
+    .social-row {
+      display:flex; justify-content:center; gap:2.1em; margin-top:1.1em; font-weight:900; font-size:1.16rem; letter-spacing:.17em;
     }
+    .social-row a { color: var(--accent); text-decoration:none;transition:color .19s; }
+    .social-row a:hover { color:var(--hot);}
+    /* --- FOOTER --- */
     footer {
-      background: #15141b; text-align:center;padding:21px 0 18px 0;font-size:1.1rem;color:#eee;opacity:0.97;
+      text-align:center; color:#bcccdc;padding:21px 0 15px 0;background:var(--panel-bg);font-size:1.08rem;margin-top:13vh;
     }
-    footer a { color:var(--c-strong); font-weight: 800; }
-    footer a:hover { color: var(--c-flash);}
-    /* Animations for gallery cards on scroll */
-    .gallery-card { opacity: 0; }
-    .gallery-card.visible { opacity: 1; transition:opacity .8s cubic-bezier(.71,.06,.31,.98);}
+    footer a { color:var(--accent); font-weight:900; text-decoration:none;}
   </style>
 </head>
 <body>
   <nav class="nav">
-    <div class="logo" onclick="scrollToTop()">RYT <span style="color:var(--c-flash);font-weight:900;">DESIGNS</span></div>
+    <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">RYT DESIGNS</div>
     <div class="menu">
       <a href="#work" class="active">Work</a>
-      <a href="#about">Info</a>
+      <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
-  <section class="blitz-hero">
-    <div class="hero-title">Let’s Make Something <span style="color:var(--c-flash);">Cool</span>.</div>
-    <div class="hero-tag">Original art & graphic design by a real teen.</div>
+  <section class="hero">
+    <div class="hero-title">Let's Make Something Cool.</div>
+    <div class="hero-sub">Your vision, my creativity—custom work, always unique!</div>
   </section>
-  <main>
-    <section id="work">
-      <div class="gallery">
-        <!-- SWAP IMAGES/ADD MORE CARDS! -->
-        <div class="gallery-card">
-          <img src="https://rytdesignsca.github.io/website%20prototype/Album%20cover.png" alt="Album Cover"/>
-          <div class="label">Album Cover</div>
-          <div class="desc">Abstract, hip & bold cover for up-and-coming music talent.</div>
-        </div>
-        <div class="gallery-card">
-          <img src="https://rytdesignsca.github.io/website%20prototype/T-Shirt%20design.png" alt="T-shirt"/>
-          <div class="label">Streetwear Design</div>
-          <div class="desc">Custom T-shirt art, trendy & totally original.</div>
-        </div>
-        <div class="gallery-card">
-          <img src="https://rytdesignsca.github.io/website%20prototype/Ryt%20Skin.png" alt="Branding"/>
-          <div class="label">Branding</div>
-          <div class="desc">Modern logo & package vibes for Ryt Skin™</div>
-        </div>
-        <div class="gallery-card">
-          <img src="https://rytdesignsca.github.io/website%20prototype/Ryt%20Designs%20Poster.png" alt="Poster"/>
-          <div class="label">Promo Poster</div>
-          <div class="desc">Punchy colors, gritty vibes, built to catch eyes.</div>
-        </div>
-        <!-- Add more <div class="gallery-card">...</div> for more art/design! -->
+  <div class="gallerywrap" id="work">
+    <div class="gallery-grid">
+      <div class="gallery-card">
+        <img src="A%20A%20itinerary.png" alt="A A itinerary"/>
+        <div class="caption">A A itinerary</div>
       </div>
-    </section>
-
-    <section class="about-section" id="about">
-      <h2 style="color:var(--c-yellow);margin-bottom:0.4em;font-size:2.1rem;font-weight:900;">Who am I?</h2>
-      <div>
-        <strong>RYT DESIGNS</strong> is the creative project of a high school designer who fuses trend, attitude & digital art.<br>
-        Whether you want a banger for your mixtape, a custom logo, or that <span style="color:var(--c-strong);">next-level</span> social profile—I've got you.<br>
-        <span style="color:var(--c-flash);font-weight:700;">All designs brand new, always fresh, no stale ideas ever.</span>
+      <div class="gallery-card">
+        <img src="Logo%204%20website.png" alt="Logo 4 website"/>
+        <div class="caption">Logo 4 website</div>
       </div>
-    </section>
-
-    <section class="contact-form-wrap" id="contact">
+      <div class="gallery-card">
+        <img src="Menu%204%20website.png" alt="Menu 4 website"/>
+        <div class="caption">Menu 4 website</div>
+      </div>
+      <div class="gallery-card">
+        <img src="https://rytdesignsca.github.io/website%20prototype/Album%20cover.png" alt="Album cover"/>
+        <div class="caption">Album Cover</div>
+      </div>
+      <div class="gallery-card">
+        <img src="https://rytdesignsca.github.io/website%20prototype/T-Shirt%20design.png" alt="T-Shirt"/>
+        <div class="caption">T-Shirt Design</div>
+      </div>
+      <div class="gallery-card">
+        <img src="https://rytdesignsca.github.io/website%20prototype/Ryt%20Skin.png" alt="Branding"/>
+        <div class="caption">Branding</div>
+      </div>
+      <div class="gallery-card">
+        <img src="https://rytdesignsca.github.io/website%20prototype/Ryt%20Designs%20Poster.png" alt="Poster"/>
+        <div class="caption">Poster Design</div>
+      </div>
+      <!-- Add/remove cards as you want! -->
+    </div>
+  </div>
+  <section id="about" style="max-width:580px;margin:64px auto 42px auto;text-align:center;color:var(--accent);font-size:1.17rem;line-height:1.7;">
+    <b>Hey, I'm RYT—a teen designer and digital artist.<br>
+    <span style="color:var(--neon)">Check my work. Hit up my form to collab.<br>Stay original, stay bold.</span></b>
+  </section>
+  <section class="form-section" id="contact">
+    <div class="form-panel">
       <form id="projectInquiryForm" class="project-inquiry-form" autocomplete="off" method="POST" action="https://formspree.io/f/mjkrwwpk">
         <div class="form-success" id="formSuccess" style="display:none;"></div>
         <div class="form-error" id="formError" style="display:none;"></div>
@@ -362,87 +264,62 @@
         <button type="submit">Send Inquiry</button>
       </form>
       <div class="contact-or">or Book a 1-on-1 call now:</div>
-      <div class="calendar-booking" id="gcal-button-container"></div>
+      <div class="calendar-booking"><div id="gcal-button-container" style="width:100%;"></div></div>
       <div class="contact-info">
-        <strong>Phone:</strong> +1 226-977-9311 <br>
-        <strong>Email:</strong> <a href="mailto:rytdesignsca@gmail.com" style="color: var(--c-strong);">rytdesignsca@gmail.com</a>
+        <b>Phone:</b> +1 226-977-9311 <br>
+        <b>Email:</b> <a href="mailto:rytdesignsca@gmail.com" style="color:var(--neon);text-decoration:underline;">rytdesignsca@gmail.com</a>
       </div>
-      <div class="social-links">
+      <div class="social-row">
         <a href="https://www.instagram.com/rytdesigns_/" target="_blank">Instagram</a>
         <a href="https://www.tiktok.com/@ryt.designs7" target="_blank">TikTok</a>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
   <footer>
-    &copy; 2025 <strong>RYT DESIGNS</strong> • Designed by a real teen. ✌️ | <a href="#work">Work</a> | <a href="#about">About</a>
+    &copy; 2025 RYT DESIGNS — All work original.
   </footer>
-
   <script>
-  // Animate gallery cards on scroll using IntersectionObserver
-  document.addEventListener("DOMContentLoaded",function(){
-    // Feedback for inquiry form (Formspree)
-    const form = document.getElementById('projectInquiryForm');
-    const formSuccess = document.getElementById('formSuccess');
-    const formError = document.getElementById('formError');
-    if(form){
-      form.addEventListener('submit',function(e){
-        setTimeout(()=>{
-          formSuccess.style.display='block';
-          formSuccess.textContent="Sent! I'll get back to you soon.";
-          formError.style.display="none";
-          form.reset();
-        }, 350);
-      });
+    // Glowing nav active style
+    function navActive(){
+      let y = window.scrollY || window.pageYOffset;
+      let links = document.querySelectorAll('.menu a');
+      let work = document.getElementById('work').offsetTop - 120;
+      let about = document.getElementById('about').offsetTop - 120;
+      let contact = document.getElementById('contact').offsetTop - 150;
+      links.forEach(a=>a.classList.remove('active'));
+      if(y<about) links[0].classList.add('active');
+      else if(y<contact) links[1].classList.add('active');
+      else links[2].classList.add('active');
     }
-    // Google Calendar Button (wait if script is slow)
-    function loadGcalButton() {
-      var btnTarget=document.getElementById('gcal-button-container');
-      if(btnTarget&&window.calendar&&window.calendar.schedulingButton){
-        calendar.schedulingButton.load({
-          url:'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3VpIaEgD8-5JS2dBR-7XaOx9beJuvfUs5Fq7CtY0VZ1hQdcewcz0RyCSxQClVQWASiLuzz36AK?gv=true',
-          color:'#08e8de',label:'Book Now',target:btnTarget
+    window.addEventListener('scroll', navActive); navActive();
+
+    // Form feedback message
+    document.addEventListener("DOMContentLoaded",function(){
+      const form=document.getElementById('projectInquiryForm');
+      const formSuccess=document.getElementById('formSuccess');
+      const formError=document.getElementById('formError');
+      if(form){
+        form.addEventListener('submit',function(e){
+          setTimeout(()=>{
+            formSuccess.style.display='block';
+            formSuccess.textContent="Thank you! I'll be in touch.";
+            formError.style.display="none";
+            form.reset();
+          }, 300);
         });
-      } else setTimeout(loadGcalButton,400);
-    }
-    loadGcalButton();
-
-    // GSAP on hero and nav for a fun pop
-    gsap.from(".nav", {duration:1.2, y:-100, opacity:0, ease:"bounce.out"});
-    gsap.from(".blitz-hero", {duration:1.3, y:60, opacity:0, ease:"power3.out", delay:0.2});
-    gsap.from(".hero-tag", {duration:1, opacity:0, scale:1.17, delay:0.55});
-    gsap.from(".about-section", {duration:1, x:-90, opacity:0, ease:"back.out", delay:0.7});
-    gsap.from(".contact-form-wrap", {duration:1, y:80, opacity:0, ease:"back.out", delay:1.1});
-
-    // Animate gallery cards in on scroll
-    var observer = new window.IntersectionObserver(function(entries, obs){
-      entries.forEach(entry=>{
-        if (entry.isIntersecting){
-          entry.target.classList.add('visible');
-          obs.unobserve(entry.target);
-        }
-      });
-    },{threshold:0.15});
-    document.querySelectorAll('.gallery-card').forEach(card=>observer.observe(card));
-
-    // Scroll to top on logo click
-    window.scrollToTop = function(){
-      window.scrollTo({top:0, behavior:'smooth'});
-    }
-    // Menu link active state on scroll
-    function onScroll(){
-      let y=window.scrollY||window.pageYOffset;
-      let work=document.getElementById('work').offsetTop-120;
-      let about=document.getElementById('about').offsetTop-120;
-      let contact=document.getElementById('contact').offsetTop-150;
-      let navlinks=document.querySelectorAll('.nav .menu a');
-      navlinks.forEach(a=>a.classList.remove('active'));
-      if(y<about) navlinks[0].classList.add('active');
-      else if(y<contact) navlinks[1].classList.add('active');
-      else navlinks[2].classList.add('active');
-    }
-    window.addEventListener('scroll', onScroll);
-    onScroll();
-  });
+      }
+      // Google Calendar button inject
+      function gcalBtnLoad() {
+        var btnTarget=document.getElementById('gcal-button-container');
+        if(btnTarget&&window.calendar&&window.calendar.schedulingButton){
+          calendar.schedulingButton.load({
+            url:'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3VpIaEgD8-5JS2dBR-7XaOx9beJuvfUs5Fq7CtY0VZ1hQdcewcz0RyCSxQClVQWASiLuzz36AK?gv=true',
+            color:'#23f0ff',label:'Book Now',target:btnTarget
+          });
+        } else setTimeout(gcalBtnLoad,400);
+      }
+      gcalBtnLoad();
+    });
   </script>
 </body>
 </html>
