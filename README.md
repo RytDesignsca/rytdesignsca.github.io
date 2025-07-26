@@ -205,15 +205,15 @@
   <div class="gallerywrap" id="work">
     <div class="gallery-grid">
       <div class="gallery-card">
-        <img src="A%20A%20itinerary.png" alt="A A itinerary"/>
+        <img src="https://rytdesignsca.github.io/website%20prototype/A%20A%20itinerary.png" alt="A A itinerary"/>
         <div class="caption">A A itinerary</div>
       </div>
       <div class="gallery-card">
-        <img src="Logo%204%20website.png" alt="Logo 4 website"/>
+        <img src="https://rytdesignsca.github.io/website%20prototype/Logo%204%20website.png" alt="Logo 4 website"/>
         <div class="caption">Logo 4 website</div>
       </div>
       <div class="gallery-card">
-        <img src="Menu%204%20website.png" alt="Menu 4 website"/>
+        <img src="https://rytdesignsca.github.io/website%20prototype/Menu%204%20website.png" alt="Menu 4 website"/>
         <div class="caption">Menu 4 website</div>
       </div>
       <div class="gallery-card">
