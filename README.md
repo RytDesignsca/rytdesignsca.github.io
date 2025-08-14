@@ -27,8 +27,6 @@
       min-height: 100vh;
     }
     body { letter-spacing: .01em; }
-
-    /* --- NAV --- */
     .nav {
       max-width:1280px;width:100vw;padding:26px 38px 26px 38px;margin:auto;
       display:flex;align-items:center;justify-content:space-between;
@@ -52,7 +50,6 @@
     .menu a.active,.menu a:hover { color:var(--neon); background:rgba(35,240,255,0.13);}
     @media(max-width:700px){ .nav {flex-direction:column;padding:13px 2vw;} .logo {font-size: 1.3rem;} .menu{gap:18px;}}
 
-    /* --- HERO --- */
     .hero {
       text-align:center;margin-top:12px;margin-bottom:12px;
     }
@@ -82,8 +79,6 @@
     .hero-sub {
       font-size:1.26rem;font-weight:600;color:var(--accent);text-shadow: 0 1px 19px #ffe06644;
     }
-
-    /* --- GALLERY --- */
     .gallerywrap {
       max-width: 1150px;
       margin:55px auto 38px auto;
@@ -120,7 +115,7 @@
       width: 93%;
     }
     @media(max-width:650px){.gallery-grid{gap:13px 1vw;}.gallery-card{min-height:120px;}.gallery-card img{min-height:95px;}}
-    /* --- FORM/PANEL --- */
+
     .form-section {
       display: flex; flex-direction: column; align-items: center; margin-bottom:65px;
     }
@@ -182,7 +177,6 @@
     }
     .social-row a { color: var(--accent); text-decoration:none;transition:color .19s; }
     .social-row a:hover { color:var(--hot);}
-    /* --- FOOTER --- */
     footer {
       text-align:center; color:#bcccdc;padding:21px 0 15px 0;background:var(--panel-bg);font-size:1.08rem;margin-top:13vh;
     }
@@ -206,7 +200,7 @@
     <div class="gallery-grid">
       <div class="gallery-card">
         <img src="https://rytdesignsca.github.io/website%20prototype/Trip%20Itenirary%20.png" alt="Trip Itinerary"/>
-        <div class="caption">Trip Itinerary </div>
+        <div class="caption">Trip Itinerary</div>
       </div>
       <div class="gallery-card">
         <img src="https://rytdesignsca.github.io/website%20prototype/Logo%204%20website.png" alt="Logo 4 website"/>
@@ -214,14 +208,14 @@
       </div>
       <div class="gallery-card">
         <img src="https://rytdesignsca.github.io/website%20prototype/Menu%204%20website.png" alt="Menu 4 website"/>
-        <div class="caption">Logo</div>
+        <div class="caption">Menu 4 website</div>
       </div>
       <div class="gallery-card">
-        <img src="https://rytdesignsca.github.io/website%20prototype/Album%20cover.png" alt="Album cover"/>
+        <img src="https://rytdesignsca.github.io/website%20prototype/Album%20cover.png" alt="Album Cover"/>
         <div class="caption">Album Cover</div>
       </div>
       <div class="gallery-card">
-        <img src="https://rytdesignsca.github.io/website%20prototype/T-Shirt%20design.png" alt="T-Shirt"/>
+        <img src="https://rytdesignsca.github.io/website%20prototype/T-Shirt%20design.png" alt="T-Shirt Design"/>
         <div class="caption">T-Shirt Design</div>
       </div>
       <div class="gallery-card">
@@ -229,15 +223,16 @@
         <div class="caption">Branding</div>
       </div>
       <div class="gallery-card">
-        <img src="https://rytdesignsca.github.io/website%20prototype/Ryt%20Designs%20Poster.png" alt="Poster"/>
+        <img src="https://rytdesignsca.github.io/website%20prototype/Ryt%20Designs%20Poster.png" alt="Poster Design"/>
         <div class="caption">Poster Design</div>
       </div>
-      <!-- Add/remove cards as you want! -->
     </div>
   </div>
   <section id="about" style="max-width:580px;margin:64px auto 42px auto;text-align:center;color:var(--accent);font-size:1.17rem;line-height:1.7;">
-    <b>Hey, I'm RYT—a teen designer and digital artist.<br>
-    <span style="color:var(--neon)">Check my work. Hit up my form to collab.<br>Stay original, stay bold.</span></b>
+    <b>
+      Hey, I'm RYT—a teen designer and digital artist. <br>
+      <span style="color:var(--neon)">Check my work. Hit up my form to collab. <br> Stay original, stay bold.</span>
+    </b>
   </section>
   <section class="form-section" id="contact">
     <div class="form-panel">
@@ -276,10 +271,9 @@
     </div>
   </section>
   <footer>
-    &copy; 2025 RYT DESIGNS — All work original.
+    © 2025 RYT DESIGNS — All work original.
   </footer>
   <script>
-    // Glowing nav active style
     function navActive(){
       let y = window.scrollY || window.pageYOffset;
       let links = document.querySelectorAll('.menu a');
@@ -293,7 +287,6 @@
     }
     window.addEventListener('scroll', navActive); navActive();
 
-    // Form feedback message
     document.addEventListener("DOMContentLoaded",function(){
       const form=document.getElementById('projectInquiryForm');
       const formSuccess=document.getElementById('formSuccess');
@@ -308,7 +301,6 @@
           }, 300);
         });
       }
-      // Google Calendar button inject
       function gcalBtnLoad() {
         var btnTarget=document.getElementById('gcal-button-container');
         if(btnTarget&&window.calendar&&window.calendar.schedulingButton){
