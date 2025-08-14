@@ -18,17 +18,17 @@
       --input-bg: #191a1f;
       --form-glow: 0 0 34px #13fff5aa;
       --panel-radius: 15px;
+      --shadow: 0 7px 24px #1114;
     }
     html,body {
       background: var(--main-bg);
       color: var(--white);
       font-family: 'Montserrat', Arial, sans-serif;
-      margin: 0; padding: 0;
       min-height: 100vh;
+      margin:0;
+      padding:0;
     }
     body { letter-spacing: .01em; }
-
-    /* --- NAV --- */
     .nav {
       max-width:1280px;width:100vw;padding:26px 38px 26px 38px;margin:auto;
       display:flex;align-items:center;justify-content:space-between;
@@ -52,7 +52,6 @@
     .menu a.active,.menu a:hover { color:var(--neon); background:rgba(35,240,255,0.13);}
     @media(max-width:700px){ .nav {flex-direction:column;padding:13px 2vw;} .logo {font-size: 1.3rem;} .menu{gap:18px;}}
 
-    /* --- HERO --- */
     .hero {
       text-align:center;margin-top:12px;margin-bottom:12px;
     }
@@ -64,10 +63,7 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      text-shadow:
-        0 0 48px var(--neon),
-        0 2px 8px #000f, 
-        0 1px 1px #d9dcd6;
+      text-shadow: 0 0 48px var(--neon), 0 2px 8px #000f, 0 1px 1px #d9dcd6;
       filter: brightness(1.5) drop-shadow(0 0 22px #23f0ff);
       letter-spacing:0;
       animation: neonPulse 2.5s infinite alternate;
@@ -83,109 +79,173 @@
       font-size:1.26rem;font-weight:600;color:var(--accent);text-shadow: 0 1px 19px #ffe06644;
     }
 
-    /* --- GALLERY --- */
-    .gallerywrap {
-      max-width: 1150px;
-      margin:55px auto 38px auto;
+    /* Accordion Styles */
+    .accordion {
+      max-width: 670px; margin:55px auto 38px auto;
     }
-    .gallery-grid {
-      display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      gap:32px 22px;width:100%;
-      margin:0 auto;
-    }
-    .gallery-card {
-      background: #fff;
-      border-radius: 13px;
+    .accordion-section {
+      background: var(--panel-bg);
+      margin-bottom: 18px;
+      border-radius: var(--panel-radius);
+      box-shadow: var(--shadow);
       overflow: hidden;
-      box-shadow: 0 7px 32px #181c2899;
-      transition: transform .21s, box-shadow .23s;
-      display: flex;
-      flex-direction: column;
-      align-items:center;
+      transition: box-shadow .24s;
+    }
+    .accordion-header {
+      padding: 21px 32px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      color: var(--accent);
       cursor: pointer;
       position: relative;
-      min-height: 224px;
+      display: flex;
+      align-items: center;
+      user-select: none;
+      background: none;
+      border: none;
+      width: 100%;
+      outline: none;
+      transition: background 0.19s;
     }
-    .gallery-card:hover {
-      transform: translateY(-9px) scale(1.04);
-      box-shadow: 0 16px 43px #23f0ff33;
+    .accordion-header:hover,
+    .accordion-section.open .accordion-header {
+      background: #2a314e;
     }
-    .gallery-card img {
-      width:100%; display:block; min-height:210px;object-fit:cover;
-      background: #e9f6f5;
-      border-bottom: 2px solid var(--neon);
+    .accordion-header .arrow {
+      margin-left:auto;
+      transition:transform .22s;
+      font-size: 1.45em;
+      color: var(--neon);
     }
-    .gallery-card .caption {
-      padding:12px 0 17px 0;font-size:1.13rem;font-weight:800;color:var(--main-bg);letter-spacing:.03em;text-align:center;text-shadow:0 1px 14px #ffe06655;
-      width: 93%;
+    .accordion-section.open .accordion-header .arrow {
+      transform: rotate(90deg);
     }
-    @media(max-width:650px){.gallery-grid{gap:13px 1vw;}.gallery-card{min-height:120px;}.gallery-card img{min-height:95px;}}
-    /* --- FORM/PANEL --- */
-    .form-section {
-      display: flex; flex-direction: column; align-items: center; margin-bottom:65px;
-    }
-    .form-panel {
+    .accordion-panel {
+      max-height: 0;
+      overflow: hidden;
       background: var(--panel-bg);
-      border-radius: var(--panel-radius);
-      box-shadow: var(--form-glow),0 6px 20px #000f;
-      padding:36px 30px 19px 30px;
-      max-width:400px; width:95vw; margin: 0 auto;
-      animation: glowIn 1.3s;
-      position:relative;
+      transition: max-height 0.44s cubic-bezier(.62,0,.23,1), padding .28s, opacity .36s;
+      padding: 0 28px;
+      opacity: .32;
     }
-    @keyframes glowIn {
-      0% {filter: brightness(.6) blur(7px); opacity: .33;}
-      100% {filter: none; opacity: 1;}
+    .accordion-section.open .accordion-panel {
+      max-height: 1800px;
+      padding: 16px 28px 18px 28px;
+      opacity:1;
+      transition: max-height .71s cubic-bezier(.11,.77,.46,1.18), padding .36s, opacity .41s;
     }
-    .project-inquiry-form label {
-      font-size:1.03rem;font-weight:700;margin-top:1.09em;margin-bottom:7px;display:block;color:var(--accent);letter-spacing:0.04em;
+    .item-list {
+      margin:0 0 6px 0;padding:0;list-style:none;font-size:1.02rem;color:var(--white);
+      line-height:1.77;
     }
-    .project-inquiry-form input, .project-inquiry-form textarea, .project-inquiry-form select {
-      width:100%;margin-bottom:14px;border:none;border-radius:7px;
-      background:var(--input-bg);color:#fff;font-size:1.08rem;
-      padding:9px 11px;font-family:inherit;outline:none;transition:box-shadow .13s;
+    .item-list b {
+      color: var(--neon);
     }
+    .gallery-mini {
+      display: flex; flex-wrap: wrap; gap:21px 21px; justify-content: flex-start;
+      margin-top:12px; margin-bottom:7px;
+      transition: gap .19s;
+    }
+    .gallery-img {
+      background:#fff;
+      border-radius:10px;
+      box-shadow:0 3px 16px #2228;
+      max-width:148px;
+      min-width:110px;
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit:cover;
+      border:3px solid var(--neon);
+      transition: transform .19s, box-shadow .2s;
+      cursor: pointer;
+      margin-bottom:5px;
+      display: block;
+      position: relative;
+    }
+    .gallery-img:hover {
+      transform: scale(1.12) rotate(-3deg);
+      box-shadow:0 7px 36px #23f0ff99;
+      z-index: 5;
+    }
+    .gallery-caption {
+      color: var(--panel-bg);
+      font-weight: 800;
+      font-size: 1.02em;
+      padding: 2px 10px 0 5px;
+      text-align: left;
+      margin-bottom: 16px;
+      display: block;
+    }
+    /* Modal */
+    .modal-bg {
+      display: none;
+      position: fixed; left:0;top:0;right:0;bottom:0;
+      background: rgba(24,28,40,0.86);
+      z-index: 1002;
+      justify-content: center;
+      align-items: center;
+      animation: fadeInBg .23s;
+    }
+    @keyframes fadeInBg { 0%{ opacity:0;} 100%{ opacity:1;}}
+    .modal-bg.active { display: flex; }
+    .modal-view {
+      background: var(--panel-bg);
+      border-radius: 14px;
+      padding: 30px 20px 22px 20px;
+      max-width: 98vw;
+      text-align: center;
+      box-shadow: 0 7px 32px #000d;
+      position: relative;
+      min-width: 240px;
+      animation: popUpModal .25s;
+    }
+    @keyframes popUpModal { 0%{ transform: scale(.8); opacity:0;} 100%{ transform:scale(1); opacity:1;}}
+    .modal-view img {
+      width: clamp(160px,40vw,450px);
+      max-width: 80vw;
+      max-height: 70vh;
+      aspect-ratio: 1/1;
+      border-radius: 11px;
+      background: #fff;
+      border:3px solid var(--neon);
+      margin-bottom: 0.7em;
+      object-fit: contain;
+      box-shadow:0 6px 48px #23f0ff44;
+    }
+    .modal-caption {
+      font-size: 1.13em;
+      color: var(--accent);
+      font-weight: 800;
+    }
+    .modal-close {
+      position: absolute;
+      right: 11px; top: 11px; font-size:1.85em; color:var(--neon);background:none;
+      border:none;cursor:pointer;transition:color .21s;line-height:0;
+    }
+    .modal-close:hover { color: var(--hot);}
+    @media (max-width: 610px) { .gallery-mini{ gap:9px 3vw; } .modal-view img{ width:90vw;}}
+    /* Contact/Other styles (left as in your current code) ... */
+    .form-section {display: flex; flex-direction: column; align-items: center; margin-bottom:65px;}
+    .form-panel {background: var(--panel-bg);border-radius: var(--panel-radius);box-shadow: var(--form-glow),0 6px 20px #000f;padding:36px 30px 19px 30px;max-width:400px; width:95vw; margin: 0 auto;animation: glowIn 1.3s;position:relative;}
+    @keyframes glowIn {0% {filter: brightness(.6) blur(7px); opacity: .33;}100% {filter: none; opacity: 1;}}
+    .project-inquiry-form label {font-size:1.03rem;font-weight:700;margin-top:1.09em;margin-bottom:7px;display:block;color:var(--accent);letter-spacing:0.04em;}
+    .project-inquiry-form input, .project-inquiry-form textarea, .project-inquiry-form select {width:100%;margin-bottom:14px;border:none;border-radius:7px;background:var(--input-bg);color:#fff;font-size:1.08rem;padding:9px 11px;font-family:inherit;outline:none;transition:box-shadow .13s;}
     .project-inquiry-form input:focus,.project-inquiry-form textarea:focus{box-shadow:0 0 0 2px var(--neon) inset;}
     .project-inquiry-form textarea {min-height:66px;}
-    .project-inquiry-form button {
-      background: linear-gradient(90deg, var(--hot) 13%, var(--neon));
-      color: #fff; border: none; border-radius:8px;
-      padding:13px 0;font-size:1.17rem;width:100%;font-weight:800;
-      margin-top:8px;transition:background .17s, filter .11s;
-      box-shadow:0 3px 24px #23f0ff44;
-      letter-spacing:.1em; cursor:pointer;
-      filter: brightness(1.08);
-    }
-    .project-inquiry-form button:hover {
-      background: linear-gradient(90deg, var(--neon) 20%, var(--hot));
-      filter:brightness(1.15);
-    }
-    .form-success,.form-error {
-      text-align:center;font-weight:800;font-size:1.05rem;padding:5px 0 7px 0;
-    }
+    .project-inquiry-form button {background: linear-gradient(90deg, var(--hot) 13%, var(--neon));color: #fff; border: none; border-radius:8px; padding:13px 0;font-size:1.17rem;width:100%;font-weight:800;margin-top:8px;transition:background .17s, filter .11s;box-shadow:0 3px 24px #23f0ff44;letter-spacing:.1em; cursor:pointer;filter: brightness(1.08);}
+    .project-inquiry-form button:hover {background: linear-gradient(90deg, var(--neon) 20%, var(--hot));filter:brightness(1.15);}
+    .form-success,.form-error {text-align:center;font-weight:800;font-size:1.05rem;padding:5px 0 7px 0;}
     .form-success{color:var(--neon);}
     .form-error{color:var(--hot);}
     .contact-or {text-align:center;margin:17px 0 9px 0;font-weight:700;color:var(--neon);}
     .form-panel .calendar-booking {display:flex;justify-content:center;margin-top:14px;margin-bottom:19px;}
-    #gcal-button-container button, #gcal-button-container > div > button {
-      font-size:1.10rem !important;
-      padding:14px 31px !important;
-      border-radius:10px !important;font-weight:900 !important;letter-spacing:0.09em !important;
-      background:linear-gradient(90deg,#23f0ff 20%,#ffe066 99%)!important;color:#181c28!important;border:0!important;box-shadow:0 1px 9px #23f0ff44 !important;
-      margin:auto !important;text-transform:uppercase;
-    }
-    .contact-info {
-      color:var(--neon);margin:0.7em 0 0.3em 0;text-align:center;font-size: 1.09rem;
-    }
-    .social-row {
-      display:flex; justify-content:center; gap:2.1em; margin-top:1.1em; font-weight:900; font-size:1.16rem; letter-spacing:.17em;
-    }
+    #gcal-button-container button, #gcal-button-container > div > button {font-size:1.10rem !important;padding:14px 31px !important;border-radius:10px !important;font-weight:900 !important;letter-spacing:0.09em !important;background:linear-gradient(90deg,#23f0ff 20%,#ffe066 99%)!important;color:#181c28!important;border:0!important;box-shadow:0 1px 9px #23f0ff44 !important;margin:auto !important;text-transform:uppercase;}
+    .contact-info {color:var(--neon);margin:0.7em 0 0.3em 0;text-align:center;font-size: 1.09rem;}
+    .social-row {display:flex; justify-content:center; gap:2.1em; margin-top:1.1em; font-weight:900; font-size:1.16rem; letter-spacing:.17em;}
     .social-row a { color: var(--accent); text-decoration:none;transition:color .19s; }
     .social-row a:hover { color:var(--hot);}
-    /* --- FOOTER --- */
-    footer {
-      text-align:center; color:#bcccdc;padding:21px 0 15px 0;background:var(--panel-bg);font-size:1.08rem;margin-top:13vh;
-    }
+    footer {text-align:center; color:#bcccdc;padding:21px 0 15px 0;background:var(--panel-bg);font-size:1.08rem;margin-top:13vh;}
     footer a { color:var(--accent); font-weight:900; text-decoration:none;}
   </style>
 </head>
@@ -202,43 +262,130 @@
     <div class="hero-title">Let's Make Something Cool.</div>
     <div class="hero-sub">Your vision, my creativity—custom work, always unique!</div>
   </section>
-  <div class="gallerywrap" id="work">
-    <div class="gallery-grid">
-      <div class="gallery-card">
-        <img src="https://rytdesignsca.github.io/website%20prototype/Trip%20Itenirary%20.png" alt="Trip Itinerary"/>
-        <div class="caption">Trip Itinerary </div>
+
+  <!-- Accordion portfolio here! -->
+  <div class="accordion" id="work">
+    <!-- MARKETING -->
+    <div class="accordion-section">
+      <button class="accordion-header">
+        🧾 Marketing & Promotional Materials <span class="arrow">&#9654;</span>
+      </button>
+      <div class="accordion-panel">
+        <ul class="item-list">
+          <li><b>Flyer</b> – $15</li>
+          <li><b>Business Cards</b> – $20</li>
+          <li><b>Banner</b> – $35</li>
+          <li><b>Menus</b> – $20</li>
+          <li><b>Presentations</b> – $30</li>
+          <li><b>Product Label</b> – $25</li>
+          <li><b>Product Design</b> – $40</li>
+        </ul>
+        <div class="gallery-mini">
+          <div>
+            <img class="gallery-img" src="https://rytdesignsca.github.io/website%20prototype/Trip%20Itenirary%20.png" alt="Flyer" data-caption="Flyer: Trip Itinerary">
+            <div class="gallery-caption">Flyer</div>
+          </div>
+          <div>
+            <img class="gallery-img" src="https://rytdesignsca.github.io/website%20prototype/Menu%204%20website.png" alt="Menu" data-caption="Menu Design">
+            <div class="gallery-caption">Menu</div>
+          </div>
+          <div>
+            <img class="gallery-img" src="https://rytdesignsca.github.io/website%20prototype/Logo%204%20website.png" alt="Product Label" data-caption="Logo/Product Label">
+            <div class="gallery-caption">Product/Label</div>
+          </div>
+        </div>
       </div>
-      <div class="gallery-card">
-        <img src="https://rytdesignsca.github.io/website%20prototype/Logo%204%20website.png" alt="Logo 4 website"/>
-        <div class="caption">Logo 4 website</div>
+    </div>
+    <!-- DIGITAL & SOCIAL -->
+    <div class="accordion-section">
+      <button class="accordion-header">
+        🎥 Digital & Social Media Content <span class="arrow">&#9654;</span>
+      </button>
+      <div class="accordion-panel">
+        <ul class="item-list">
+          <li><b>Videos for Events</b> – $25</li>
+          <li><b>YouTube Thumbnails (Basic)</b> – $20</li>
+          <li><b>YouTube Thumbnails (Add-ons)</b> – $35</li>
+          <li><b>Basic Designs</b> – $10–$50</li>
+        </ul>
+        <div class="gallery-mini">
+          <div>
+            <img class="gallery-img" src="https://rytdesignsca.github.io/website%20prototype/T-Shirt%20design.png" alt="YT Basic Thumb" data-caption="YouTube Thumbnail (Basic)">
+            <div class="gallery-caption">YouTube Thumbnail</div>
+          </div>
+          <div>
+            <img class="gallery-img" src="https://rytdesignsca.github.io/website%20prototype/Ryt%20Designs%20Poster.png" alt="Poster/Basic" data-caption="Event Poster/Basic Design">
+            <div class="gallery-caption">Poster/Basic Design</div>
+          </div>
+        </div>
       </div>
-      <div class="gallery-card">
-        <img src="https://rytdesignsca.github.io/website%20prototype/Menu%204%20website.png" alt="Menu 4 website"/>
-        <div class="caption">Logo</div>
+    </div>
+    <!-- BRANDING & IDENTITY -->
+    <div class="accordion-section">
+      <button class="accordion-header">
+        🎨 Branding & Identity <span class="arrow">&#9654;</span>
+      </button>
+      <div class="accordion-panel">
+        <ul class="item-list">
+          <li><b>Logos for Businesses</b> – $30</li>
+          <li><b>Clothing Design</b> – $50</li>
+          <li><b>Album Cover</b> – $50</li>
+        </ul>
+        <div class="gallery-mini">
+          <div>
+            <img class="gallery-img" src="https://rytdesignsca.github.io/website%20prototype/Logo%204%20website.png" alt="Logo" data-caption="Logo/Branding">
+            <div class="gallery-caption">Logo</div>
+          </div>
+          <div>
+            <img class="gallery-img" src="https://rytdesignsca.github.io/website%20prototype/T-Shirt%20design.png" alt="Clothing" data-caption="Clothing Design">
+            <div class="gallery-caption">Clothing</div>
+          </div>
+          <div>
+            <img class="gallery-img" src="https://rytdesignsca.github.io/website%20prototype/Album%20cover.png" alt="Album Cover" data-caption="Album Cover Art">
+            <div class="gallery-caption">Album Cover</div>
+          </div>
+        </div>
       </div>
-      <div class="gallery-card">
-        <img src="https://rytdesignsca.github.io/website%20prototype/Album%20cover.png" alt="Album cover"/>
-        <div class="caption">Album Cover</div>
+    </div>
+    <!-- PERSONAL & EVENT -->
+    <div class="accordion-section">
+      <button class="accordion-header">
+        🎉 Personal & Event Designs <span class="arrow">&#9654;</span>
+      </button>
+      <div class="accordion-panel">
+        <ul class="item-list">
+          <li><b>Invitations</b> – $24</li>
+          <li><b>Celebration Cards</b> – $10</li>
+        </ul>
+        <div class="gallery-mini">
+          <div>
+            <img class="gallery-img" src="https://rytdesignsca.github.io/website%20prototype/Trip%20Itenirary%20.png" alt="Invitation" data-caption="Custom Invitation">
+            <div class="gallery-caption">Invitation</div>
+          </div>
+          <div>
+            <img class="gallery-img" src="https://rytdesignsca.github.io/website%20prototype/Ryt%20Skin.png" alt="Celebration Card" data-caption="Celebration Card">
+            <div class="gallery-caption">Celebration Card</div>
+          </div>
+        </div>
       </div>
-      <div class="gallery-card">
-        <img src="https://rytdesignsca.github.io/website%20prototype/T-Shirt%20design.png" alt="T-Shirt"/>
-        <div class="caption">T-Shirt Design</div>
-      </div>
-      <div class="gallery-card">
-        <img src="https://rytdesignsca.github.io/website%20prototype/Ryt%20Skin.png" alt="Branding"/>
-        <div class="caption">Branding</div>
-      </div>
-      <div class="gallery-card">
-        <img src="https://rytdesignsca.github.io/website%20prototype/Ryt%20Designs%20Poster.png" alt="Poster"/>
-        <div class="caption">Poster Design</div>
-      </div>
-      <!-- Add/remove cards as you want! -->
     </div>
   </div>
+  <!-- Image Lightbox Modal -->
+  <div class="modal-bg" id="imgModal">
+    <div class="modal-view">
+      <button class="modal-close" id="modalClose" aria-label="Close image">&times;</button>
+      <div id="modalPic"></div>
+      <div class="modal-caption" id="modalCap"></div>
+    </div>
+  </div>
+
   <section id="about" style="max-width:580px;margin:64px auto 42px auto;text-align:center;color:var(--accent);font-size:1.17rem;line-height:1.7;">
-    <b>Hey, I'm RYT—a teen designer and digital artist.<br>
-    <span style="color:var(--neon)">Check my work. Hit up my form to collab.<br>Stay original, stay bold.</span></b>
+    <b>
+      Hey, I'm RYT—a teen designer and digital artist. <br>
+      <span style="color:var(--neon)">Check my work. Hit up my form to collab. <br> Stay original, stay bold.</span>
+    </b>
   </section>
+
   <section class="form-section" id="contact">
     <div class="form-panel">
       <form id="projectInquiryForm" class="project-inquiry-form" autocomplete="off" method="POST" action="https://formspree.io/f/mjkrwwpk">
@@ -276,10 +423,10 @@
     </div>
   </section>
   <footer>
-    &copy; 2025 RYT DESIGNS — All work original.
+    © 2025 RYT DESIGNS — All work original.
   </footer>
   <script>
-    // Glowing nav active style
+    // Menu link highlight on scroll (as before)
     function navActive(){
       let y = window.scrollY || window.pageYOffset;
       let links = document.querySelectorAll('.menu a');
@@ -293,7 +440,41 @@
     }
     window.addEventListener('scroll', navActive); navActive();
 
-    // Form feedback message
+    // Accordion logic
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', function(){
+        let sec = header.parentElement;
+        if (sec.classList.contains('open')) {
+          sec.classList.remove('open');
+        } else {
+          document.querySelectorAll('.accordion-section').forEach(s=>s.classList.remove('open'));
+          sec.classList.add('open');
+        }
+      });
+    });
+    // Modal logic
+    const modal = document.getElementById('imgModal');
+    const modalPic = document.getElementById('modalPic');
+    const modalCap = document.getElementById('modalCap');
+    document.querySelectorAll('.gallery-img').forEach(img=>{
+      img.addEventListener('click',function(e){
+        modalPic.innerHTML = `<img src='${img.src}' alt='${img.alt}'>`;
+        modalCap.textContent = img.getAttribute('data-caption') || img.alt;
+        modal.classList.add('active');
+      });
+    });
+    document.getElementById('modalClose').onclick = function(){
+      modal.classList.remove('active');
+    };
+    // Close modal on Esc or bg click
+    modal.onclick = function(e){
+      if (e.target === modal) modal.classList.remove('active');
+    }
+    window.addEventListener('keydown', function(e){
+      if(e.key === "Escape") modal.classList.remove('active');
+    });
+
+    // Form logic/calendar as before
     document.addEventListener("DOMContentLoaded",function(){
       const form=document.getElementById('projectInquiryForm');
       const formSuccess=document.getElementById('formSuccess');
@@ -308,7 +489,6 @@
           }, 300);
         });
       }
-      // Google Calendar button inject
       function gcalBtnLoad() {
         var btnTarget=document.getElementById('gcal-button-container');
         if(btnTarget&&window.calendar&&window.calendar.schedulingButton){
