@@ -51,7 +51,6 @@
     }
     .menu a.active,.menu a:hover { color:var(--neon); background:rgba(35,240,255,0.13);}
     @media(max-width:700px){ .nav {flex-direction:column;padding:13px 2vw;} .logo {font-size: 1.3rem;} .menu{gap:18px;}}
-
     .hero {
       text-align:center;margin-top:12px;margin-bottom:12px;
     }
@@ -225,7 +224,6 @@
     }
     .modal-close:hover { color: var(--hot);}
     @media (max-width: 610px) { .gallery-mini{ gap:9px 3vw; } .modal-view img{ width:90vw;}}
-    /* Contact/Other styles (left as in your current code) ... */
     .form-section {display: flex; flex-direction: column; align-items: center; margin-bottom:65px;}
     .form-panel {background: var(--panel-bg);border-radius: var(--panel-radius);box-shadow: var(--form-glow),0 6px 20px #000f;padding:36px 30px 19px 30px;max-width:400px; width:95vw; margin: 0 auto;animation: glowIn 1.3s;position:relative;}
     @keyframes glowIn {0% {filter: brightness(.6) blur(7px); opacity: .33;}100% {filter: none; opacity: 1;}}
@@ -262,7 +260,6 @@
     <div class="hero-title">Let's Make Something Cool.</div>
     <div class="hero-sub">Your vision, my creativity—custom work, always unique!</div>
   </section>
-
   <!-- Accordion portfolio here! -->
   <div class="accordion" id="work">
     <!-- MARKETING -->
