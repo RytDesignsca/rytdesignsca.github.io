@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>RYT DESIGNS | Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900;700;400&display=swap" rel="stylesheet">
@@ -17,22 +17,29 @@
       --hot: #ff4d97;
       --input-bg: #191a1f;
       --form-glow: 0 0 34px #13fff5aa;
-      --panel-radius: 15px;
-      --shadow: 0 7px 24px #1114;
     }
     html,body {
       background: var(--main-bg);
       color: var(--white);
       font-family: 'Montserrat', Arial, sans-serif;
       min-height: 100vh;
-      margin:0;
-      padding:0;
+      margin:0; padding:0;
     }
     body { letter-spacing: .01em; }
+
+    /* HEADER */
     .nav {
-      max-width:1280px;width:100vw;padding:26px 38px 26px 38px;margin:auto;
-      display:flex;align-items:center;justify-content:space-between;
-      background:transparent;
+      width:100vw;
+      position:fixed;
+      top:0; left:0; right:0;
+      z-index: 1003;
+      background: var(--panel-bg);
+      box-shadow:0 4px 18px #222b;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:22px 38px;
+      transition: top .37s cubic-bezier(.86,0,.19,1);
     }
     .logo { 
       font-size: 2.1rem;
@@ -50,9 +57,39 @@
       color:var(--white);text-decoration:none;transition:.2s;padding:2px 10px;border-radius:6px;
     }
     .menu a.active,.menu a:hover { color:var(--neon); background:rgba(35,240,255,0.13);}
-    @media(max-width:700px){ .nav {flex-direction:column;padding:13px 2vw;} .logo {font-size: 1.3rem;} .menu{gap:18px;}}
+    @media(max-width:700px){ 
+      .nav {flex-direction:column; padding:12px 5vw;}
+      .logo {font-size: 1.26rem;}
+      .menu{gap:18px;}
+    }
+    .show-nav { top: 0; }
+    .hide-nav { top: -100px; }
+
+    /* ARROW BUTTON */
+    .to-top-arrow {
+      position: fixed;
+      right: 30px; 
+      bottom: 40px;
+      width: 55px; height:55px;
+      background: var(--panel-bg);
+      border-radius: 50%;
+      box-shadow: 0 2px 22px #000a;
+      border:2px solid var(--neon);
+      color: var(--neon);
+      display: flex;align-items: center;justify-content: center;
+      font-size: 2rem;
+      z-index: 1005;
+      cursor:pointer;
+      opacity: 0.85;
+      transition: opacity .15s, transform .18s;
+      display:none;
+    }
+    .to-top-arrow:hover { opacity:1; transform: scale(1.08);}
+    .show-arrow { display: flex; }
+    .hide-arrow { display: none; }
+
     .hero {
-      text-align:center;margin-top:12px;margin-bottom:12px;
+      text-align:center;margin-top:100px;margin-bottom:20px;
     }
     .hero-title {
       font-size: clamp(2.2rem,7vw,4.5rem);
@@ -85,8 +122,8 @@
     .accordion-section {
       background: var(--panel-bg);
       margin-bottom: 18px;
-      border-radius: var(--panel-radius);
-      box-shadow: var(--shadow);
+      border-radius: 15px;
+      box-shadow: 0 7px 24px #1114;
       overflow: hidden;
       transition: box-shadow .24s;
     }
@@ -94,18 +131,18 @@
       padding: 21px 32px;
       font-size: 1.25rem;
       font-weight: 800;
-      letter-spacing: 0.01em;
       color: var(--accent);
       cursor: pointer;
       position: relative;
       display: flex;
       align-items: center;
-      user-select: none;
       background: none;
       border: none;
       width: 100%;
       outline: none;
       transition: background 0.19s;
+      letter-spacing:0.01em;
+      user-select:none;
     }
     .accordion-header:hover,
     .accordion-section.open .accordion-header {
@@ -138,9 +175,7 @@
       margin:0 0 6px 0;padding:0;list-style:none;font-size:1.02rem;color:var(--white);
       line-height:1.77;
     }
-    .item-list b {
-      color: var(--neon);
-    }
+    .item-list b { color: var(--neon); }
     .gallery-mini {
       display: flex; flex-wrap: wrap; gap:21px 21px; justify-content: flex-start;
       margin-top:12px; margin-bottom:7px;
@@ -223,9 +258,9 @@
       border:none;cursor:pointer;transition:color .21s;line-height:0;
     }
     .modal-close:hover { color: var(--hot);}
-    @media (max-width: 610px) { .gallery-mini{ gap:9px 3vw; } .modal-view img{ width:90vw;}}
+    @media (max-width: 610px) { .gallery-mini{ gap:9px 3vw; } .modal-view img{ width:90vw;} }
     .form-section {display: flex; flex-direction: column; align-items: center; margin-bottom:65px;}
-    .form-panel {background: var(--panel-bg);border-radius: var(--panel-radius);box-shadow: var(--form-glow),0 6px 20px #000f;padding:36px 30px 19px 30px;max-width:400px; width:95vw; margin: 0 auto;animation: glowIn 1.3s;position:relative;}
+    .form-panel {background: var(--panel-bg);border-radius: 15px;box-shadow: var(--form-glow),0 6px 20px #000f;padding:36px 30px 19px 30px;max-width:400px; width:95vw; margin: 0 auto;animation: glowIn 1.3s;position:relative;}
     @keyframes glowIn {0% {filter: brightness(.6) blur(7px); opacity: .33;}100% {filter: none; opacity: 1;}}
     .project-inquiry-form label {font-size:1.03rem;font-weight:700;margin-top:1.09em;margin-bottom:7px;display:block;color:var(--accent);letter-spacing:0.04em;}
     .project-inquiry-form input, .project-inquiry-form textarea, .project-inquiry-form select {width:100%;margin-bottom:14px;border:none;border-radius:7px;background:var(--input-bg);color:#fff;font-size:1.08rem;padding:9px 11px;font-family:inherit;outline:none;transition:box-shadow .13s;}
@@ -248,7 +283,7 @@
   </style>
 </head>
 <body>
-  <nav class="nav">
+  <nav class="nav show-nav" id="mainNav">
     <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">RYT DESIGNS</div>
     <div class="menu">
       <a href="#work" class="active">Work</a>
@@ -256,10 +291,12 @@
       <a href="#contact">Contact</a>
     </div>
   </nav>
+  <button class="to-top-arrow hide-arrow" id="scrollUpBtn" title="Show Header/Go Up">&#8593;</button>
   <section class="hero">
     <div class="hero-title">Let's Make Something Cool.</div>
     <div class="hero-sub">Your vision, my creativity—custom work, always unique!</div>
   </section>
+
   <!-- Accordion portfolio here! -->
   <div class="accordion" id="work">
     <!-- MARKETING -->
@@ -330,14 +367,6 @@
         </ul>
         <div class="gallery-mini">
           <div>
-            <img class="gallery-img" src="https://rytdesignsca.github.io/website%20prototype/Logo%204%20website.png" alt="Logo" data-caption="Logo/Branding">
-            <div class="gallery-caption">Logo</div>
-          </div>
-          <div>
-            <img class="gallery-img" src="https://rytdesignsca.github.io/website%20prototype/T-Shirt%20design.png" alt="Clothing" data-caption="Clothing Design">
-            <div class="gallery-caption">Clothing</div>
-          </div>
-          <div>
             <img class="gallery-img" src="https://rytdesignsca.github.io/website%20prototype/Album%20cover.png" alt="Album Cover" data-caption="Album Cover Art">
             <div class="gallery-caption">Album Cover</div>
           </div>
@@ -356,10 +385,6 @@
         </ul>
         <div class="gallery-mini">
           <div>
-            <img class="gallery-img" src="https://rytdesignsca.github.io/website%20prototype/Trip%20Itenirary%20.png" alt="Invitation" data-caption="Custom Invitation">
-            <div class="gallery-caption">Invitation</div>
-          </div>
-          <div>
             <img class="gallery-img" src="https://rytdesignsca.github.io/website%20prototype/Ryt%20Skin.png" alt="Celebration Card" data-caption="Celebration Card">
             <div class="gallery-caption">Celebration Card</div>
           </div>
@@ -367,7 +392,7 @@
       </div>
     </div>
   </div>
-  <!-- Image Lightbox Modal -->
+  <!-- Modal viewer -->
   <div class="modal-bg" id="imgModal">
     <div class="modal-view">
       <button class="modal-close" id="modalClose" aria-label="Close image">&times;</button>
@@ -423,7 +448,42 @@
     © 2025 RYT DESIGNS — All work original.
   </footer>
   <script>
-    // Menu link highlight on scroll (as before)
+    // Header hide on scroll, show at top, FAB arrow for up
+    let lastScroll = window.scrollY;
+    const nav = document.getElementById('mainNav');
+    const scrollUpBtn = document.getElementById('scrollUpBtn');
+    let ticking = false;
+    function handleNavScroll() {
+      if(window.scrollY < 60) {
+        nav.classList.remove("hide-nav");
+        nav.classList.add("show-nav");
+        scrollUpBtn.classList.add('hide-arrow');
+      } else if(window.scrollY > lastScroll) {
+        nav.classList.remove('show-nav');
+        nav.classList.add('hide-nav');
+        scrollUpBtn.classList.add('show-arrow');
+      } else {
+        nav.classList.remove('hide-nav');
+        nav.classList.add('show-nav');
+        scrollUpBtn.classList.remove('hide-arrow');
+      }
+      lastScroll = window.scrollY;
+    }
+    window.addEventListener('scroll',function(){
+      if (!ticking) {
+        window.requestAnimationFrame(function() {
+          handleNavScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+    scrollUpBtn.onclick = function(){ 
+      window.scrollTo({top:0, behavior:'smooth'});
+      nav.classList.remove('hide-nav');nav.classList.add('show-nav');
+    };
+
+    // Menu active on scroll
     function navActive(){
       let y = window.scrollY || window.pageYOffset;
       let links = document.querySelectorAll('.menu a');
@@ -463,7 +523,6 @@
     document.getElementById('modalClose').onclick = function(){
       modal.classList.remove('active');
     };
-    // Close modal on Esc or bg click
     modal.onclick = function(e){
       if (e.target === modal) modal.classList.remove('active');
     }
@@ -471,7 +530,7 @@
       if(e.key === "Escape") modal.classList.remove('active');
     });
 
-    // Form logic/calendar as before
+    // Form and calendar logic
     document.addEventListener("DOMContentLoaded",function(){
       const form=document.getElementById('projectInquiryForm');
       const formSuccess=document.getElementById('formSuccess');
