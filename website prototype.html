@@ -4,9 +4,14 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>RYT DESIGNS | Portfolio</title>
+
+  <meta name="description" content="RYT DESIGNS – Custom digital art, branding, and promotional materials by a teen designer.">
+  <link rel="icon" href="https://rytdesignsca.github.io/favicon.ico" type="image/x-icon">
+
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900;700;400&display=swap" rel="stylesheet">
   <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
   <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
+
   <style>
     :root {
       --main-bg: #181c28;
@@ -25,6 +30,7 @@
       min-height: 100vh;
       margin:0; padding:0;
     }
+    html { scroll-behavior: smooth; }
     body { letter-spacing: .01em; }
 
     /* HEADER */
@@ -259,12 +265,13 @@
     }
     .modal-close:hover { color: var(--hot);}
     @media (max-width: 610px) { .gallery-mini{ gap:9px 3vw; } .modal-view img{ width:90vw;} }
+
     .form-section {display: flex; flex-direction: column; align-items: center; margin-bottom:65px;}
     .form-panel {background: var(--panel-bg);border-radius: 15px;box-shadow: var(--form-glow),0 6px 20px #000f;padding:36px 30px 19px 30px;max-width:400px; width:95vw; margin: 0 auto;animation: glowIn 1.3s;position:relative;}
     @keyframes glowIn {0% {filter: brightness(.6) blur(7px); opacity: .33;}100% {filter: none; opacity: 1;}}
     .project-inquiry-form label {font-size:1.03rem;font-weight:700;margin-top:1.09em;margin-bottom:7px;display:block;color:var(--accent);letter-spacing:0.04em;}
     .project-inquiry-form input, .project-inquiry-form textarea, .project-inquiry-form select {width:100%;margin-bottom:14px;border:none;border-radius:7px;background:var(--input-bg);color:#fff;font-size:1.08rem;padding:9px 11px;font-family:inherit;outline:none;transition:box-shadow .13s;}
-    .project-inquiry-form input:focus,.project-inquiry-form textarea:focus{box-shadow:0 0 0 2px var(--neon) inset;}
+    .project-inquiry-form input:focus,.project-inquiry-form textarea:focus,.project-inquiry-form select:focus{box-shadow:0 0 0 2px var(--neon) inset;}
     .project-inquiry-form textarea {min-height:66px;}
     .project-inquiry-form button {background: linear-gradient(90deg, var(--hot) 13%, var(--neon));color: #fff; border: none; border-radius:8px; padding:13px 0;font-size:1.17rem;width:100%;font-weight:800;margin-top:8px;transition:background .17s, filter .11s;box-shadow:0 3px 24px #23f0ff44;letter-spacing:.1em; cursor:pointer;filter: brightness(1.08);}
     .project-inquiry-form button:hover {background: linear-gradient(90deg, var(--neon) 20%, var(--hot));filter:brightness(1.15);}
@@ -285,13 +292,15 @@
 <body>
   <nav class="nav show-nav" id="mainNav">
     <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">RYT DESIGNS</div>
-    <div class="menu">
+    <div class="menu" role="navigation" aria-label="Primary">
       <a href="#work" class="active">Work</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
-  <button class="to-top-arrow hide-arrow" id="scrollUpBtn" title="Show Header/Go Up">&#8593;</button>
+
+  <button class="to-top-arrow hide-arrow" id="scrollUpBtn" title="Show Header/Go Up" aria-label="Scroll to top">&#8593;</button>
+
   <section class="hero">
     <div class="hero-title">Let's Make Something Cool.</div>
     <div class="hero-sub">Your vision, my creativity—custom work, always unique!</div>
@@ -300,11 +309,11 @@
   <!-- Accordion portfolio here! -->
   <div class="accordion" id="work">
     <!-- MARKETING -->
-    <div class="accordion-section">
-      <button class="accordion-header">
-        🧾 Marketing & Promotional Materials <span class="arrow">&#9654;</span>
+    <div class="accordion-section" id="sec-marketing">
+      <button class="accordion-header" id="hdr-marketing" aria-expanded="false" aria-controls="panel-marketing">
+        🧾 Marketing & Promotional Materials <span class="arrow" aria-hidden="true">&#9654;</span>
       </button>
-      <div class="accordion-panel">
+      <div class="accordion-panel" id="panel-marketing" role="region" aria-labelledby="hdr-marketing">
         <ul class="item-list">
           <li><b>Flyer</b> – $15</li>
           <li><b>Business Cards</b> – $20</li>
@@ -316,26 +325,26 @@
         </ul>
         <div class="gallery-mini">
           <div>
-            <img class="gallery-img" src="https://rytdesignsca.github.io/website%20prototype/Trip%20Itenirary%20.png" alt="Flyer" data-caption="Flyer: Trip Itinerary">
+            <img class="gallery-img" loading="lazy" decoding="async" src="https://rytdesignsca.github.io/website%20prototype/Trip%20Itenirary.png" alt="Flyer" data-caption="Flyer: Trip Itinerary">
             <div class="gallery-caption">Flyer</div>
           </div>
           <div>
-            <img class="gallery-img" src="https://rytdesignsca.github.io/website%20prototype/Menu%204%20website.png" alt="Menu" data-caption="Menu Design">
+            <img class="gallery-img" loading="lazy" decoding="async" src="https://rytdesignsca.github.io/website%20prototype/Menu%204%20website.png" alt="Menu" data-caption="Menu Design">
             <div class="gallery-caption">Menu</div>
           </div>
           <div>
-            <img class="gallery-img" src="https://rytdesignsca.github.io/website%20prototype/Logo%204%20website.png" alt="Product Label" data-caption="Logo/Product Label">
+            <img class="gallery-img" loading="lazy" decoding="async" src="https://rytdesignsca.github.io/website%20prototype/Logo%204%20website.png" alt="Product Label" data-caption="Logo/Product Label">
             <div class="gallery-caption">Product/Label</div>
           </div>
         </div>
       </div>
     </div>
     <!-- DIGITAL & SOCIAL -->
-    <div class="accordion-section">
-      <button class="accordion-header">
-        🎥 Digital & Social Media Content <span class="arrow">&#9654;</span>
+    <div class="accordion-section" id="sec-digital">
+      <button class="accordion-header" id="hdr-digital" aria-expanded="false" aria-controls="panel-digital">
+        🎥 Digital & Social Media Content <span class="arrow" aria-hidden="true">&#9654;</span>
       </button>
-      <div class="accordion-panel">
+      <div class="accordion-panel" id="panel-digital" role="region" aria-labelledby="hdr-digital">
         <ul class="item-list">
           <li><b>Videos for Events</b> – $25</li>
           <li><b>YouTube Thumbnails (Basic)</b> – $20</li>
@@ -344,22 +353,22 @@
         </ul>
         <div class="gallery-mini">
           <div>
-            <img class="gallery-img" src="https://rytdesignsca.github.io/website%20prototype/T-Shirt%20design.png" alt="YT Basic Thumb" data-caption="YouTube Thumbnail (Basic)">
+            <img class="gallery-img" loading="lazy" decoding="async" src="https://rytdesignsca.github.io/website%20prototype/T-Shirt%20design.png" alt="YT Basic Thumb" data-caption="YouTube Thumbnail (Basic)">
             <div class="gallery-caption">YouTube Thumbnail</div>
           </div>
           <div>
-            <img class="gallery-img" src="https://rytdesignsca.github.io/website%20prototype/Ryt%20Designs%20Poster.png" alt="Poster/Basic" data-caption="Event Poster/Basic Design">
+            <img class="gallery-img" loading="lazy" decoding="async" src="https://rytdesignsca.github.io/website%20prototype/Ryt%20Designs%20Poster.png" alt="Poster/Basic" data-caption="Event Poster/Basic Design">
             <div class="gallery-caption">Poster/Basic Design</div>
           </div>
         </div>
       </div>
     </div>
     <!-- BRANDING & IDENTITY -->
-    <div class="accordion-section">
-      <button class="accordion-header">
-        🎨 Branding & Identity <span class="arrow">&#9654;</span>
+    <div class="accordion-section" id="sec-branding">
+      <button class="accordion-header" id="hdr-branding" aria-expanded="false" aria-controls="panel-branding">
+        🎨 Branding & Identity <span class="arrow" aria-hidden="true">&#9654;</span>
       </button>
-      <div class="accordion-panel">
+      <div class="accordion-panel" id="panel-branding" role="region" aria-labelledby="hdr-branding">
         <ul class="item-list">
           <li><b>Logos for Businesses</b> – $30</li>
           <li><b>Clothing Design</b> – $50</li>
@@ -367,34 +376,35 @@
         </ul>
         <div class="gallery-mini">
           <div>
-            <img class="gallery-img" src="https://rytdesignsca.github.io/website%20prototype/Album%20cover.png" alt="Album Cover" data-caption="Album Cover Art">
+            <img class="gallery-img" loading="lazy" decoding="async" src="https://rytdesignsca.github.io/website%20prototype/Album%20cover.png" alt="Album Cover" data-caption="Album Cover Art">
             <div class="gallery-caption">Album Cover</div>
           </div>
         </div>
       </div>
     </div>
     <!-- PERSONAL & EVENT -->
-    <div class="accordion-section">
-      <button class="accordion-header">
-        🎉 Personal & Event Designs <span class="arrow">&#9654;</span>
+    <div class="accordion-section" id="sec-personal">
+      <button class="accordion-header" id="hdr-personal" aria-expanded="false" aria-controls="panel-personal">
+        🎉 Personal & Event Designs <span class="arrow" aria-hidden="true">&#9654;</span>
       </button>
-      <div class="accordion-panel">
+      <div class="accordion-panel" id="panel-personal" role="region" aria-labelledby="hdr-personal">
         <ul class="item-list">
           <li><b>Invitations</b> – $24</li>
           <li><b>Celebration Cards</b> – $10</li>
         </ul>
         <div class="gallery-mini">
           <div>
-            <img class="gallery-img" src="https://rytdesignsca.github.io/website%20prototype/Ryt%20Skin.png" alt="Celebration Card" data-caption="Celebration Card">
+            <img class="gallery-img" loading="lazy" decoding="async" src="https://rytdesignsca.github.io/website%20prototype/Ryt%20Skin.png" alt="Celebration Card" data-caption="Celebration Card">
             <div class="gallery-caption">Celebration Card</div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
   <!-- Modal viewer -->
-  <div class="modal-bg" id="imgModal">
-    <div class="modal-view">
+  <div class="modal-bg" id="imgModal" aria-hidden="true">
+    <div class="modal-view" role="dialog" aria-modal="true" aria-labelledby="modalCap">
       <button class="modal-close" id="modalClose" aria-label="Close image">&times;</button>
       <div id="modalPic"></div>
       <div class="modal-caption" id="modalCap"></div>
@@ -411,14 +421,17 @@
   <section class="form-section" id="contact">
     <div class="form-panel">
       <form id="projectInquiryForm" class="project-inquiry-form" autocomplete="off" method="POST" action="https://formspree.io/f/mjkrwwpk">
-        <div class="form-success" id="formSuccess" style="display:none;"></div>
-        <div class="form-error" id="formError" style="display:none;"></div>
+        <div class="form-success" id="formSuccess" style="display:none;" role="status" aria-live="polite"></div>
+        <div class="form-error" id="formError" style="display:none;" role="alert" aria-live="assertive"></div>
+
         <label for="name">Name *</label>
-        <input type="text" name="name" placeholder="e.g. Jane Doe" required>
+        <input id="name" type="text" name="name" placeholder="e.g. Jane Doe" required>
+
         <label for="email">Email *</label>
-        <input type="email" name="email" placeholder="name@email.com" required>
+        <input id="email" type="email" name="email" placeholder="name@email.com" required>
+
         <label for="style">Project Style</label>
-        <select name="style" required>
+        <select id="style" name="style" required>
           <option value="">- Select -</option>
           <option>Modern & Minimalist</option>
           <option>Bold & Vibrant</option>
@@ -426,50 +439,69 @@
           <option>Fun & Playful</option>
           <option>Not sure / Surprise me</option>
         </select>
+
         <label for="vision">Tell me what you want</label>
-        <textarea name="vision" required placeholder="Describe your vision/idea/project..."></textarea>
+        <textarea id="vision" name="vision" required placeholder="Describe your vision/idea/project..."></textarea>
+
         <label for="requirements">Anything else?</label>
-        <textarea name="requirements" placeholder="Colors, examples, logo ideas, must-haves..."></textarea>
-        <button type="submit">Send Inquiry</button>
+        <textarea id="requirements" name="requirements" placeholder="Colors, examples, logo ideas, must-haves..."></textarea>
+
+        <button type="submit" id="submitBtn">Send Inquiry</button>
       </form>
+
       <div class="contact-or">or Book a 1-on-1 call now:</div>
       <div class="calendar-booking"><div id="gcal-button-container" style="width:100%;"></div></div>
+
       <div class="contact-info">
         <b>Phone:</b> +1 226-977-9311 <br>
         <b>Email:</b> <a href="mailto:rytdesignsca@gmail.com" style="color:var(--neon);text-decoration:underline;">rytdesignsca@gmail.com</a>
       </div>
+
       <div class="social-row">
-        <a href="https://www.instagram.com/rytdesigns_/" target="_blank">Instagram</a>
-        <a href="https://www.tiktok.com/@ryt.designs7" target="_blank">TikTok</a>
+        <a href="https://www.instagram.com/rytdesigns_/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.tiktok.com/@ryt.designs7" target="_blank" rel="noopener noreferrer">TikTok</a>
       </div>
     </div>
   </section>
-  <footer>
-    © 2025 RYT DESIGNS — All work original.
-  </footer>
+
+  <footer>© 2025 RYT DESIGNS — All work original.</footer>
+
   <script>
     // Header hide on scroll, show at top, FAB arrow for up
     let lastScroll = window.scrollY;
     const nav = document.getElementById('mainNav');
     const scrollUpBtn = document.getElementById('scrollUpBtn');
     let ticking = false;
+
+    function setArrowVisibility(show) {
+      if (show) {
+        scrollUpBtn.classList.add('show-arrow');
+        scrollUpBtn.classList.remove('hide-arrow');
+      } else {
+        scrollUpBtn.classList.add('hide-arrow');
+        scrollUpBtn.classList.remove('show-arrow');
+      }
+    }
+
     function handleNavScroll() {
-      if(window.scrollY < 60) {
+      const y = window.scrollY;
+      if (y < 60) {
         nav.classList.remove("hide-nav");
         nav.classList.add("show-nav");
-        scrollUpBtn.classList.add('hide-arrow');
-      } else if(window.scrollY > lastScroll) {
+        setArrowVisibility(false);
+      } else if (y > lastScroll) {
         nav.classList.remove('show-nav');
         nav.classList.add('hide-nav');
-        scrollUpBtn.classList.add('show-arrow');
+        setArrowVisibility(true);
       } else {
         nav.classList.remove('hide-nav');
         nav.classList.add('show-nav');
-        scrollUpBtn.classList.remove('hide-arrow');
+        setArrowVisibility(true);
       }
-      lastScroll = window.scrollY;
+      lastScroll = y;
     }
-    window.addEventListener('scroll',function(){
+
+    window.addEventListener('scroll', function(){
       if (!ticking) {
         window.requestAnimationFrame(function() {
           handleNavScroll();
@@ -478,9 +510,11 @@
         ticking = true;
       }
     });
-    scrollUpBtn.onclick = function(){ 
+
+    scrollUpBtn.onclick = function(){
       window.scrollTo({top:0, behavior:'smooth'});
-      nav.classList.remove('hide-nav');nav.classList.add('show-nav');
+      nav.classList.remove('hide-nav');
+      nav.classList.add('show-nav');
     };
 
     // Menu active on scroll
@@ -491,71 +525,140 @@
       let about = document.getElementById('about').offsetTop - 120;
       let contact = document.getElementById('contact').offsetTop - 150;
       links.forEach(a=>a.classList.remove('active'));
-      if(y<about) links[0].classList.add('active');
-      else if(y<contact) links[1].classList.add('active');
+      if (y < about) links[0].classList.add('active');
+      else if (y < contact) links[1].classList.add('active');
       else links[2].classList.add('active');
     }
-    window.addEventListener('scroll', navActive); navActive();
+    window.addEventListener('scroll', navActive);
+    window.addEventListener('resize', navActive);
+    navActive();
 
-    // Accordion logic
+    // Accordion logic with ARIA updates
     document.querySelectorAll('.accordion-header').forEach(header => {
       header.addEventListener('click', function(){
-        let sec = header.parentElement;
-        if (sec.classList.contains('open')) {
-          sec.classList.remove('open');
-        } else {
-          document.querySelectorAll('.accordion-section').forEach(s=>s.classList.remove('open'));
+        const sec = header.parentElement;
+        const expanded = header.getAttribute('aria-expanded') === 'true';
+        // Close all
+        document.querySelectorAll('.accordion-section').forEach(s=>{
+          s.classList.remove('open');
+          const btn = s.querySelector('.accordion-header');
+          if (btn) btn.setAttribute('aria-expanded','false');
+        });
+        // Toggle current
+        if (!expanded) {
           sec.classList.add('open');
+          header.setAttribute('aria-expanded','true');
         }
       });
     });
-    // Modal logic
+
+    // Modal logic with focus management
     const modal = document.getElementById('imgModal');
     const modalPic = document.getElementById('modalPic');
     const modalCap = document.getElementById('modalCap');
+    const modalCloseBtn = document.getElementById('modalClose');
+    let lastFocusedElement = null;
+
+    function getFocusableElements(container){
+      return Array.from(container.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'))
+        .filter(el => !el.hasAttribute('disabled') && !el.getAttribute('aria-hidden'));
+    }
+
+    function openModal(src, alt, caption){
+      lastFocusedElement = document.activeElement;
+      modalPic.innerHTML = `<img src="${src}" alt="${alt}">`;
+      modalCap.textContent = caption || alt || '';
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden','false');
+      // Focus
+      setTimeout(()=> modalCloseBtn.focus(), 0);
+      // Trap focus
+      function trap(e){
+        if (e.key !== 'Tab') return;
+        const focusables = getFocusableElements(modal);
+        if (!focusables.length) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+      modal.addEventListener('keydown', trap);
+      modal.dataset.trap = 'true';
+    }
+
+    function closeModal(){
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden','true');
+      if (lastFocusedElement) lastFocusedElement.focus();
+    }
+
     document.querySelectorAll('.gallery-img').forEach(img=>{
-      img.addEventListener('click',function(e){
-        modalPic.innerHTML = `<img src='${img.src}' alt='${img.alt}'>`;
-        modalCap.textContent = img.getAttribute('data-caption') || img.alt;
-        modal.classList.add('active');
+      img.addEventListener('click',function(){
+        openModal(img.src, img.alt, img.getAttribute('data-caption'));
       });
     });
-    document.getElementById('modalClose').onclick = function(){
-      modal.classList.remove('active');
-    };
-    modal.onclick = function(e){
-      if (e.target === modal) modal.classList.remove('active');
-    }
-    window.addEventListener('keydown', function(e){
-      if(e.key === "Escape") modal.classList.remove('active');
-    });
+    modalCloseBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e){ if (e.target === modal) closeModal(); });
+    window.addEventListener('keydown', function(e){ if(e.key === "Escape" && modal.classList.contains('active')) closeModal(); });
 
     // Form and calendar logic
     document.addEventListener("DOMContentLoaded",function(){
-      const form=document.getElementById('projectInquiryForm');
-      const formSuccess=document.getElementById('formSuccess');
-      const formError=document.getElementById('formError');
+      const form = document.getElementById('projectInquiryForm');
+      const formSuccess = document.getElementById('formSuccess');
+      const formError = document.getElementById('formError');
+      const submitBtn = document.getElementById('submitBtn');
+
       if(form){
-        form.addEventListener('submit',function(e){
-          setTimeout(()=>{
-            formSuccess.style.display='block';
-            formSuccess.textContent="Thank you! I'll be in touch.";
-            formError.style.display="none";
-            form.reset();
-          }, 300);
+        form.addEventListener('submit', async function(e){
+          e.preventDefault();
+          formSuccess.style.display='none';
+          formError.style.display='none';
+          const originalText = submitBtn.textContent;
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Sending...';
+
+          try {
+            const res = await fetch(form.action, {
+              method: 'POST',
+              body: new FormData(form),
+              headers: { 'Accept': 'application/json' }
+            });
+            if (res.ok) {
+              formSuccess.textContent = "Thank you! I'll be in touch.";
+              formSuccess.style.display = 'block';
+              form.reset();
+            } else {
+              const data = await res.json().catch(()=> ({}));
+              formError.textContent = data.error || "Oops—something went wrong. Please try again or email me.";
+              formError.style.display = 'block';
+            }
+          } catch (err) {
+            formError.textContent = "Network error. Please try again or email me.";
+            formError.style.display = 'block';
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+          }
         });
       }
+
+      // Google Calendar scheduling button init with retry
       function gcalBtnLoad() {
-        var btnTarget=document.getElementById('gcal-button-container');
-        if(btnTarget&&window.calendar&&window.calendar.schedulingButton){
+        const btnTarget = document.getElementById('gcal-button-container');
+        if (btnTarget && window.calendar && window.calendar.schedulingButton) {
           calendar.schedulingButton.load({
-            url:'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3VpIaEgD8-5JS2dBR-7XaOx9beJuvfUs5Fq7CtY0VZ1hQdcewcz0RyCSxQClVQWASiLuzz36AK?gv=true',
-            color:'#23f0ff',label:'Book Now',target:btnTarget
+            url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3VpIaEgD8-5JS2dBR-7XaOx9beJuvfUs5Fq7CtY0VZ1hQdcewcz0RyCSxQClVQWASiLuzz36AK?gv=true',
+            color: '#23f0ff',
+            label: 'Book Now',
+            target: btnTarget
           });
-        } else setTimeout(gcalBtnLoad,400);
+        } else {
+          setTimeout(gcalBtnLoad, 400);
+        }
       }
       gcalBtnLoad();
     });
   </script>
 </body>
 </html>
+```
