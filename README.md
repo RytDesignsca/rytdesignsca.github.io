@@ -177,13 +177,25 @@
       opacity:1;
       transition: max-height .71s cubic-bezier(.11,.77,.46,1.18), padding .36s, opacity .41s;
     }
+
+    /* Boxed list style */
+    .item-box {
+      background: rgba(35,240,255,0.07);
+      border: 2px solid var(--neon);
+      border-radius: 10px;
+      padding: 15px 18px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 10px rgba(35,240,255,0.15);
+    }
+
     .item-list {
       margin:0 0 6px 0;padding:0;list-style:none;font-size:1.02rem;color:var(--white);
       line-height:1.77;
     }
     .item-list b { color: var(--neon); }
+
     .gallery-mini {
-      display: flex; flex-wrap: wrap; gap:21px 21px; justify-content: flex-start;
+      display: flex; flex-wrap: wrap; gap:12px 16px; justify-content: flex-start;
       margin-top:12px; margin-bottom:7px;
       transition: gap .19s;
     }
@@ -191,10 +203,8 @@
       background:#fff;
       border-radius:10px;
       box-shadow:0 3px 16px #2228;
-      max-width:148px;
-      min-width:110px;
-      width: 100%;
-      aspect-ratio: 1/1;
+      width: 95px;
+      height: 95px;
       object-fit:cover;
       border:3px solid var(--neon);
       transition: transform .19s, box-shadow .2s;
@@ -211,12 +221,13 @@
     .gallery-caption {
       color: var(--panel-bg);
       font-weight: 800;
-      font-size: 1.02em;
-      padding: 2px 10px 0 5px;
+      font-size: 0.92em;
+      padding: 0 6px;
       text-align: left;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       display: block;
     }
+
     /* Modal */
     .modal-bg {
       display: none;
@@ -314,15 +325,17 @@
         🧾 Marketing & Promotional Materials <span class="arrow" aria-hidden="true">&#9654;</span>
       </button>
       <div class="accordion-panel" id="panel-marketing" role="region" aria-labelledby="hdr-marketing">
-        <ul class="item-list">
-          <li><b>Flyer</b> – $15</li>
-          <li><b>Business Cards</b> – $20</li>
-          <li><b>Banner</b> – $35</li>
-          <li><b>Menus</b> – $20</li>
-          <li><b>Presentations</b> – $30</li>
-          <li><b>Product Label</b> – $25</li>
-          <li><b>Product Design</b> – $40</li>
-        </ul>
+        <div class="item-box">
+          <ul class="item-list">
+            <li><b>Flyer</b> – $15</li>
+            <li><b>Business Cards</b> – $20</li>
+            <li><b>Banner</b> – $35</li>
+            <li><b>Menus</b> – $20</li>
+            <li><b>Presentations</b> – $30</li>
+            <li><b>Product Label</b> – $25</li>
+            <li><b>Product Design</b> – $40</li>
+          </ul>
+        </div>
         <div class="gallery-mini">
           <div>
             <img class="gallery-img" loading="lazy" decoding="async" src="https://rytdesignsca.github.io/website%20prototype/Trip%20Itenirary.png" alt="Flyer" data-caption="Flyer: Trip Itinerary">
@@ -345,12 +358,14 @@
         🎥 Digital & Social Media Content <span class="arrow" aria-hidden="true">&#9654;</span>
       </button>
       <div class="accordion-panel" id="panel-digital" role="region" aria-labelledby="hdr-digital">
-        <ul class="item-list">
-          <li><b>Videos for Events</b> – $25</li>
-          <li><b>YouTube Thumbnails (Basic)</b> – $20</li>
-          <li><b>YouTube Thumbnails (Add-ons)</b> – $35</li>
-          <li><b>Basic Designs</b> – $10–$50</li>
-        </ul>
+        <div class="item-box">
+          <ul class="item-list">
+            <li><b>Videos for Events</b> – $25</li>
+            <li><b>YouTube Thumbnails (Basic)</b> – $20</li>
+            <li><b>YouTube Thumbnails (Add-ons)</b> – $35</li>
+            <li><b>Basic Designs</b> – $10–$50</li>
+          </ul>
+        </div>
         <div class="gallery-mini">
           <div>
             <img class="gallery-img" loading="lazy" decoding="async" src="https://rytdesignsca.github.io/website%20prototype/T-Shirt%20design.png" alt="YT Basic Thumb" data-caption="YouTube Thumbnail (Basic)">
@@ -369,11 +384,13 @@
         🎨 Branding & Identity <span class="arrow" aria-hidden="true">&#9654;</span>
       </button>
       <div class="accordion-panel" id="panel-branding" role="region" aria-labelledby="hdr-branding">
-        <ul class="item-list">
-          <li><b>Logos for Businesses</b> – $30</li>
-          <li><b>Clothing Design</b> – $50</li>
-          <li><b>Album Cover</b> – $50</li>
-        </ul>
+        <div class="item-box">
+          <ul class="item-list">
+            <li><b>Logos for Businesses</b> – $30</li>
+            <li><b>Clothing Design</b> – $50</li>
+            <li><b>Album Cover</b> – $50</li>
+          </ul>
+        </div>
         <div class="gallery-mini">
           <div>
             <img class="gallery-img" loading="lazy" decoding="async" src="https://rytdesignsca.github.io/website%20prototype/Album%20cover.png" alt="Album Cover" data-caption="Album Cover Art">
@@ -388,10 +405,12 @@
         🎉 Personal & Event Designs <span class="arrow" aria-hidden="true">&#9654;</span>
       </button>
       <div class="accordion-panel" id="panel-personal" role="region" aria-labelledby="hdr-personal">
-        <ul class="item-list">
-          <li><b>Invitations</b> – $24</li>
-          <li><b>Celebration Cards</b> – $10</li>
-        </ul>
+        <div class="item-box">
+          <ul class="item-list">
+            <li><b>Invitations</b> – $24</li>
+            <li><b>Celebration Cards</b> – $10</li>
+          </ul>
+        </div>
         <div class="gallery-mini">
           <div>
             <img class="gallery-img" loading="lazy" decoding="async" src="https://rytdesignsca.github.io/website%20prototype/Ryt%20Skin.png" alt="Celebration Card" data-caption="Celebration Card">
@@ -661,4 +680,3 @@
   </script>
 </body>
 </html>
-```
