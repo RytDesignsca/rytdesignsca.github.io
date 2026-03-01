@@ -13,7 +13,6 @@
       --accent-soft: #b3b7c9;
       --accent-strong: #ffffff;
       --highlight: #7b5cff;
-      --highlight-soft: rgba(123, 92, 255, 0.18);
       --radius-lg: 18px;
       --radius-md: 12px;
       --radius-sm: 999px;
@@ -36,25 +35,26 @@
       text-decoration: none;
     }
 
-    /* NAVBAR */
+    /* FIXED NAVBAR */
     nav {
       position: fixed;
       top: 0;
       width: 100%;
       z-index: 100;
       backdrop-filter: blur(18px);
-      background: rgba(5, 6, 8, 0.7);
+      background: rgba(5, 6, 8, 0.85);
       border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-      padding: 14px 7vw;
+      padding: 18px 7vw;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      height: 70px; /* FIXED HEIGHT */
     }
 
     .logo {
       font-weight: 700;
       letter-spacing: 0.16em;
-      font-size: 0.9rem;
+      font-size: 1rem;
       text-transform: uppercase;
     }
 
@@ -70,6 +70,10 @@
       padding-bottom: 4px;
     }
 
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
     .nav-links a::after {
       content: "";
       position: absolute;
@@ -81,19 +85,15 @@
       transition: width 0.25s ease;
     }
 
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    /* LAYOUT */
+    /* FIXED MAIN SPACING */
     main {
-      padding: 110px 7vw 70px;
+      padding: 140px 7vw 70px; /* ADDED TOP SPACE SO NAV DOESN’T COVER CONTENT */
       max-width: 1200px;
       margin: 0 auto;
     }
 
     section {
-      margin-bottom: 90px;
+      margin-bottom: 100px;
     }
 
     .section-label {
@@ -124,13 +124,14 @@
       max-width: 360px;
     }
 
-    /* HERO */
+    /* FIXED HERO HEIGHT */
     .hero {
       display: grid;
       grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
       gap: 40px;
       align-items: center;
-      margin-bottom: 80px;
+      min-height: 80vh; /* MAKES BANNER TALLER */
+      padding-top: 40px;
     }
 
     .hero-title {
@@ -171,10 +172,6 @@
       cursor: pointer;
       background: var(--highlight);
       color: #fff;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 14px 40px rgba(123, 92, 255, 0.35);
       transition: 0.18s ease;
     }
 
@@ -183,24 +180,8 @@
       background: #8b6dff;
     }
 
-    .btn-ghost {
-      border-radius: var(--radius-sm);
-      padding: 9px 18px;
-      font-size: 0.85rem;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: transparent;
-      color: var(--accent-soft);
-      cursor: pointer;
-      transition: 0.18s ease;
-    }
-
-    .btn-ghost:hover {
-      background: rgba(255, 255, 255, 0.04);
-      color: var(--accent-strong);
-    }
-
     .hero-panel {
-      background: #101218;
+      background: var(--card);
       border-radius: var(--radius-lg);
       padding: 20px;
       border: 1px solid rgba(255, 255, 255, 0.06);
@@ -282,15 +263,6 @@
       border-color: rgba(255, 255, 255, 0.16);
     }
 
-    .service-title {
-      font-size: 0.98rem;
-    }
-
-    .service-desc {
-      font-size: 0.85rem;
-      color: var(--accent-soft);
-    }
-
     /* CONTACT */
     .contact-layout {
       display: grid;
@@ -305,11 +277,6 @@
       padding: 18px;
       display: grid;
       gap: 12px;
-    }
-
-    label {
-      font-size: 0.78rem;
-      color: var(--accent-soft);
     }
 
     input,
@@ -548,4 +515,5 @@
     <span>© 2026 Ryt Designs</span>
     <span>Minimal design for brands that like things clean.</span>
   </footer>
-</
+</body>
+</html>
