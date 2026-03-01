@@ -1,682 +1,795 @@
 
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>RYT DESIGNS | Portfolio</title>
-
-  <meta name="description" content="RYT DESIGNS – Custom digital art, branding, and promotional materials by a teen designer.">
-  <link rel="icon" href="https://rytdesignsca.github.io/favicon.ico" type="image/x-icon">
-
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900;700;400&display=swap" rel="stylesheet">
-  <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
-  <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ryt Designs — Portfolio</title>
 
   <style>
     :root {
-      --main-bg: #181c28;
-      --panel-bg: #22243a;
-      --neon: #23f0ff;
-      --accent: #ffe066;
-      --white: #fff;
-      --hot: #ff4d97;
-      --input-bg: #191a1f;
-      --form-glow: 0 0 34px #13fff5aa;
-    }
-    html,body {
-      background: var(--main-bg);
-      color: var(--white);
-      font-family: 'Montserrat', Arial, sans-serif;
-      min-height: 100vh;
-      margin:0; padding:0;
-    }
-    html { scroll-behavior: smooth; }
-    body { letter-spacing: .01em; }
-
-    /* HEADER */
-    .nav {
-      width:100vw;
-      position:fixed;
-      top:0; left:0; right:0;
-      z-index: 1003;
-      background: var(--panel-bg);
-      box-shadow:0 4px 18px #222b;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:22px 38px;
-      transition: top .37s cubic-bezier(.86,0,.19,1);
-    }
-    .logo { 
-      font-size: 2.1rem;
-      font-weight: 900;
-      color: var(--neon);
-      letter-spacing: -2px;
-      filter: drop-shadow(0 0 13px var(--neon));
-      user-select:none;cursor:pointer;
-      text-shadow: 0 0 18px #8ff;
-    }
-    .menu {
-      display:flex;gap:34px;font-weight:700;font-size:1.13rem;user-select:none;
-    }
-    .menu a {
-      color:var(--white);text-decoration:none;transition:.2s;padding:2px 10px;border-radius:6px;
-    }
-    .menu a.active,.menu a:hover { color:var(--neon); background:rgba(35,240,255,0.13);}
-    @media(max-width:700px){ 
-      .nav {flex-direction:column; padding:12px 5vw;}
-      .logo {font-size: 1.26rem;}
-      .menu{gap:18px;}
-    }
-    .show-nav { top: 0; }
-    .hide-nav { top: -100px; }
-
-    /* ARROW BUTTON */
-    .to-top-arrow {
-      position: fixed;
-      right: 30px; 
-      bottom: 40px;
-      width: 55px; height:55px;
-      background: var(--panel-bg);
-      border-radius: 50%;
-      box-shadow: 0 2px 22px #000a;
-      border:2px solid var(--neon);
-      color: var(--neon);
-      display: flex;align-items: center;justify-content: center;
-      font-size: 2rem;
-      z-index: 1005;
-      cursor:pointer;
-      opacity: 0.85;
-      transition: opacity .15s, transform .18s;
-      display:none;
-    }
-    .to-top-arrow:hover { opacity:1; transform: scale(1.08);}
-    .show-arrow { display: flex; }
-    .hide-arrow { display: none; }
-
-    .hero {
-      text-align:center;margin-top:100px;margin-bottom:20px;
-    }
-    .hero-title {
-      font-size: clamp(2.2rem,7vw,4.5rem);
-      font-weight: 900;
-      color: var(--neon);
-      background: linear-gradient(90deg, #23f0ff 40%, #ffe066 95%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-shadow: 0 0 48px var(--neon), 0 2px 8px #000f, 0 1px 1px #d9dcd6;
-      filter: brightness(1.5) drop-shadow(0 0 22px #23f0ff);
-      letter-spacing:0;
-      animation: neonPulse 2.5s infinite alternate;
-      margin-bottom: .5em;
-      user-select:none;
-      text-transform:uppercase;
-    }
-    @keyframes neonPulse {
-      0% { filter: brightness(1.3) drop-shadow(0 0 18px #23f0ff);}
-      100% { filter: brightness(1.8) drop-shadow(0 0 31px #ffe066);}
-    }
-    .hero-sub {
-      font-size:1.26rem;font-weight:600;color:var(--accent);text-shadow: 0 1px 19px #ffe06644;
+      --bg: #050608;
+      --card: #101218;
+      --accent: #f5f5f5;
+      --accent-soft: #b3b7c9;
+      --accent-strong: #ffffff;
+      --highlight: #7b5cff;
+      --highlight-soft: rgba(123, 92, 255, 0.18);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-sm: 999px;
     }
 
-    /* Accordion Styles */
-    .accordion {
-      max-width: 670px; margin:55px auto 38px auto;
+    * {
+      box-sizing: border-box;
     }
-    .accordion-section {
-      background: var(--panel-bg);
-      margin-bottom: 18px;
-      border-radius: 15px;
-      box-shadow: 0 7px 24px #1114;
-      overflow: hidden;
-      transition: box-shadow .24s;
-    }
-    .accordion-header {
-      padding: 21px 32px;
-      font-size: 1.25rem;
-      font-weight: 800;
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter",
+        sans-serif;
+      background: radial-gradient(circle at top, #151827 0, #050608 55%);
       color: var(--accent);
-      cursor: pointer;
-      position: relative;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(5, 6, 8, 0.9),
+        rgba(5, 6, 8, 0.6),
+        transparent
+      );
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      padding: 14px 7vw;
       display: flex;
       align-items: center;
-      background: none;
-      border: none;
-      width: 100%;
-      outline: none;
-      transition: background 0.19s;
-      letter-spacing:0.01em;
-      user-select:none;
-    }
-    .accordion-header:hover,
-    .accordion-section.open .accordion-header {
-      background: #2a314e;
-    }
-    .accordion-header .arrow {
-      margin-left:auto;
-      transition:transform .22s;
-      font-size: 1.45em;
-      color: var(--neon);
-    }
-    .accordion-section.open .accordion-header .arrow {
-      transform: rotate(90deg);
-    }
-    .accordion-panel {
-      max-height: 0;
-      overflow: hidden;
-      background: var(--panel-bg);
-      transition: max-height 0.44s cubic-bezier(.62,0,.23,1), padding .28s, opacity .36s;
-      padding: 0 28px;
-      opacity: .32;
-    }
-    .accordion-section.open .accordion-panel {
-      max-height: 1800px;
-      padding: 16px 28px 18px 28px;
-      opacity:1;
-      transition: max-height .71s cubic-bezier(.11,.77,.46,1.18), padding .36s, opacity .41s;
+      justify-content: space-between;
     }
 
-    /* Boxed list style */
-    .item-box {
-      background: rgba(35,240,255,0.07);
-      border: 2px solid var(--neon);
-      border-radius: 10px;
-      padding: 15px 18px;
-      margin-bottom: 16px;
-      box-shadow: 0 2px 10px rgba(35,240,255,0.15);
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      font-size: 0.9rem;
+      text-transform: uppercase;
     }
 
-    .item-list {
-      margin:0 0 6px 0;padding:0;list-style:none;font-size:1.02rem;color:var(--white);
-      line-height:1.77;
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      font-size: 0.9rem;
     }
-    .item-list b { color: var(--neon); }
 
-    .gallery-mini {
-      display: flex; flex-wrap: wrap; gap:12px 16px; justify-content: flex-start;
-      margin-top:12px; margin-bottom:7px;
-      transition: gap .19s;
-    }
-    .gallery-img {
-      background:#fff;
-      border-radius:10px;
-      box-shadow:0 3px 16px #2228;
-      width: 95px;
-      height: 95px;
-      object-fit:cover;
-      border:3px solid var(--neon);
-      transition: transform .19s, box-shadow .2s;
-      cursor: pointer;
-      margin-bottom:5px;
-      display: block;
+    .nav-links a {
+      color: var(--accent-soft);
       position: relative;
-    }
-    .gallery-img:hover {
-      transform: scale(1.12) rotate(-3deg);
-      box-shadow:0 7px 36px #23f0ff99;
-      z-index: 5;
-    }
-    .gallery-caption {
-      color: var(--panel-bg);
-      font-weight: 800;
-      font-size: 0.92em;
-      padding: 0 6px;
-      text-align: left;
-      margin-bottom: 12px;
-      display: block;
+      padding-bottom: 4px;
     }
 
-    /* Modal */
-    .modal-bg {
-      display: none;
-      position: fixed; left:0;top:0;right:0;bottom:0;
-      background: rgba(24,28,40,0.86);
-      z-index: 1002;
-      justify-content: center;
-      align-items: center;
-      animation: fadeInBg .23s;
-    }
-    @keyframes fadeInBg { 0%{ opacity:0;} 100%{ opacity:1;}}
-    .modal-bg.active { display: flex; }
-    .modal-view {
-      background: var(--panel-bg);
-      border-radius: 14px;
-      padding: 30px 20px 22px 20px;
-      max-width: 98vw;
-      text-align: center;
-      box-shadow: 0 7px 32px #000d;
-      position: relative;
-      min-width: 240px;
-      animation: popUpModal .25s;
-    }
-    @keyframes popUpModal { 0%{ transform: scale(.8); opacity:0;} 100%{ transform:scale(1); opacity:1;}}
-    .modal-view img {
-      width: clamp(160px,40vw,450px);
-      max-width: 80vw;
-      max-height: 70vh;
-      aspect-ratio: 1/1;
-      border-radius: 11px;
-      background: #fff;
-      border:3px solid var(--neon);
-      margin-bottom: 0.7em;
-      object-fit: contain;
-      box-shadow:0 6px 48px #23f0ff44;
-    }
-    .modal-caption {
-      font-size: 1.13em;
-      color: var(--accent);
-      font-weight: 800;
-    }
-    .modal-close {
+    .nav-links a::after {
+      content: "";
       position: absolute;
-      right: 11px; top: 11px; font-size:1.85em; color:var(--neon);background:none;
-      border:none;cursor:pointer;transition:color .21s;line-height:0;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--highlight);
+      transition: width 0.25s ease;
     }
-    .modal-close:hover { color: var(--hot);}
-    @media (max-width: 610px) { .gallery-mini{ gap:9px 3vw; } .modal-view img{ width:90vw;} }
 
-    .form-section {display: flex; flex-direction: column; align-items: center; margin-bottom:65px;}
-    .form-panel {background: var(--panel-bg);border-radius: 15px;box-shadow: var(--form-glow),0 6px 20px #000f;padding:36px 30px 19px 30px;max-width:400px; width:95vw; margin: 0 auto;animation: glowIn 1.3s;position:relative;}
-    @keyframes glowIn {0% {filter: brightness(.6) blur(7px); opacity: .33;}100% {filter: none; opacity: 1;}}
-    .project-inquiry-form label {font-size:1.03rem;font-weight:700;margin-top:1.09em;margin-bottom:7px;display:block;color:var(--accent);letter-spacing:0.04em;}
-    .project-inquiry-form input, .project-inquiry-form textarea, .project-inquiry-form select {width:100%;margin-bottom:14px;border:none;border-radius:7px;background:var(--input-bg);color:#fff;font-size:1.08rem;padding:9px 11px;font-family:inherit;outline:none;transition:box-shadow .13s;}
-    .project-inquiry-form input:focus,.project-inquiry-form textarea:focus,.project-inquiry-form select:focus{box-shadow:0 0 0 2px var(--neon) inset;}
-    .project-inquiry-form textarea {min-height:66px;}
-    .project-inquiry-form button {background: linear-gradient(90deg, var(--hot) 13%, var(--neon));color: #fff; border: none; border-radius:8px; padding:13px 0;font-size:1.17rem;width:100%;font-weight:800;margin-top:8px;transition:background .17s, filter .11s;box-shadow:0 3px 24px #23f0ff44;letter-spacing:.1em; cursor:pointer;filter: brightness(1.08);}
-    .project-inquiry-form button:hover {background: linear-gradient(90deg, var(--neon) 20%, var(--hot));filter:brightness(1.15);}
-    .form-success,.form-error {text-align:center;font-weight:800;font-size:1.05rem;padding:5px 0 7px 0;}
-    .form-success{color:var(--neon);}
-    .form-error{color:var(--hot);}
-    .contact-or {text-align:center;margin:17px 0 9px 0;font-weight:700;color:var(--neon);}
-    .form-panel .calendar-booking {display:flex;justify-content:center;margin-top:14px;margin-bottom:19px;}
-    #gcal-button-container button, #gcal-button-container > div > button {font-size:1.10rem !important;padding:14px 31px !important;border-radius:10px !important;font-weight:900 !important;letter-spacing:0.09em !important;background:linear-gradient(90deg,#23f0ff 20%,#ffe066 99%)!important;color:#181c28!important;border:0!important;box-shadow:0 1px 9px #23f0ff44 !important;margin:auto !important;text-transform:uppercase;}
-    .contact-info {color:var(--neon);margin:0.7em 0 0.3em 0;text-align:center;font-size: 1.09rem;}
-    .social-row {display:flex; justify-content:center; gap:2.1em; margin-top:1.1em; font-weight:900; font-size:1.16rem; letter-spacing:.17em;}
-    .social-row a { color: var(--accent); text-decoration:none;transition:color .19s; }
-    .social-row a:hover { color:var(--hot);}
-    footer {text-align:center; color:#bcccdc;padding:21px 0 15px 0;background:var(--panel-bg);font-size:1.08rem;margin-top:13vh;}
-    footer a { color:var(--accent); font-weight:900; text-decoration:none;}
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* LAYOUT */
+    main {
+      padding: 110px 7vw 70px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    section {
+      margin-bottom: 90px;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-soft);
+      margin-bottom: 12px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .section-header h2 {
+      margin: 0;
+      font-size: 1.7rem;
+    }
+
+    .section-header p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--accent-soft);
+      max-width: 360px;
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.6rem, 4vw, 3.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin-bottom: 18px;
+    }
+
+    .hero-sub {
+      color: var(--accent-soft);
+      font-size: 0.98rem;
+      max-width: 420px;
+      margin-bottom: 26px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 26px;
+    }
+
+    .pill {
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 6px 14px;
+      font-size: 0.78rem;
+      color: var(--accent-soft);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      border-radius: var(--radius-sm);
+      padding: 10px 20px;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      background: var(--highlight);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 14px 40px rgba(123, 92, 255, 0.35);
+      transition: transform 0.18s ease, box-shadow 0.18s ease,
+        background 0.18s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 50px rgba(123, 92, 255, 0.45);
+      background: #8b6dff;
+    }
+
+    .btn-ghost {
+      border-radius: var(--radius-sm);
+      padding: 9px 18px;
+      font-size: 0.85rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: transparent;
+      color: var(--accent-soft);
+      cursor: pointer;
+      transition: background 0.18s ease, border-color 0.18s ease,
+        color 0.18s ease;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: var(--accent-strong);
+    }
+
+    .hero-panel {
+      background: radial-gradient(circle at top left, #262a40, #101218 55%);
+      border-radius: var(--radius-lg);
+      padding: 20px 20px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 26px 80px rgba(0, 0, 0, 0.6);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-panel-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-soft);
+      margin-bottom: 10px;
+    }
+
+    .hero-panel-main {
+      background: rgba(5, 6, 8, 0.6);
+      border-radius: var(--radius-md);
+      padding: 18px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .hero-panel-main h3 {
+      margin: 0 0 6px;
+      font-size: 1rem;
+    }
+
+    .hero-panel-main p {
+      margin: 0;
+      font-size: 0.8rem;
+      color: var(--accent-soft);
+    }
+
+    .hero-panel-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 14px;
+      font-size: 0.78rem;
+      color: var(--accent-soft);
+    }
+
+    .hero-panel-chip {
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-panel-orbit {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.7;
+      background: radial-gradient(
+          circle at 10% 0,
+          rgba(123, 92, 255, 0.4),
+          transparent 55%
+        ),
+        radial-gradient(
+          circle at 90% 100%,
+          rgba(255, 255, 255, 0.08),
+          transparent 55%
+        );
+      mix-blend-mode: screen;
+    }
+
+    /* PORTFOLIO GRID */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+    }
+
+    .project-card {
+      background: var(--card);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease,
+        border-color 0.18s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+      border-color: rgba(255, 255, 255, 0.16);
+    }
+
+    .project-thumb {
+      height: 190px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .project-body {
+      padding: 16px 16px 14px;
+    }
+
+    .project-title {
+      font-size: 0.98rem;
+      margin-bottom: 6px;
+    }
+
+    .project-meta {
+      font-size: 0.8rem;
+      color: var(--accent-soft);
+      margin-bottom: 10px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--accent-soft);
+    }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+    }
+
+    .service-card {
+      background: var(--card);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 18px 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: transform 0.18s ease, box-shadow 0.18s ease,
+        border-color 0.18s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.7);
+      border-color: rgba(255, 255, 255, 0.16);
+    }
+
+    .service-title {
+      font-size: 0.98rem;
+    }
+
+    .service-desc {
+      font-size: 0.85rem;
+      color: var(--accent-soft);
+    }
+
+    .service-meta {
+      font-size: 0.78rem;
+      color: var(--accent-soft);
+      margin-top: 4px;
+    }
+
+    /* CONTACT */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: flex-start;
+    }
+
+    .contact-copy p {
+      font-size: 0.9rem;
+      color: var(--accent-soft);
+      max-width: 360px;
+    }
+
+    form {
+      background: var(--card);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 18px 18px 16px;
+      display: grid;
+      gap: 12px;
+    }
+
+    label {
+      font-size: 0.78rem;
+      color: var(--accent-soft);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(5, 6, 8, 0.7);
+      color: var(--accent-strong);
+      padding: 9px 10px;
+      font-size: 0.85rem;
+      outline: none;
+      resize: vertical;
+      min-height: 0;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--highlight);
+      box-shadow: 0 0 0 1px rgba(123, 92, 255, 0.4);
+    }
+
+    textarea {
+      min-height: 110px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .form-footnote {
+      font-size: 0.75rem;
+      color: var(--accent-soft);
+      margin-top: 4px;
+    }
+
+    .btn-submit {
+      margin-top: 4px;
+      border-radius: var(--radius-sm);
+      padding: 9px 18px;
+      font-size: 0.85rem;
+      border: none;
+      cursor: pointer;
+      background: var(--highlight);
+      color: #fff;
+      justify-self: flex-start;
+      transition: background 0.18s ease, transform 0.18s ease,
+        box-shadow 0.18s ease;
+      box-shadow: 0 12px 32px rgba(123, 92, 255, 0.35);
+    }
+
+    .btn-submit:hover {
+      background: #8b6dff;
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(123, 92, 255, 0.45);
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 18px 7vw 26px;
+      font-size: 0.78rem;
+      color: var(--accent-soft);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    footer span {
+      opacity: 0.9;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-panel {
+        order: -1;
+      }
+
+      .contact-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      nav {
+        padding-inline: 5vw;
+      }
+
+      main {
+        padding-inline: 5vw;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        gap: 18px;
+        font-size: 0.8rem;
+      }
+
+      .hero {
+        padding-top: 130px;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .form-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
   </style>
 </head>
 <body>
-  <nav class="nav show-nav" id="mainNav">
-    <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">RYT DESIGNS</div>
-    <div class="menu" role="navigation" aria-label="Primary">
-      <a href="#work" class="active">Work</a>
-      <a href="#about">About</a>
+  <nav>
+    <div class="logo">Ryt Designs</div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#portfolio">Work</a>
+      <a href="#services">Services</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
 
-  <button class="to-top-arrow hide-arrow" id="scrollUpBtn" title="Show Header/Go Up" aria-label="Scroll to top">&#8593;</button>
+  <main>
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div>
+        <div class="section-label">Graphic design studio</div>
+        <h1 class="hero-title">Minimal visuals. Clear stories. Ryt for your brand.</h1>
+        <p class="hero-sub">
+          I design clean, modern graphics with just enough personality to feel human—perfect for brands that want to look sharp without shouting.
+        </p>
 
-  <section class="hero">
-    <div class="hero-title">Let's Make Something Cool.</div>
-    <div class="hero-sub">Your vision, my creativity—custom work, always unique!</div>
-  </section>
-
-  <!-- Accordion portfolio here! -->
-  <div class="accordion" id="work">
-    <!-- MARKETING -->
-    <div class="accordion-section" id="sec-marketing">
-      <button class="accordion-header" id="hdr-marketing" aria-expanded="false" aria-controls="panel-marketing">
-        🧾 Marketing & Promotional Materials <span class="arrow" aria-hidden="true">&#9654;</span>
-      </button>
-      <div class="accordion-panel" id="panel-marketing" role="region" aria-labelledby="hdr-marketing">
-        <div class="item-box">
-          <ul class="item-list">
-            <li><b>Flyer</b> – $15</li>
-            <li><b>Business Cards</b> – $20</li>
-            <li><b>Banner</b> – $35</li>
-            <li><b>Menus</b> – $20</li>
-            <li><b>Presentations</b> – $30</li>
-            <li><b>Product Label</b> – $25</li>
-            <li><b>Product Design</b> – $40</li>
-          </ul>
+        <div class="hero-tags">
+          <span class="pill">Logos & identity</span>
+          <span class="pill">Posters & layouts</span>
+          <span class="pill">Digital artwork</span>
         </div>
-        <div class="gallery-mini">
-          <div>
-            <img class="gallery-img" loading="lazy" decoding="async" src="https://rytdesignsca.github.io/website%20prototype/Trip%20Itenirary.png" alt="Flyer" data-caption="Flyer: Trip Itinerary">
-            <div class="gallery-caption">Flyer</div>
-          </div>
-          <div>
-            <img class="gallery-img" loading="lazy" decoding="async" src="https://rytdesignsca.github.io/website%20prototype/Menu%204%20website.png" alt="Menu" data-caption="Menu Design">
-            <div class="gallery-caption">Menu</div>
-          </div>
-          <div>
-            <img class="gallery-img" loading="lazy" decoding="async" src="https://rytdesignsca.github.io/website%20prototype/Logo%204%20website.png" alt="Product Label" data-caption="Logo/Product Label">
-            <div class="gallery-caption">Product/Label</div>
-          </div>
+
+        <div class="hero-actions">
+          <a href="#portfolio" class="btn-primary">View portfolio →</a>
+          <a href="#contact" class="btn-ghost">Start a project</a>
         </div>
       </div>
-    </div>
-    <!-- DIGITAL & SOCIAL -->
-    <div class="accordion-section" id="sec-digital">
-      <button class="accordion-header" id="hdr-digital" aria-expanded="false" aria-controls="panel-digital">
-        🎥 Digital & Social Media Content <span class="arrow" aria-hidden="true">&#9654;</span>
-      </button>
-      <div class="accordion-panel" id="panel-digital" role="region" aria-labelledby="hdr-digital">
-        <div class="item-box">
-          <ul class="item-list">
-            <li><b>Videos for Events</b> – $25</li>
-            <li><b>YouTube Thumbnails (Basic)</b> – $20</li>
-            <li><b>YouTube Thumbnails (Add-ons)</b> – $35</li>
-            <li><b>Basic Designs</b> – $10–$50</li>
-          </ul>
+
+      <aside class="hero-panel">
+        <div class="hero-panel-orbit"></div>
+        <div class="hero-panel-tag">Snapshot of my style</div>
+        <div class="hero-panel-main">
+          <h3>Balanced, minimal, intentional.</h3>
+          <p>
+            I focus on strong composition, typography, and contrast—so every piece feels considered, not crowded.
+          </p>
         </div>
-        <div class="gallery-mini">
-          <div>
-            <img class="gallery-img" loading="lazy" decoding="async" src="https://rytdesignsca.github.io/website%20prototype/T-Shirt%20design.png" alt="YT Basic Thumb" data-caption="YouTube Thumbnail (Basic)">
-            <div class="gallery-caption">YouTube Thumbnail</div>
+        <div class="hero-panel-footer">
+          <span>Recent work: posters, logos, cover art</span>
+          <span class="hero-panel-chip">Available for commissions</span>
+        </div>
+      </aside>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio">
+      <div class="section-header">
+        <div>
+          <div class="section-label">Selected work</div>
+          <h2>How I design.</h2>
+        </div>
+        <p>
+          A mix of branding, posters, and digital pieces that show how I use space, type, and color to keep things minimal but expressive.
+        </p>
+      </div>
+
+      <div class="portfolio-grid">
+        <article class="project-card">
+          <div
+            class="project-thumb"
+            style="background-image:url('images/design1.jpg');"
+          ></div>
+          <div class="project-body">
+            <div class="project-title">Monochrome Poster Study</div>
+            <div class="project-meta">Exploring hierarchy with type, shape, and negative space.</div>
+            <div class="project-tags">
+              <span class="tag">Poster</span>
+              <span class="tag">Typography</span>
+              <span class="tag">Minimal</span>
+            </div>
           </div>
-          <div>
-            <img class="gallery-img" loading="lazy" decoding="async" src="https://rytdesignsca.github.io/website%20prototype/Ryt%20Designs%20Poster.png" alt="Poster/Basic" data-caption="Event Poster/Basic Design">
-            <div class="gallery-caption">Poster/Basic Design</div>
+        </article>
+
+        <article class="project-card">
+          <div
+            class="project-thumb"
+            style="background-image:url('images/design2.jpg');"
+          ></div>
+          <div class="project-body">
+            <div class="project-title">Brand Mark Concept</div>
+            <div class="project-meta">A simple, flexible logo built to work at any size.</div>
+            <div class="project-tags">
+              <span class="tag">Logo</span>
+              <span class="tag">Identity</span>
+              <span class="tag">Vector</span>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <!-- BRANDING & IDENTITY -->
-    <div class="accordion-section" id="sec-branding">
-      <button class="accordion-header" id="hdr-branding" aria-expanded="false" aria-controls="panel-branding">
-        🎨 Branding & Identity <span class="arrow" aria-hidden="true">&#9654;</span>
-      </button>
-      <div class="accordion-panel" id="panel-branding" role="region" aria-labelledby="hdr-branding">
-        <div class="item-box">
-          <ul class="item-list">
-            <li><b>Logos for Businesses</b> – $30</li>
-            <li><b>Clothing Design</b> – $50</li>
-            <li><b>Album Cover</b> – $50</li>
-          </ul>
-        </div>
-        <div class="gallery-mini">
-          <div>
-            <img class="gallery-img" loading="lazy" decoding="async" src="https://rytdesignsca.github.io/website%20prototype/Album%20cover.png" alt="Album Cover" data-caption="Album Cover Art">
-            <div class="gallery-caption">Album Cover</div>
+        </article>
+
+        <article class="project-card">
+          <div
+            class="project-thumb"
+            style="background-image:url('images/design3.jpg');"
+          ></div>
+          <div class="project-body">
+            <div class="project-title">Digital Cover Artwork</div>
+            <div class="project-meta">Layered gradients and shapes with a clean focal point.</div>
+            <div class="project-tags">
+              <span class="tag">Digital art</span>
+              <span class="tag">Cover</span>
+              <span class="tag">Color</span>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <!-- PERSONAL & EVENT -->
-    <div class="accordion-section" id="sec-personal">
-      <button class="accordion-header" id="hdr-personal" aria-expanded="false" aria-controls="panel-personal">
-        🎉 Personal & Event Designs <span class="arrow" aria-hidden="true">&#9654;</span>
-      </button>
-      <div class="accordion-panel" id="panel-personal" role="region" aria-labelledby="hdr-personal">
-        <div class="item-box">
-          <ul class="item-list">
-            <li><b>Invitations</b> – $24</li>
-            <li><b>Celebration Cards</b> – $10</li>
-          </ul>
-        </div>
-        <div class="gallery-mini">
-          <div>
-            <img class="gallery-img" loading="lazy" decoding="async" src="https://rytdesignsca.github.io/website%20prototype/Ryt%20Skin.png" alt="Celebration Card" data-caption="Celebration Card">
-            <div class="gallery-caption">Celebration Card</div>
+        </article>
+
+        <article class="project-card">
+          <div
+            class="project-thumb"
+            style="background-image:url('images/design4.jpg');"
+          ></div>
+          <div class="project-body">
+            <div class="project-title">Minimal Social Graphic</div>
+            <div class="project-meta">Designed to be scroll-stopping without feeling loud.</div>
+            <div class="project-tags">
+              <span class="tag">Social</span>
+              <span class="tag">Layout</span>
+              <span class="tag">Clean</span>
+            </div>
           </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="section-header">
+        <div>
+          <div class="section-label">Services</div>
+          <h2>What you can book me for.</h2>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal viewer -->
-  <div class="modal-bg" id="imgModal" aria-hidden="true">
-    <div class="modal-view" role="dialog" aria-modal="true" aria-labelledby="modalCap">
-      <button class="modal-close" id="modalClose" aria-label="Close image">&times;</button>
-      <div id="modalPic"></div>
-      <div class="modal-caption" id="modalCap"></div>
-    </div>
-  </div>
-
-  <section id="about" style="max-width:580px;margin:64px auto 42px auto;text-align:center;color:var(--accent);font-size:1.17rem;line-height:1.7;">
-    <b>
-      Hey, I'm RYT—a teen designer and digital artist. <br>
-      <span style="color:var(--neon)">Check my work. Hit up my form to collab. <br> Stay original, stay bold.</span>
-    </b>
-  </section>
-
-  <section class="form-section" id="contact">
-    <div class="form-panel">
-      <form id="projectInquiryForm" class="project-inquiry-form" autocomplete="off" method="POST" action="https://formspree.io/f/mjkrwwpk">
-        <div class="form-success" id="formSuccess" style="display:none;" role="status" aria-live="polite"></div>
-        <div class="form-error" id="formError" style="display:none;" role="alert" aria-live="assertive"></div>
-
-        <label for="name">Name *</label>
-        <input id="name" type="text" name="name" placeholder="e.g. Jane Doe" required>
-
-        <label for="email">Email *</label>
-        <input id="email" type="email" name="email" placeholder="name@email.com" required>
-
-        <label for="style">Project Style</label>
-        <select id="style" name="style" required>
-          <option value="">- Select -</option>
-          <option>Modern & Minimalist</option>
-          <option>Bold & Vibrant</option>
-          <option>Classic & Elegant</option>
-          <option>Fun & Playful</option>
-          <option>Not sure / Surprise me</option>
-        </select>
-
-        <label for="vision">Tell me what you want</label>
-        <textarea id="vision" name="vision" required placeholder="Describe your vision/idea/project..."></textarea>
-
-        <label for="requirements">Anything else?</label>
-        <textarea id="requirements" name="requirements" placeholder="Colors, examples, logo ideas, must-haves..."></textarea>
-
-        <button type="submit" id="submitBtn">Send Inquiry</button>
-      </form>
-
-      <div class="contact-or">or Book a 1-on-1 call now:</div>
-      <div class="calendar-booking"><div id="gcal-button-container" style="width:100%;"></div></div>
-
-      <div class="contact-info">
-        <b>Phone:</b> +1 226-977-9311 <br>
-        <b>Email:</b> <a href="mailto:rytdesignsca@gmail.com" style="color:var(--neon);text-decoration:underline;">rytdesignsca@gmail.com</a>
+        <p>
+          Clear packages so you know exactly what you’re getting—no guesswork, just focused design work tailored to your project.
+        </p>
       </div>
 
-      <div class="social-row">
-        <a href="https://www.instagram.com/rytdesigns_/" target="_blank" rel="noopener noreferrer">Instagram</a>
-        <a href="https://www.tiktok.com/@ryt.designs7" target="_blank" rel="noopener noreferrer">TikTok</a>
+      <div class="services-grid">
+        <article class="service-card">
+          <div class="service-title">Logo & Wordmark</div>
+          <div class="service-desc">
+            A clean, versatile logo or wordmark designed to work on screens, print, and everywhere in between.
+          </div>
+          <div class="service-meta">Includes: primary logo, basic usage guide, export files.</div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-title">Mini Brand Kit</div>
+          <div class="service-desc">
+            A compact identity system with logo, colors, and type choices so your brand feels consistent from day one.
+          </div>
+          <div class="service-meta">Includes: logo, color palette, font suggestions, simple style sheet.</div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-title">Poster / Cover Design</div>
+          <div class="service-desc">
+            A single strong visual for your event, release, or announcement—built to stand out online and offline.
+          </div>
+          <div class="service-meta">Includes: one key visual, export for print + social sizes.</div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-title">Custom Digital Artwork</div>
+          <div class="service-desc">
+            A one-off piece in my style—great for profiles, banners, or personal projects that need a unique look.
+          </div>
+          <div class="service-meta">Includes: high-res file, web-ready version.</div>
+        </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer>© 2025 RYT DESIGNS — All work original.</footer>
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-header">
+        <div>
+          <div class="section-label">Contact</div>
+          <h2>Tell me what you’re building.</h2>
+        </div>
+        <p>
+          Share a bit about your project, timeline, and what you’re looking for. I’ll reply with next steps and options.
+        </p>
+      </div>
 
-  <script>
-    // Header hide on scroll, show at top, FAB arrow for up
-    let lastScroll = window.scrollY;
-    const nav = document.getElementById('mainNav');
-    const scrollUpBtn = document.getElementById('scrollUpBtn');
-    let ticking = false;
+      <div class="contact-layout">
+        <div class="contact-copy">
+          <p>
+            Whether you already have a clear idea or just a rough direction, I can help shape it into something visual, simple, and sharp.
+          </p>
+          <p>
+            Use the form to reach out—include links or references if you have them. I’ll get back to you as soon as I can.
+          </p>
+        </div>
 
-    function setArrowVisibility(show) {
-      if (show) {
-        scrollUpBtn.classList.add('show-arrow');
-        scrollUpBtn.classList.remove('hide-arrow');
-      } else {
-        scrollUpBtn.classList.add('hide-arrow');
-        scrollUpBtn.classList.remove('show-arrow');
-      }
-    }
+        <form action="https://formspree.io/f/mjkrwwpk" method="POST">
+          <div class="form-row">
+            <div>
+              <label for="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your name"
+                required
+              />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="_replyto"
+                placeholder="you@example.com"
+                required
+              />
+            </div>
+          </div>
 
-    function handleNavScroll() {
-      const y = window.scrollY;
-      if (y < 60) {
-        nav.classList.remove("hide-nav");
-        nav.classList.add("show-nav");
-        setArrowVisibility(false);
-      } else if (y > lastScroll) {
-        nav.classList.remove('show-nav');
-        nav.classList.add('hide-nav');
-        setArrowVisibility(true);
-      } else {
-        nav.classList.remove('hide-nav');
-        nav.classList.add('show-nav');
-        setArrowVisibility(true);
-      }
-      lastScroll = y;
-    }
+          <div>
+            <label for="project">Project type</label>
+            <input
+              type="text"
+              id="project"
+              name="project_type"
+              placeholder="Logo, poster, brand kit, digital art..."
+            />
+          </div>
 
-    window.addEventListener('scroll', function(){
-      if (!ticking) {
-        window.requestAnimationFrame(function() {
-          handleNavScroll();
-          ticking = false;
-        });
-        ticking = true;
-      }
-    });
+          <div>
+            <label for="message">Project details</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Tell me about your brand, style, timeline, and what you need designed."
+              required
+            ></textarea>
+          </div>
 
-    scrollUpBtn.onclick = function(){
-      window.scrollTo({top:0, behavior:'smooth'});
-      nav.classList.remove('hide-nav');
-      nav.classList.add('show-nav');
-    };
+          <button type="submit" class="btn-submit">Send message</button>
+          <div class="form-footnote">
+            This form uses Formspree to securely send your message.
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
 
-    // Menu active on scroll
-    function navActive(){
-      let y = window.scrollY || window.pageYOffset;
-      let links = document.querySelectorAll('.menu a');
-      let work = document.getElementById('work').offsetTop - 120;
-      let about = document.getElementById('about').offsetTop - 120;
-      let contact = document.getElementById('contact').offsetTop - 150;
-      links.forEach(a=>a.classList.remove('active'));
-      if (y < about) links[0].classList.add('active');
-      else if (y < contact) links[1].classList.add('active');
-      else links[2].classList.add('active');
-    }
-    window.addEventListener('scroll', navActive);
-    window.addEventListener('resize', navActive);
-    navActive();
-
-    // Accordion logic with ARIA updates
-    document.querySelectorAll('.accordion-header').forEach(header => {
-      header.addEventListener('click', function(){
-        const sec = header.parentElement;
-        const expanded = header.getAttribute('aria-expanded') === 'true';
-        // Close all
-        document.querySelectorAll('.accordion-section').forEach(s=>{
-          s.classList.remove('open');
-          const btn = s.querySelector('.accordion-header');
-          if (btn) btn.setAttribute('aria-expanded','false');
-        });
-        // Toggle current
-        if (!expanded) {
-          sec.classList.add('open');
-          header.setAttribute('aria-expanded','true');
-        }
-      });
-    });
-
-    // Modal logic with focus management
-    const modal = document.getElementById('imgModal');
-    const modalPic = document.getElementById('modalPic');
-    const modalCap = document.getElementById('modalCap');
-    const modalCloseBtn = document.getElementById('modalClose');
-    let lastFocusedElement = null;
-
-    function getFocusableElements(container){
-      return Array.from(container.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'))
-        .filter(el => !el.hasAttribute('disabled') && !el.getAttribute('aria-hidden'));
-    }
-
-    function openModal(src, alt, caption){
-      lastFocusedElement = document.activeElement;
-      modalPic.innerHTML = `<img src="${src}" alt="${alt}">`;
-      modalCap.textContent = caption || alt || '';
-      modal.classList.add('active');
-      modal.setAttribute('aria-hidden','false');
-      // Focus
-      setTimeout(()=> modalCloseBtn.focus(), 0);
-      // Trap focus
-      function trap(e){
-        if (e.key !== 'Tab') return;
-        const focusables = getFocusableElements(modal);
-        if (!focusables.length) return;
-        const first = focusables[0];
-        const last = focusables[focusables.length - 1];
-        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-      }
-      modal.addEventListener('keydown', trap);
-      modal.dataset.trap = 'true';
-    }
-
-    function closeModal(){
-      modal.classList.remove('active');
-      modal.setAttribute('aria-hidden','true');
-      if (lastFocusedElement) lastFocusedElement.focus();
-    }
-
-    document.querySelectorAll('.gallery-img').forEach(img=>{
-      img.addEventListener('click',function(){
-        openModal(img.src, img.alt, img.getAttribute('data-caption'));
-      });
-    });
-    modalCloseBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', function(e){ if (e.target === modal) closeModal(); });
-    window.addEventListener('keydown', function(e){ if(e.key === "Escape" && modal.classList.contains('active')) closeModal(); });
-
-    // Form and calendar logic
-    document.addEventListener("DOMContentLoaded",function(){
-      const form = document.getElementById('projectInquiryForm');
-      const formSuccess = document.getElementById('formSuccess');
-      const formError = document.getElementById('formError');
-      const submitBtn = document.getElementById('submitBtn');
-
-      if(form){
-        form.addEventListener('submit', async function(e){
-          e.preventDefault();
-          formSuccess.style.display='none';
-          formError.style.display='none';
-          const originalText = submitBtn.textContent;
-          submitBtn.disabled = true;
-          submitBtn.textContent = 'Sending...';
-
-          try {
-            const res = await fetch(form.action, {
-              method: 'POST',
-              body: new FormData(form),
-              headers: { 'Accept': 'application/json' }
-            });
-            if (res.ok) {
-              formSuccess.textContent = "Thank you! I'll be in touch.";
-              formSuccess.style.display = 'block';
-              form.reset();
-            } else {
-              const data = await res.json().catch(()=> ({}));
-              formError.textContent = data.error || "Oops—something went wrong. Please try again or email me.";
-              formError.style.display = 'block';
-            }
-          } catch (err) {
-            formError.textContent = "Network error. Please try again or email me.";
-            formError.style.display = 'block';
-          } finally {
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalText;
-          }
-        });
-      }
-
-      // Google Calendar scheduling button init with retry
-      function gcalBtnLoad() {
-        const btnTarget = document.getElementById('gcal-button-container');
-        if (btnTarget && window.calendar && window.calendar.schedulingButton) {
-          calendar.schedulingButton.load({
-            url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3VpIaEgD8-5JS2dBR-7XaOx9beJuvfUs5Fq7CtY0VZ1hQdcewcz0RyCSxQClVQWASiLuzz36AK?gv=true',
-            color: '#23f0ff',
-            label: 'Book Now',
-            target: btnTarget
-          });
-        } else {
-          setTimeout(gcalBtnLoad, 400);
-        }
-      }
-      gcalBtnLoad();
-    });
-  </script>
+  <footer>
+    <span>© 2026 Ryt Designs</span>
+    <span>Minimal design for brands that like things clean.</span>
+  </footer>
 </body>
 </html>
